@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="38"
-  DTS:VersionGUID="{B34DF5AD-5721-4ABB-8770-D8082D7B75B7}">
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{92E3F5D4-68AB-494B-9125-1E71B8064BD5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -135,6 +135,13 @@
                       cachedName="cargo_id"
                       externalMetadataColumnId="Package\cargos\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[cargo_id]"
                       lineageId="Package\cargos\Origen de OLE DB Leer Cargos.Outputs[Salida de origen de OLE DB].Columns[cargo_id]" />
+                    <inputColumn
+                      refId="Package\cargos\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="nombre"
+                      externalMetadataColumnId="Package\cargos\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre]"
+                      lineageId="Package\cargos\Origen de OLE DB Leer Cargos.Outputs[Salida de origen de OLE DB].Columns[nombre]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1099,9 +1106,8 @@
                       name="comuna_id" />
                     <externalMetadataColumn
                       refId="Package\comunas\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[comuna]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
+                      dataType="wstr"
+                      length="255"
                       name="comuna" />
                   </externalMetadataColumns>
                 </input>
@@ -1787,7 +1793,7 @@
                       cachedDataType="i4"
                       cachedName="producto_id"
                       externalMetadataColumnId="Package\hechos venta\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[producto_id]"
-                      lineageId="Package\hechos venta\67:invalid" />
+                      lineageId="Package\hechos venta\71:invalid" />
                     <inputColumn
                       refId="Package\hechos venta\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[venta_id]"
                       cachedDataType="i4"
@@ -1812,6 +1818,12 @@
                       cachedName="fecha"
                       externalMetadataColumnId="Package\hechos venta\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha]"
                       lineageId="Package\hechos venta\Origen de OLE DB Leer Hechos Ventas.Outputs[Salida de origen de OLE DB].Columns[fecha]" />
+                    <inputColumn
+                      refId="Package\hechos venta\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[vendedor_id]"
+                      cachedDataType="i4"
+                      cachedName="vendedor_id"
+                      externalMetadataColumnId="Package\hechos venta\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[empleado_id]"
+                      lineageId="Package\hechos venta\Origen de OLE DB Leer Hechos Ventas.Outputs[Salida de origen de OLE DB].Columns[vendedor_id]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3202,13 +3214,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="223,42"
-          Id="Package\cargos\Origen de OLE DB Leer Cargos"
-          TopLeft="127,31" />
-        <NodeLayout
           Size="194,42"
           Id="Package\cargos\Destino de OLE DB DW2"
           TopLeft="198,289" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\cargos\Origen de OLE DB Leer Cargos"
+          TopLeft="127,31" />
         <EdgeLayout
           Id="Package\cargos.Paths[Salida de origen de OLE DB]"
           TopLeft="238.5,73">
@@ -3430,13 +3442,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="194,42"
-          Id="Package\comunas\Destino de OLE DB DW2"
-          TopLeft="345,388" />
-        <NodeLayout
           Size="235,42"
           Id="Package\comunas\Origen de OLE DB Leer Comunas"
           TopLeft="127,31" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\comunas\Destino de OLE DB DW2"
+          TopLeft="345,388" />
         <EdgeLayout
           Id="Package\comunas.Paths[Salida de origen de OLE DB]"
           TopLeft="244.5,73">
