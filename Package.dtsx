@@ -11,33 +11,33 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="33"
-  DTS:VersionGUID="{CDEB384A-F602-4416-87A4-75F57766DE54}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{B34DF5AD-5721-4ABB-8770-D8082D7B75B7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[localhost.Albarran]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{97D9E3DD-F158-4112-8554-4251DDA63350}"
+      DTS:DTSID="{1A43EE7D-204A-4B14-B2B8-ED81ED7D1914}"
       DTS:ObjectName="localhost.Albarran">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Albarran;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{97D9E3DD-F158-4112-8554-4251DDA63350}localhost.Albarran;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Albarran;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{1A43EE7D-204A-4B14-B2B8-ED81ED7D1914}localhost.Albarran;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[localhost.Albarran_DW2]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{8486C16C-C0E8-4BB1-8696-EA1C558F5C1B}"
+      DTS:DTSID="{E3CA6F8F-F0C8-4BC7-A110-A10314C1E4C9}"
       DTS:ObjectName="localhost.Albarran_DW2">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Albarran_DW2;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{8486C16C-C0E8-4BB1-8696-EA1C558F5C1B}localhost.Albarran_DW2;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Albarran_DW2;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{E3CA6F8F-F0C8-4BC7-A110-A10314C1E4C9}localhost.Albarran_DW2;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -135,13 +135,6 @@
                       cachedName="cargo_id"
                       externalMetadataColumnId="Package\cargos\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[cargo_id]"
                       lineageId="Package\cargos\Origen de OLE DB Leer Cargos.Outputs[Salida de origen de OLE DB].Columns[cargo_id]" />
-                    <inputColumn
-                      refId="Package\cargos\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[nombre]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="nombre"
-                      externalMetadataColumnId="Package\cargos\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[cargo]"
-                      lineageId="Package\cargos\Origen de OLE DB Leer Cargos.Outputs[Salida de origen de OLE DB].Columns[nombre]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -150,10 +143,10 @@
                       dataType="i4"
                       name="cargo_id" />
                     <externalMetadataColumn
-                      refId="Package\cargos\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[cargo]"
+                      refId="Package\cargos\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre]"
                       dataType="wstr"
                       length="255"
-                      name="cargo" />
+                      name="nombre" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -412,6 +405,13 @@
                       cachedName="categoria_id"
                       externalMetadataColumnId="Package\categorias\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[categoria_id]"
                       lineageId="Package\categorias\Origen de OLE DB Leer Categorias.Outputs[Salida de origen de OLE DB].Columns[categoria_id]" />
+                    <inputColumn
+                      refId="Package\categorias\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[categoria]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="categoria"
+                      externalMetadataColumnId="Package\categorias\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[categoria]"
+                      lineageId="Package\categorias\Origen de OLE DB Leer Categorias.Outputs[Salida de origen de OLE DB].Columns[categoria]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1073,9 +1073,24 @@
                 <input
                   refId="Package\comunas\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB]"
                   errorOrTruncationOperation="Insertar"
-                  errorRowDisposition="FailComponent"
+                  errorRowDisposition="IgnoreFailure"
                   hasSideEffects="true"
                   name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\comunas\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[comuna_id]"
+                      cachedDataType="i4"
+                      cachedName="comuna_id"
+                      externalMetadataColumnId="Package\comunas\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[comuna_id]"
+                      lineageId="Package\comunas\Origen de OLE DB Leer Comunas.Outputs[Salida de origen de OLE DB].Columns[comuna_id]" />
+                    <inputColumn
+                      refId="Package\comunas\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[comuna]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="comuna"
+                      externalMetadataColumnId="Package\comunas\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[comuna]"
+                      lineageId="Package\comunas\Origen de OLE DB Leer Comunas.Outputs[Salida de origen de OLE DB].Columns[comuna]" />
+                  </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
@@ -1347,6 +1362,44 @@
                       cachedName="nombre"
                       externalMetadataColumnId="Package\empleados\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre]"
                       lineageId="Package\empleados\Origen de OLE DB Leer Empleados.Outputs[Salida de origen de OLE DB].Columns[nombre]" />
+                    <inputColumn
+                      refId="Package\empleados\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[empleado_id]"
+                      cachedDataType="i4"
+                      cachedName="empleado_id"
+                      externalMetadataColumnId="Package\empleados\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[empleado_id]"
+                      lineageId="Package\empleados\Origen de OLE DB Leer Empleados.Outputs[Salida de origen de OLE DB].Columns[empleado_id]" />
+                    <inputColumn
+                      refId="Package\empleados\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[fecha_contrato]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="fecha_contrato"
+                      externalMetadataColumnId="Package\empleados\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_contrato]"
+                      lineageId="Package\empleados\Origen de OLE DB Leer Empleados.Outputs[Salida de origen de OLE DB].Columns[fecha_contrato]" />
+                    <inputColumn
+                      refId="Package\empleados\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[sueldo_base]"
+                      cachedDataType="i4"
+                      cachedName="sueldo_base"
+                      externalMetadataColumnId="Package\empleados\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[sueldo_base]"
+                      lineageId="Package\empleados\Origen de OLE DB Leer Empleados.Outputs[Salida de origen de OLE DB].Columns[sueldo_base]" />
+                    <inputColumn
+                      refId="Package\empleados\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[cargo_id]"
+                      cachedDataType="i4"
+                      cachedName="cargo_id"
+                      externalMetadataColumnId="Package\empleados\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[cargo_id]"
+                      lineageId="Package\empleados\Origen de OLE DB Leer Empleados.Outputs[Salida de origen de OLE DB].Columns[cargo_id]" />
+                    <inputColumn
+                      refId="Package\empleados\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[appaterno]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="appaterno"
+                      externalMetadataColumnId="Package\empleados\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[appaterno]"
+                      lineageId="Package\empleados\Origen de OLE DB Leer Empleados.Outputs[Salida de origen de OLE DB].Columns[appaterno]" />
+                    <inputColumn
+                      refId="Package\empleados\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[apmaterno]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="apmaterno"
+                      externalMetadataColumnId="Package\empleados\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[apmaterno]"
+                      lineageId="Package\empleados\Origen de OLE DB Leer Empleados.Outputs[Salida de origen de OLE DB].Columns[apmaterno]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1735,6 +1788,30 @@
                       cachedName="producto_id"
                       externalMetadataColumnId="Package\hechos venta\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[producto_id]"
                       lineageId="Package\hechos venta\67:invalid" />
+                    <inputColumn
+                      refId="Package\hechos venta\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[venta_id]"
+                      cachedDataType="i4"
+                      cachedName="venta_id"
+                      externalMetadataColumnId="Package\hechos venta\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[venta_id]"
+                      lineageId="Package\hechos venta\Origen de OLE DB Leer Hechos Ventas.Outputs[Salida de origen de OLE DB].Columns[venta_id]" />
+                    <inputColumn
+                      refId="Package\hechos venta\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[cliente_id]"
+                      cachedDataType="i4"
+                      cachedName="cliente_id"
+                      externalMetadataColumnId="Package\hechos venta\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_id]"
+                      lineageId="Package\hechos venta\Origen de OLE DB Leer Hechos Ventas.Outputs[Salida de origen de OLE DB].Columns[cliente_id]" />
+                    <inputColumn
+                      refId="Package\hechos venta\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[sucursal_id]"
+                      cachedDataType="i4"
+                      cachedName="sucursal_id"
+                      externalMetadataColumnId="Package\hechos venta\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[sucursal_id]"
+                      lineageId="Package\hechos venta\Origen de OLE DB Leer Hechos Ventas.Outputs[Salida de origen de OLE DB].Columns[sucursal_id]" />
+                    <inputColumn
+                      refId="Package\hechos venta\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[fecha]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="fecha"
+                      externalMetadataColumnId="Package\hechos venta\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha]"
+                      lineageId="Package\hechos venta\Origen de OLE DB Leer Hechos Ventas.Outputs[Salida de origen de OLE DB].Columns[fecha]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2491,6 +2568,27 @@
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\sucursales\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[sucursal_id]"
+                      cachedDataType="i4"
+                      cachedName="sucursal_id"
+                      externalMetadataColumnId="Package\sucursales\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[sucursal_id]"
+                      lineageId="Package\sucursales\Origen de OLE DB Leer Sucursales.Outputs[Salida de origen de OLE DB].Columns[sucursal_id]" />
+                    <inputColumn
+                      refId="Package\sucursales\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[sucursal]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="sucursal"
+                      externalMetadataColumnId="Package\sucursales\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[sucursal]"
+                      lineageId="Package\sucursales\Origen de OLE DB Leer Sucursales.Outputs[Salida de origen de OLE DB].Columns[sucursal]" />
+                    <inputColumn
+                      refId="Package\sucursales\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].Columns[comuna_id]"
+                      cachedDataType="i4"
+                      cachedName="comuna_id"
+                      externalMetadataColumnId="Package\sucursales\Destino de OLE DB DW2.Inputs[Entrada de destino de OLE DB].ExternalColumns[comuna_id]"
+                      lineageId="Package\sucursales\Origen de OLE DB Leer Sucursales.Outputs[Salida de origen de OLE DB].Columns[comuna_id]" />
+                  </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
@@ -2703,7 +2801,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{8486C16C-C0E8-4BB1-8696-EA1C558F5C1B}"
+          SQLTask:Connection="{E3CA6F8F-F0C8-4BC7-A110-A10314C1E4C9}"
           SQLTask:BypassPrepare="False"
           SQLTask:SqlStatementSource="DELETE FROM ventas_hechos;&#xA;DELETE FROM dim_cargos;&#xA;DELETE FROM dim_categorias;&#xA;DELETE FROM dim_clientes;&#xA;DELETE FROM dim_comunas;&#xA;DELETE FROM dim_empleados;&#xA;DELETE FROM dim_productos;&#xA;DELETE FROM dim_sucursales;&#xA;DELETE FROM dim_tiempo;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
