@@ -12,7 +12,7 @@
   DTS:ObjectName="Package"
   DTS:PackageType="5"
   DTS:VersionBuild="46"
-  DTS:VersionGUID="{EBAA9AD1-83F9-4F9A-8616-A23197DF2CD1}">
+  DTS:VersionGUID="{17D2BF6D-771C-404E-9BD8-3713432CA2FD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
