@@ -7,12 +7,12 @@
   DTS:CreatorName="VIAPCE03LR0105\Duoc"
   DTS:DTSID="{C2E85ED2-8E45-4DEA-B7CA-61C4E0B4A107}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LastModifiedProductVersion="16.0.521.0"
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="71"
-  DTS:VersionGUID="{6F7D4DFD-00AC-4401-9A1B-C316E018C1F9}">
+  DTS:VersionBuild="80"
+  DTS:VersionGUID="{7F392462-C86F-47FB-B30A-E6F04F650B54}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1331,196 +1331,6 @@
           version="1">
           <components>
             <component
-              refId="Package\Carga_Dim_Empleados\Búsqueda"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
-              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
-              name="Búsqueda"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_empleados]</property>
-                <property
-                  dataType="System.String"
-                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_empleados]) [refTable]
-where [refTable].[nombre] = ? and [refTable].[empleado_id] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el tipo de caché de la tabla de búsqueda."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indica si se debe hacer referencia a metadatos en formato XML."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="empleado_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="nombre" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="appaterno" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="apmaterno" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="fecha_contrato" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sueldo_base" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cargo_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
-                  name="ParameterMap">#{Package\Carga_Dim_Empleados\Leer Empleados.Outputs[Salida de origen de OLE DB].Columns[nombre]};#{Package\Carga_Dim_Empleados\Leer Empleados.Outputs[Salida de origen de OLE DB].Columns[empleado_id]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Carga_Dim_Empleados\Búsqueda.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran_DW2]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran_DW2]"
-                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Carga_Dim_Empleados\Búsqueda.Inputs[Entrada de búsqueda]"
-                  name="Entrada de búsqueda">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Carga_Dim_Empleados\Búsqueda.Inputs[Entrada de búsqueda].Columns[nombre]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="nombre"
-                      lineageId="Package\Carga_Dim_Empleados\Leer Empleados.Outputs[Salida de origen de OLE DB].Columns[nombre]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
-                          name="JoinToReferenceColumn">nombre</property>
-                        <property
-                          dataType="System.Null"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Carga_Dim_Empleados\Búsqueda.Inputs[Entrada de búsqueda].Columns[empleado_id]"
-                      cachedDataType="i4"
-                      cachedName="empleado_id"
-                      lineageId="Package\Carga_Dim_Empleados\Leer Empleados.Outputs[Salida de origen de OLE DB].Columns[empleado_id]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
-                          name="JoinToReferenceColumn">empleado_id</property>
-                        <property
-                          dataType="System.Null"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Carga_Dim_Empleados\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]"
-                  errorOrTruncationOperation="Búsqueda"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Salida de entradas coincidentes de búsqueda"
-                  synchronousInputId="Package\Carga_Dim_Empleados\Búsqueda.Inputs[Entrada de búsqueda]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Carga_Dim_Empleados\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[empleado_id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Copiar columna"
-                      lineageId="Package\Carga_Dim_Empleados\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[empleado_id]"
-                      name="empleado_id"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn">empleado_id</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Carga_Dim_Empleados\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nombre]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copiar columna"
-                      length="255"
-                      lineageId="Package\Carga_Dim_Empleados\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[nombre]"
-                      name="nombre"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn">nombre</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Carga_Dim_Empleados\Búsqueda.Outputs[Salida de entradas no coincidentes de búsqueda]"
-                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
-                  exclusionGroup="1"
-                  name="Salida de entradas no coincidentes de búsqueda"
-                  synchronousInputId="Package\Carga_Dim_Empleados\Búsqueda.Inputs[Entrada de búsqueda]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Carga_Dim_Empleados\Búsqueda.Outputs[Salida de error de búsqueda]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de búsqueda"
-                  synchronousInputId="Package\Carga_Dim_Empleados\Búsqueda.Inputs[Entrada de búsqueda]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Carga_Dim_Empleados\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Carga_Dim_Empleados\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Carga_Dim_Empleados\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Carga_Dim_Empleados\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Carga_Dim_Empleados\Insertar Empleados"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
@@ -1570,7 +1380,7 @@ where [refTable].[nombre] = ? and [refTable].[empleado_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadOptions"></property>
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
@@ -1925,13 +1735,8 @@ where [refTable].[nombre] = ? and [refTable].[empleado_id] = ?</property>
           </components>
           <paths>
             <path
-              refId="Package\Carga_Dim_Empleados.Paths[Salida de entradas coincidentes de búsqueda]"
-              endId="Package\Carga_Dim_Empleados\Insertar Empleados.Inputs[Entrada de destino de OLE DB]"
-              name="Salida de entradas coincidentes de búsqueda"
-              startId="Package\Carga_Dim_Empleados\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]" />
-            <path
               refId="Package\Carga_Dim_Empleados.Paths[Salida de origen de OLE DB]"
-              endId="Package\Carga_Dim_Empleados\Búsqueda.Inputs[Entrada de búsqueda]"
+              endId="Package\Carga_Dim_Empleados\Insertar Empleados.Inputs[Entrada de destino de OLE DB]"
               name="Salida de origen de OLE DB"
               startId="Package\Carga_Dim_Empleados\Leer Empleados.Outputs[Salida de origen de OLE DB]" />
           </paths>
@@ -1952,179 +1757,6 @@ where [refTable].[nombre] = ? and [refTable].[empleado_id] = ?</property>
         <pipeline
           version="1">
           <components>
-            <component
-              refId="Package\Carga_Dim_Productos\Búsqueda"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
-              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
-              name="Búsqueda"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_categorias]</property>
-                <property
-                  dataType="System.String"
-                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_categorias]) [refTable]
-where [refTable].[categoria_id] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el tipo de caché de la tabla de búsqueda."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indica si se debe hacer referencia a metadatos en formato XML."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="categoria_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="categoria" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
-                  name="ParameterMap">#{Package\Carga_Dim_Productos\Leer Productos.Outputs[Salida de origen de OLE DB].Columns[categoria_id]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Carga_Dim_Productos\Búsqueda.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran_DW2]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran_DW2]"
-                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Carga_Dim_Productos\Búsqueda.Inputs[Entrada de búsqueda]"
-                  name="Entrada de búsqueda">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Carga_Dim_Productos\Búsqueda.Inputs[Entrada de búsqueda].Columns[categoria_id]"
-                      cachedDataType="i4"
-                      cachedName="categoria_id"
-                      lineageId="Package\Carga_Dim_Productos\Leer Productos.Outputs[Salida de origen de OLE DB].Columns[categoria_id]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
-                          name="JoinToReferenceColumn">categoria_id</property>
-                        <property
-                          dataType="System.Null"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Carga_Dim_Productos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]"
-                  errorOrTruncationOperation="Búsqueda"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Salida de entradas coincidentes de búsqueda"
-                  synchronousInputId="Package\Carga_Dim_Productos\Búsqueda.Inputs[Entrada de búsqueda]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Carga_Dim_Productos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[categoria_id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Copiar columna"
-                      lineageId="Package\Carga_Dim_Productos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[categoria_id]"
-                      name="categoria_id"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn">categoria_id</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Carga_Dim_Productos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[categoria]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Copiar columna"
-                      length="255"
-                      lineageId="Package\Carga_Dim_Productos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[categoria]"
-                      name="categoria"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn">categoria</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Carga_Dim_Productos\Búsqueda.Outputs[Salida de entradas no coincidentes de búsqueda]"
-                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
-                  exclusionGroup="1"
-                  name="Salida de entradas no coincidentes de búsqueda"
-                  synchronousInputId="Package\Carga_Dim_Productos\Búsqueda.Inputs[Entrada de búsqueda]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Carga_Dim_Productos\Búsqueda.Outputs[Salida de error de búsqueda]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de búsqueda"
-                  synchronousInputId="Package\Carga_Dim_Productos\Búsqueda.Inputs[Entrada de búsqueda]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Carga_Dim_Productos\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Carga_Dim_Productos\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Carga_Dim_Productos\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Carga_Dim_Productos\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\Carga_Dim_Productos\Insertar Productos"
               componentClassID="Microsoft.OLEDBDestination"
@@ -2175,7 +1807,7 @@ where [refTable].[categoria_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadOptions"></property>
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
@@ -2469,13 +2101,8 @@ where [refTable].[categoria_id] = ?</property>
           </components>
           <paths>
             <path
-              refId="Package\Carga_Dim_Productos.Paths[Salida de entradas coincidentes de búsqueda]"
-              endId="Package\Carga_Dim_Productos\Insertar Productos.Inputs[Entrada de destino de OLE DB]"
-              name="Salida de entradas coincidentes de búsqueda"
-              startId="Package\Carga_Dim_Productos\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]" />
-            <path
               refId="Package\Carga_Dim_Productos.Paths[Salida de origen de OLE DB]"
-              endId="Package\Carga_Dim_Productos\Búsqueda.Inputs[Entrada de búsqueda]"
+              endId="Package\Carga_Dim_Productos\Insertar Productos.Inputs[Entrada de destino de OLE DB]"
               name="Salida de origen de OLE DB"
               startId="Package\Carga_Dim_Productos\Leer Productos.Outputs[Salida de origen de OLE DB]" />
           </paths>
@@ -2496,164 +2123,6 @@ where [refTable].[categoria_id] = ?</property>
         <pipeline
           version="1">
           <components>
-            <component
-              refId="Package\Carga_Dim_Sucursales\Búsqueda"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
-              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
-              name="Búsqueda"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dim_comunas]</property>
-                <property
-                  dataType="System.String"
-                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dim_comunas]) [refTable]
-where [refTable].[comuna_id] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el tipo de caché de la tabla de búsqueda."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indica si se debe hacer referencia a metadatos en formato XML."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="comuna_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="comuna" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
-                  name="ParameterMap">#{Package\Carga_Dim_Sucursales\Leer Sucursales.Outputs[Salida de origen de OLE DB].Columns[comuna_id]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Carga_Dim_Sucursales\Búsqueda.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran_DW2]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran_DW2]"
-                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Carga_Dim_Sucursales\Búsqueda.Inputs[Entrada de búsqueda]"
-                  name="Entrada de búsqueda">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Carga_Dim_Sucursales\Búsqueda.Inputs[Entrada de búsqueda].Columns[comuna_id]"
-                      cachedDataType="i4"
-                      cachedName="comuna_id"
-                      lineageId="Package\Carga_Dim_Sucursales\Leer Sucursales.Outputs[Salida de origen de OLE DB].Columns[comuna_id]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
-                          name="JoinToReferenceColumn">comuna_id</property>
-                        <property
-                          dataType="System.Null"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Carga_Dim_Sucursales\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]"
-                  errorOrTruncationOperation="Búsqueda"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Salida de entradas coincidentes de búsqueda"
-                  synchronousInputId="Package\Carga_Dim_Sucursales\Búsqueda.Inputs[Entrada de búsqueda]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Carga_Dim_Sucursales\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[comuna_id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Copiar columna"
-                      lineageId="Package\Carga_Dim_Sucursales\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[comuna_id]"
-                      name="comuna_id"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn">comuna_id</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Carga_Dim_Sucursales\Búsqueda.Outputs[Salida de entradas no coincidentes de búsqueda]"
-                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
-                  exclusionGroup="1"
-                  name="Salida de entradas no coincidentes de búsqueda"
-                  synchronousInputId="Package\Carga_Dim_Sucursales\Búsqueda.Inputs[Entrada de búsqueda]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Carga_Dim_Sucursales\Búsqueda.Outputs[Salida de error de búsqueda]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de búsqueda"
-                  synchronousInputId="Package\Carga_Dim_Sucursales\Búsqueda.Inputs[Entrada de búsqueda]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Carga_Dim_Sucursales\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Carga_Dim_Sucursales\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Carga_Dim_Sucursales\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Carga_Dim_Sucursales\Búsqueda.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\Carga_Dim_Sucursales\Insertar Sucursales"
               componentClassID="Microsoft.OLEDBDestination"
@@ -2704,7 +2173,7 @@ where [refTable].[comuna_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadOptions"></property>
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
@@ -2814,7 +2283,9 @@ where [refTable].[comuna_id] = ?</property>
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        dbo.sucursales.sucursal_id, dbo.sucursales.sucursal, dbo.sucursales.comuna_id, dbo.comunas.comuna
+FROM            dbo.comunas, dbo.sucursales
+WHERE        dbo.comunas.comuna_id = dbo.sucursales.comuna_id</property>
                 <property
                   dataType="System.String"
                   description="Variable que contiene el comando SQL para ejecutar."
@@ -2937,13 +2408,8 @@ where [refTable].[comuna_id] = ?</property>
           </components>
           <paths>
             <path
-              refId="Package\Carga_Dim_Sucursales.Paths[Salida de entradas coincidentes de búsqueda]"
-              endId="Package\Carga_Dim_Sucursales\Insertar Sucursales.Inputs[Entrada de destino de OLE DB]"
-              name="Salida de entradas coincidentes de búsqueda"
-              startId="Package\Carga_Dim_Sucursales\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda]" />
-            <path
               refId="Package\Carga_Dim_Sucursales.Paths[Salida de origen de OLE DB]"
-              endId="Package\Carga_Dim_Sucursales\Búsqueda.Inputs[Entrada de búsqueda]"
+              endId="Package\Carga_Dim_Sucursales\Insertar Sucursales.Inputs[Entrada de destino de OLE DB]"
               name="Salida de origen de OLE DB"
               startId="Package\Carga_Dim_Sucursales\Leer Sucursales.Outputs[Salida de origen de OLE DB]" />
           </paths>
@@ -2951,13 +2417,13 @@ where [refTable].[comuna_id] = ?</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Carga_Dim_Tiempo"
+      DTS:refId="Package\Carga_Hechos_Ventas"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Tarea Flujo de datos"
-      DTS:DTSID="{08b6b2d2-b5f1-46f7-a49e-9aeab3213b2b}"
+      DTS:DTSID="{72f11641-7b50-4034-99ec-70cbbeed057e}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Carga_Dim_Tiempo"
+      DTS:ObjectName="Carga_Hechos_Ventas"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -2965,11 +2431,11 @@ where [refTable].[comuna_id] = ?</property>
           version="1">
           <components>
             <component
-              refId="Package\Carga_Dim_Tiempo\Insertar Tiempo"
+              refId="Package\Carga_Hechos_Ventas\Insertar Hechos"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
               description="Destino de OLE DB"
-              name="Insertar Tiempo"
+              name="Insertar Hechos"
               usesDispositions="true"
               version="4">
               <properties>
@@ -2980,7 +2446,7 @@ where [refTable].[comuna_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">[dbo].[dim_tiempo]</property>
+                  name="OpenRowset">[dbo].[ventas_hechos]</property>
                 <property
                   dataType="System.String"
                   description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -2989,7 +2455,8 @@ where [refTable].[comuna_id] = ?</property>
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        venta_id, cliente_id, producto_id, vendedor_id, sucursal_id, fecha, numero_documento, cantidad, tipo_documento, precio_unitario, descuento
+FROM            dbo.ventas_hechos</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -3002,7 +2469,7 @@ where [refTable].[comuna_id] = ?</property>
                   dataType="System.Int32"
                   description="Especifica el modo utilizado para obtener acceso a la base de datos."
                   name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.Boolean"
                   description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
@@ -3014,7 +2481,7 @@ where [refTable].[comuna_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadOptions"></property>
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
@@ -3022,7 +2489,7 @@ where [refTable].[comuna_id] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Carga_Dim_Tiempo\Insertar Tiempo.Connections[OleDbConnection]"
+                  refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[localhost.Albarran_DW2]"
                   connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran_DW2]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
@@ -3030,60 +2497,154 @@ where [refTable].[comuna_id] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Carga_Dim_Tiempo\Insertar Tiempo.Inputs[Entrada de destino de OLE DB]"
+                  refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB]"
                   errorOrTruncationOperation="Insertar"
-                  errorRowDisposition="FailComponent"
+                  errorRowDisposition="IgnoreFailure"
                   hasSideEffects="true"
                   name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].Columns[vendedor_id]"
+                      cachedDataType="i4"
+                      cachedName="vendedor_id"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[vendedor_id]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[vendedor_id]" />
+                    <inputColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].Columns[cliente_id]"
+                      cachedDataType="i4"
+                      cachedName="cliente_id"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_id]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[cliente_id]" />
+                    <inputColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].Columns[sucursal_id]"
+                      cachedDataType="i4"
+                      cachedName="sucursal_id"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[sucursal_id]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[sucursal_id]" />
+                    <inputColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].Columns[fecha]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="fecha"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[fecha]" />
+                    <inputColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].Columns[tipo_documento]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="tipo_documento"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_documento]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[tipo_documento]" />
+                    <inputColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].Columns[numero_documento]"
+                      cachedDataType="i4"
+                      cachedName="numero_documento"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[numero_documento]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[numero_documento]" />
+                    <inputColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].Columns[venta_id]"
+                      cachedDataType="i4"
+                      cachedName="venta_id"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[venta_id]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[venta_id]" />
+                    <inputColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].Columns[producto_id]"
+                      cachedDataType="i4"
+                      cachedName="producto_id"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[producto_id]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[producto_id]" />
+                    <inputColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].Columns[cantidad]"
+                      cachedDataType="i4"
+                      cachedName="cantidad"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[cantidad]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[cantidad]" />
+                    <inputColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].Columns[precio_unitario]"
+                      cachedDataType="i4"
+                      cachedName="precio_unitario"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[precio_unitario]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[precio_unitario]" />
+                    <inputColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].Columns[descuento]"
+                      cachedDataType="numeric"
+                      cachedName="descuento"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[descuento]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[descuento]" />
+                  </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Carga_Dim_Tiempo\Insertar Tiempo.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha]"
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[venta_id]"
+                      dataType="i4"
+                      name="venta_id" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[producto_id]"
+                      dataType="i4"
+                      name="producto_id" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_id]"
+                      dataType="i4"
+                      name="cliente_id" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[vendedor_id]"
+                      dataType="i4"
+                      name="vendedor_id" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[sucursal_id]"
+                      dataType="i4"
+                      name="sucursal_id" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha]"
                       dataType="dbDate"
                       name="fecha" />
                     <externalMetadataColumn
-                      refId="Package\Carga_Dim_Tiempo\Insertar Tiempo.Inputs[Entrada de destino de OLE DB].ExternalColumns[año]"
-                      dataType="i4"
-                      name="año" />
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_documento]"
+                      dataType="wstr"
+                      length="255"
+                      name="tipo_documento" />
                     <externalMetadataColumn
-                      refId="Package\Carga_Dim_Tiempo\Insertar Tiempo.Inputs[Entrada de destino de OLE DB].ExternalColumns[mes]"
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[numero_documento]"
                       dataType="i4"
-                      name="mes" />
+                      name="numero_documento" />
                     <externalMetadataColumn
-                      refId="Package\Carga_Dim_Tiempo\Insertar Tiempo.Inputs[Entrada de destino de OLE DB].ExternalColumns[dia]"
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[cantidad]"
                       dataType="i4"
-                      name="dia" />
+                      name="cantidad" />
                     <externalMetadataColumn
-                      refId="Package\Carga_Dim_Tiempo\Insertar Tiempo.Inputs[Entrada de destino de OLE DB].ExternalColumns[dia_semana]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      name="dia_semana" />
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[precio_unitario]"
+                      dataType="numeric"
+                      name="precio_unitario"
+                      precision="10"
+                      scale="2" />
                     <externalMetadataColumn
-                      refId="Package\Carga_Dim_Tiempo\Insertar Tiempo.Inputs[Entrada de destino de OLE DB].ExternalColumns[trimestre]"
-                      dataType="i4"
-                      name="trimestre" />
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[descuento]"
+                      dataType="numeric"
+                      name="descuento"
+                      precision="5"
+                      scale="2" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Carga_Dim_Tiempo\Insertar Tiempo.Outputs[Salida de error de destino de OLE DB]"
+                  refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Outputs[Salida de error de destino de OLE DB]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Salida de error de destino de OLE DB"
-                  synchronousInputId="Package\Carga_Dim_Tiempo\Insertar Tiempo.Inputs[Entrada de destino de OLE DB]">
+                  synchronousInputId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Carga_Dim_Tiempo\Insertar Tiempo.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Carga_Dim_Tiempo\Insertar Tiempo.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\Carga_Hechos_Ventas\Insertar Hechos.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Carga_Dim_Tiempo\Insertar Tiempo.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Carga_Dim_Tiempo\Insertar Tiempo.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\Carga_Hechos_Ventas\Insertar Hechos.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -3092,11 +2653,11 @@ where [refTable].[comuna_id] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Carga_Dim_Tiempo\Leer Tiempo"
+              refId="Package\Carga_Hechos_Ventas\Leer Hechos"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
               description="Origen de OLE DB"
-              name="Leer Tiempo"
+              name="Leer Hechos"
               usesDispositions="true"
               version="7">
               <properties>
@@ -3107,7 +2668,7 @@ where [refTable].[comuna_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">[dbo].[categorias]</property>
+                  name="OpenRowset">[dbo].[ventas]</property>
                 <property
                   dataType="System.String"
                   description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -3116,7 +2677,11 @@ where [refTable].[comuna_id] = ?</property>
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC GenerateTimeData @StartDate = '2020-01-01', @EndDate = '2030-12-31'</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        dbo.ventas.venta_id, dbo.detalle_ventas.producto_id, dbo.ventas.vendedor_id, dbo.detalle_ventas.cantidad, dbo.ventas.cliente_id, dbo.detalle_ventas.precio_unitario, dbo.ventas.sucursal_id, dbo.detalle_ventas.descuento, 
+                         dbo.ventas.fecha, dbo.ventas.tipo_documento, dbo.ventas.numero_documento,
+(cantidad * precio_unitario) * (1 - (descuento / 100.0)) AS monto_total
+FROM            dbo.detalle_ventas, dbo.ventas
+WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
                 <property
                   dataType="System.String"
                   description="Variable que contiene el comando SQL para ejecutar."
@@ -3141,7 +2706,7 @@ where [refTable].[comuna_id] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Carga_Dim_Tiempo\Leer Tiempo.Connections[OleDbConnection]"
+                  refId="Package\Carga_Hechos_Ventas\Leer Hechos.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[localhost.Albarran]"
                   connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
@@ -3149,26 +2714,260 @@ where [refTable].[comuna_id] = ?</property>
               </connections>
               <outputs>
                 <output
-                  refId="Package\Carga_Dim_Tiempo\Leer Tiempo.Outputs[Salida de origen de OLE DB]"
+                  refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB]"
                   name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[venta_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[venta_id]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[venta_id]"
+                      name="venta_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[vendedor_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[vendedor_id]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[vendedor_id]"
+                      name="vendedor_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[cliente_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_id]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[cliente_id]"
+                      name="cliente_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[sucursal_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[sucursal_id]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[sucursal_id]"
+                      name="sucursal_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[fecha]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[fecha]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[fecha]"
+                      name="fecha"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[tipo_documento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[tipo_documento]"
+                      length="255"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[tipo_documento]"
+                      name="tipo_documento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[numero_documento]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[numero_documento]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[numero_documento]"
+                      name="numero_documento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[producto_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[producto_id]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[producto_id]"
+                      name="producto_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[cantidad]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[cantidad]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[cantidad]"
+                      name="cantidad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[precio_unitario]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[precio_unitario]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[precio_unitario]"
+                      name="precio_unitario"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[descuento]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[descuento]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[descuento]"
+                      name="descuento"
+                      precision="5"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[monto_total]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[monto_total]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[monto_total]"
+                      name="monto_total"
+                      precision="23"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
                   <externalMetadataColumns
-                    isUsed="True" />
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[venta_id]"
+                      dataType="i4"
+                      name="venta_id" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[vendedor_id]"
+                      dataType="i4"
+                      name="vendedor_id" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_id]"
+                      dataType="i4"
+                      name="cliente_id" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[sucursal_id]"
+                      dataType="i4"
+                      name="sucursal_id" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[fecha]"
+                      dataType="dbTimeStamp"
+                      name="fecha" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[tipo_documento]"
+                      dataType="wstr"
+                      length="255"
+                      name="tipo_documento" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[numero_documento]"
+                      dataType="i4"
+                      name="numero_documento" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[producto_id]"
+                      dataType="i4"
+                      name="producto_id" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[cantidad]"
+                      dataType="i4"
+                      name="cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[precio_unitario]"
+                      dataType="i4"
+                      name="precio_unitario" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[descuento]"
+                      dataType="numeric"
+                      name="descuento"
+                      precision="5"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[monto_total]"
+                      dataType="numeric"
+                      name="monto_total"
+                      precision="23"
+                      scale="7" />
+                  </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Carga_Dim_Tiempo\Leer Tiempo.Outputs[Salida de error de origen de OLE DB]"
+                  refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB]"
                   isErrorOut="true"
                   name="Salida de error de origen de OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Carga_Dim_Tiempo\Leer Tiempo.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[venta_id]"
                       dataType="i4"
-                      lineageId="Package\Carga_Dim_Tiempo\Leer Tiempo.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[venta_id]"
+                      name="venta_id" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[producto_id]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[producto_id]"
+                      name="producto_id" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[vendedor_id]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[vendedor_id]"
+                      name="vendedor_id" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[cantidad]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[cantidad]"
+                      name="cantidad" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[cliente_id]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[cliente_id]"
+                      name="cliente_id" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[precio_unitario]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[precio_unitario]"
+                      name="precio_unitario" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[sucursal_id]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[sucursal_id]"
+                      name="sucursal_id" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[descuento]"
+                      dataType="numeric"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[descuento]"
+                      name="descuento"
+                      precision="5"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[fecha]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[fecha]"
+                      name="fecha" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[tipo_documento]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[tipo_documento]"
+                      name="tipo_documento" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[numero_documento]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[numero_documento]"
+                      name="numero_documento" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[monto_total]"
+                      dataType="numeric"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[monto_total]"
+                      name="monto_total"
+                      precision="23"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Carga_Dim_Tiempo\Leer Tiempo.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Carga_Dim_Tiempo\Leer Tiempo.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -3179,10 +2978,10 @@ where [refTable].[comuna_id] = ?</property>
           </components>
           <paths>
             <path
-              refId="Package\Carga_Dim_Tiempo.Paths[Salida de origen de OLE DB]"
-              endId="Package\Carga_Dim_Tiempo\Insertar Tiempo.Inputs[Entrada de destino de OLE DB]"
+              refId="Package\Carga_Hechos_Ventas.Paths[Salida de origen de OLE DB]"
+              endId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB]"
               name="Salida de origen de OLE DB"
-              startId="Package\Carga_Dim_Tiempo\Leer Tiempo.Outputs[Salida de origen de OLE DB]" />
+              startId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -3196,17 +2995,40 @@ where [refTable].[comuna_id] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="LIMPIAR DW2"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022 CTP2.0; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{A994B303-7A4B-44F8-AEE2-CA3F72EB82AD}"
           SQLTask:BypassPrepare="False"
-          SQLTask:SqlStatementSource="DELETE FROM ventas_hechos;&#xA;DELETE FROM dim_cargos;&#xA;DELETE FROM dim_categorias;&#xA;DELETE FROM dim_clientes;&#xA;DELETE FROM dim_comunas;&#xA;DELETE FROM dim_empleados;&#xA;DELETE FROM dim_productos;&#xA;DELETE FROM dim_sucursales;&#xA;DELETE FROM dim_tiempo;&#xA;EXEC GenerateTimeData @StartDate = '2020-01-01', @EndDate = '2030-12-31';&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DELETE FROM ventas_hechos;&#xA;DELETE FROM dim_cargos;&#xA;DELETE FROM dim_categorias;&#xA;DELETE FROM dim_clientes;&#xA;DELETE FROM dim_comunas;&#xA;DELETE FROM dim_empleados;&#xA;DELETE FROM dim_productos;&#xA;DELETE FROM dim_sucursales;&#xA;DELETE FROM dim_tiempo;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tarea Ejecutar SQL"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{DEB29671-9FB9-4A1D-9216-AC5EB634EA6B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tarea Ejecutar SQL"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022 CTP2.0; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{4D4462ED-C59F-4B33-9B63-A2CF532B1871}"
+      DTS:From="Package\Carga_Dim_Empleados"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Carga_Hechos_Ventas" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción]"
       DTS:CreationName=""
@@ -3263,22 +3085,14 @@ where [refTable].[comuna_id] = ?</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 6"
       DTS:To="Package\Carga_Dim_Empleados" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Restricción 7]"
-      DTS:CreationName=""
-      DTS:DTSID="{8605C91E-CF4D-4AB0-AC6F-A06B033DD28C}"
-      DTS:From="Package\Carga_Dim_Empleados"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Restricción 7"
-      DTS:To="Package\Carga_Dim_Tiempo" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
-<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
-<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
   Version="8">
-  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
@@ -3312,10 +3126,6 @@ where [refTable].[comuna_id] = ?</property>
           Size="186,42"
           Id="Package\Carga_Dim_Sucursales"
           TopLeft="708.5,74.7692307692308" />
-        <NodeLayout
-          Size="172,42"
-          Id="Package\Carga_Dim_Tiempo"
-          TopLeft="336.153846153846,294.615384615385" />
         <NodeLayout
           Size="145,42"
           Id="Package\LIMPIAR DW2"
@@ -3498,20 +3308,36 @@ where [refTable].[comuna_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Carga_Hechos_Ventas"
+          TopLeft="515,315" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 7]"
-          TopLeft="266.461538461538,315.538461538462">
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="266.461538461538,315.461538461539">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="69.6923076923077,0"
+              EndConnector="248.538461538462,20.538461538461"
               Start="0,0"
-              End="62.1923076923077,0">
+              End="241.038461538462,20.538461538461">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="62.1923076923077,0" />
+                    End="120.269230769231,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="120.269230769231,0"
+                    Point2="124.269230769231,0"
+                    Point3="124.269230769231,4" />
+                  <mssgle:LineSegment
+                    End="124.269230769231,16.538461538461" />
+                  <mssgle:CubicBezierSegment
+                    Point1="124.269230769231,16.538461538461"
+                    Point2="124.269230769231,20.538461538461"
+                    Point3="128.269230769231,20.538461538461" />
+                  <mssgle:LineSegment
+                    End="241.038461538462,20.538461538461" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3520,6 +3346,10 @@ where [refTable].[comuna_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Tarea Ejecutar SQL"
+          TopLeft="292,394" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -3529,13 +3359,13 @@ where [refTable].[comuna_id] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="152,42"
-          Id="Package\Carga_Dim_Cargos\Insertar Cargos"
-          TopLeft="287,244" />
-        <NodeLayout
           Size="135,42"
           Id="Package\Carga_Dim_Cargos\Leer Cargos"
           TopLeft="52,41" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Carga_Dim_Cargos\Insertar Cargos"
+          TopLeft="287,244" />
         <EdgeLayout
           Id="Package\Carga_Dim_Cargos.Paths[Salida de origen de OLE DB]"
           TopLeft="119.5,83">
@@ -3605,13 +3435,13 @@ where [refTable].[comuna_id] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="169,42"
-          Id="Package\Carga_Dim_Categorias\Insertar Categorias"
-          TopLeft="287,244" />
-        <NodeLayout
           Size="152,42"
           Id="Package\Carga_Dim_Categorias\Leer Categorias"
           TopLeft="52,41" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Carga_Dim_Categorias\Insertar Categorias"
+          TopLeft="287,244" />
         <EdgeLayout
           Id="Package\Carga_Dim_Categorias.Paths[Salida de origen de OLE DB]"
           TopLeft="128,83">
@@ -3681,13 +3511,13 @@ where [refTable].[comuna_id] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="156,42"
-          Id="Package\Carga_Dim_Clientes\Insertar Clientes"
-          TopLeft="287,244" />
-        <NodeLayout
           Size="139,42"
           Id="Package\Carga_Dim_Clientes\Leer Clientes"
           TopLeft="52,41" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Carga_Dim_Clientes\Insertar Clientes"
+          TopLeft="287,244" />
         <EdgeLayout
           Id="Package\Carga_Dim_Clientes.Paths[Salida de origen de OLE DB]"
           TopLeft="121.5,83">
@@ -3757,13 +3587,13 @@ where [refTable].[comuna_id] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="163,42"
-          Id="Package\Carga_Dim_Comunas\Insertar Comunas"
-          TopLeft="287,244" />
-        <NodeLayout
           Size="146,42"
           Id="Package\Carga_Dim_Comunas\Leer Comunas"
           TopLeft="52,41" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Carga_Dim_Comunas\Insertar Comunas"
+          TopLeft="287,244" />
         <EdgeLayout
           Id="Package\Carga_Dim_Comunas.Paths[Salida de origen de OLE DB]"
           TopLeft="125,83">
@@ -3831,11 +3661,7 @@ where [refTable].[comuna_id] = ?</property>
     design-time-name="Package\Carga_Dim_Empleados">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="125,42"
-          Id="Package\Carga_Dim_Empleados\Búsqueda"
-          TopLeft="300,163" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="170,42"
           Id="Package\Carga_Dim_Empleados\Insertar Empleados"
@@ -3845,67 +3671,31 @@ where [refTable].[comuna_id] = ?</property>
           Id="Package\Carga_Dim_Empleados\Leer Empleados"
           TopLeft="52,41" />
         <EdgeLayout
-          Id="Package\Carga_Dim_Empleados.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="362.5,205">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="82.5,125"
-              Start="0,0"
-              End="82.5,117.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,58.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,58.5"
-                    Point2="0,62.5"
-                    Point3="4,62.5" />
-                  <mssgle:LineSegment
-                    End="78.5,62.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="78.5,62.5"
-                    Point2="82.5,62.5"
-                    Point3="82.5,66.5" />
-                  <mssgle:LineSegment
-                    End="82.5,117.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-58.5690234375,67.5,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Carga_Dim_Empleados.Paths[Salida de origen de OLE DB]"
           TopLeft="129,83">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="233.5,80"
+              EndConnector="316,247"
               Start="0,0"
-              End="233.5,72.5">
+              End="316,239.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36" />
+                    End="0,119.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,36"
-                    Point2="0,40"
-                    Point3="4,40" />
+                    Point1="0,119.5"
+                    Point2="0,123.5"
+                    Point3="4,123.5" />
                   <mssgle:LineSegment
-                    End="229.5,40" />
+                    End="312,123.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="229.5,40"
-                    Point2="233.5,40"
-                    Point3="233.5,44" />
+                    Point1="312,123.5"
+                    Point2="316,123.5"
+                    Point3="316,127.5" />
                   <mssgle:LineSegment
-                    End="233.5,72.5" />
+                    End="316,239.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3931,29 +3721,6 @@ where [refTable].[comuna_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Carga_Dim_Empleados\Búsqueda">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[dim_empleados]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Carga_Dim_Empleados\Leer Empleados">
     <Properties>
       <Property>
@@ -3970,7 +3737,7 @@ where [refTable].[comuna_id] = ?</property>
     design-time-name="Package\Carga_Dim_Productos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="166,42"
           Id="Package\Carga_Dim_Productos\Insertar Productos"
@@ -3979,36 +3746,32 @@ where [refTable].[comuna_id] = ?</property>
           Size="149,42"
           Id="Package\Carga_Dim_Productos\Leer Productos"
           TopLeft="52,41" />
-        <NodeLayout
-          Size="125,42"
-          Id="Package\Carga_Dim_Productos\Búsqueda"
-          TopLeft="300,163" />
         <EdgeLayout
           Id="Package\Carga_Dim_Productos.Paths[Salida de origen de OLE DB]"
           TopLeft="126.5,83">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="236,80"
+              EndConnector="316.5,247"
               Start="0,0"
-              End="236,72.5">
+              End="316.5,239.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36" />
+                    End="0,119.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,36"
-                    Point2="0,40"
-                    Point3="4,40" />
+                    Point1="0,119.5"
+                    Point2="0,123.5"
+                    Point3="4,123.5" />
                   <mssgle:LineSegment
-                    End="232,40" />
+                    End="312.5,123.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="232,40"
-                    Point2="236,40"
-                    Point3="236,44" />
+                    Point1="312.5,123.5"
+                    Point2="316.5,123.5"
+                    Point3="316.5,127.5" />
                   <mssgle:LineSegment
-                    End="236,72.5" />
+                    End="316.5,239.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4017,68 +3780,9 @@ where [refTable].[comuna_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga_Dim_Productos.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="362.5,205">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="80.5,125"
-              Start="0,0"
-              End="80.5,117.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,58.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,58.5"
-                    Point2="0,62.5"
-                    Point3="4,62.5" />
-                  <mssgle:LineSegment
-                    End="76.5,62.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="76.5,62.5"
-                    Point2="80.5,62.5"
-                    Point3="80.5,66.5" />
-                  <mssgle:LineSegment
-                    End="80.5,117.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-59.5690234375,67.5,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Carga_Dim_Productos\Búsqueda">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[dim_categorias]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Carga_Dim_Productos\Insertar Productos">
     <Properties>
@@ -4109,87 +3813,47 @@ where [refTable].[comuna_id] = ?</property>
     design-time-name="Package\Carga_Dim_Sucursales">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="169,42"
           Id="Package\Carga_Dim_Sucursales\Insertar Sucursales"
-          TopLeft="315,368" />
+          TopLeft="353,201" />
         <NodeLayout
           Size="152,42"
           Id="Package\Carga_Dim_Sucursales\Leer Sucursales"
           TopLeft="52,41" />
-        <NodeLayout
-          Size="125,42"
-          Id="Package\Carga_Dim_Sucursales\Búsqueda"
-          TopLeft="303,162" />
         <EdgeLayout
           Id="Package\Carga_Dim_Sucursales.Paths[Salida de origen de OLE DB]"
           TopLeft="128,83">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="237.5,79"
+              EndConnector="309.5,118"
               Start="0,0"
-              End="237.5,71.5">
+              End="309.5,110.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.5" />
+                    End="0,55" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,35.5"
-                    Point2="0,39.5"
-                    Point3="4,39.5" />
+                    Point1="0,55"
+                    Point2="0,59"
+                    Point3="4,59" />
                   <mssgle:LineSegment
-                    End="233.5,39.5" />
+                    End="305.5,59" />
                   <mssgle:CubicBezierSegment
-                    Point1="233.5,39.5"
-                    Point2="237.5,39.5"
-                    Point3="237.5,43.5" />
+                    Point1="305.5,59"
+                    Point2="309.5,59"
+                    Point3="309.5,63" />
                   <mssgle:LineSegment
-                    End="237.5,71.5" />
+                    End="309.5,110.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga_Dim_Sucursales.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="365.5,204">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="34,164"
-              Start="0,0"
-              End="34,156.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,78" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,78"
-                    Point2="0,82"
-                    Point3="4,82" />
-                  <mssgle:LineSegment
-                    End="30,82" />
-                  <mssgle:CubicBezierSegment
-                    Point1="30,82"
-                    Point2="34,82"
-                    Point3="34,86" />
-                  <mssgle:LineSegment
-                    End="34,156.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-82.8190234375,87,199.638046875,12.1953125"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4209,29 +3873,6 @@ where [refTable].[comuna_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Carga_Dim_Sucursales\Búsqueda">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[dim_comunas]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Carga_Dim_Sucursales\Leer Sucursales">
     <Properties>
       <Property>
@@ -4245,44 +3886,44 @@ where [refTable].[comuna_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Carga_Dim_Tiempo">
+    design-time-name="Package\Carga_Hechos_Ventas">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="154,42"
-          Id="Package\Carga_Dim_Tiempo\Insertar Tiempo"
-          TopLeft="287,244" />
+          Id="Package\Carga_Hechos_Ventas\Insertar Hechos"
+          TopLeft="360,330" />
         <NodeLayout
-          Size="138,42"
-          Id="Package\Carga_Dim_Tiempo\Leer Tiempo"
+          Size="137,42"
+          Id="Package\Carga_Hechos_Ventas\Leer Hechos"
           TopLeft="52,41" />
         <EdgeLayout
-          Id="Package\Carga_Dim_Tiempo.Paths[Salida de origen de OLE DB]"
-          TopLeft="121,83">
+          Id="Package\Carga_Hechos_Ventas.Paths[Salida de origen de OLE DB]"
+          TopLeft="120.5,83">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="243,161"
+              EndConnector="316.5,247"
               Start="0,0"
-              End="243,153.5">
+              End="316.5,239.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,76.5" />
+                    End="0,119.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,76.5"
-                    Point2="0,80.5"
-                    Point3="4,80.5" />
+                    Point1="0,119.5"
+                    Point2="0,123.5"
+                    Point3="4,123.5" />
                   <mssgle:LineSegment
-                    End="239,80.5" />
+                    End="312.5,123.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="239,80.5"
-                    Point2="243,80.5"
-                    Point3="243,84.5" />
+                    Point1="312.5,123.5"
+                    Point2="316.5,123.5"
+                    Point3="316.5,127.5" />
                   <mssgle:LineSegment
-                    End="243,153.5" />
+                    End="316.5,239.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4295,7 +3936,7 @@ where [refTable].[comuna_id] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Carga_Dim_Tiempo\Insertar Tiempo">
+    design-time-name="Package\Carga_Hechos_Ventas\Insertar Hechos">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4308,10 +3949,15 @@ where [refTable].[comuna_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Carga_Dim_Tiempo\Leer Tiempo">
+    design-time-name="Package\Carga_Hechos_Ventas\Leer Hechos">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
