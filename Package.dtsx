@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="91"
-  DTS:VersionGUID="{3BA9ED50-C5A2-4E2B-A005-5D34D6C255C0}">
+  DTS:VersionBuild="103"
+  DTS:VersionGUID="{829CA5CB-AF0A-4A0E-9161-F08231AECEC1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1093,7 +1093,7 @@
                 <property
                   dataType="System.String"
                   description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset"></property>
+                  name="OpenRowset">[dbo].[dim_comunas]</property>
                 <property
                   dataType="System.String"
                   description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -2163,7 +2163,7 @@
                 <property
                   dataType="System.String"
                   description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset"></property>
+                  name="OpenRowset">[dbo].[dim_sucursales]</property>
                 <property
                   dataType="System.String"
                   description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -2701,11 +2701,24 @@ FROM            dbo.ventas_hechos</property>
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        dbo.ventas.venta_id, dbo.detalle_ventas.producto_id, dbo.ventas.vendedor_id, dbo.detalle_ventas.cantidad, dbo.ventas.cliente_id, dbo.detalle_ventas.precio_unitario, dbo.ventas.sucursal_id, dbo.detalle_ventas.descuento, 
-                         dbo.ventas.fecha, dbo.ventas.tipo_documento, dbo.ventas.numero_documento,
-CAST((cantidad * precio_unitario) * (1 - (descuento / 100.0)) AS int) AS monto_total
-FROM            dbo.detalle_ventas, dbo.ventas
-WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    dbo.ventas.venta_id, 
+    dbo.detalle_ventas.producto_id, 
+    dbo.ventas.vendedor_id, 
+    dbo.detalle_ventas.cantidad, 
+    dbo.ventas.cliente_id, 
+    dbo.detalle_ventas.precio_unitario, 
+    dbo.ventas.sucursal_id, 
+    dbo.detalle_ventas.descuento, 
+    dbo.ventas.fecha, 
+    dbo.ventas.tipo_documento, 
+    dbo.ventas.numero_documento,
+    FLOOR((cantidad * precio_unitario) * (1 - (descuento / 100.0))) AS monto_total
+FROM 
+    dbo.detalle_ventas, 
+    dbo.ventas
+WHERE 
+    dbo.detalle_ventas.venta_id = dbo.ventas.venta_id;</property>
                 <property
                   dataType="System.String"
                   description="Variable que contiene el comando SQL para ejecutar."
@@ -2906,8 +2919,9 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
                       scale="2" />
                     <externalMetadataColumn
                       refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[monto_total]"
-                      dataType="i4"
-                      name="monto_total" />
+                      dataType="numeric"
+                      name="monto_total"
+                      precision="23" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2975,9 +2989,10 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
                       name="numero_documento" />
                     <outputColumn
                       refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[monto_total]"
-                      dataType="i4"
+                      dataType="numeric"
                       lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[monto_total]"
-                      name="monto_total" />
+                      name="monto_total"
+                      precision="23" />
                     <outputColumn
                       refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
@@ -3025,21 +3040,21 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Tarea Ejecutar SQL"
+      DTS:refId="Package\Tarea SQL Dimension Tiempo"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarea Ejecutar SQL"
       DTS:DTSID="{843C6F3B-3638-42DD-9E60-93E56A835C7A}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Tarea Ejecutar SQL"
+      DTS:ObjectName="Tarea SQL Dimension Tiempo"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022 CTP2.0; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{A994B303-7A4B-44F8-AEE2-CA3F72EB82AD}"
+          SQLTask:Connection="{F9FBC7F4-19BE-4359-A48F-98536BCFE09F}"
           SQLTask:BypassPrepare="False"
-          SQLTask:SqlStatementSource="DECLARE&#x9;@return_value int&#xA;&#xA;EXEC&#x9;@return_value = [dbo].[GenerateTimeData]&#xA;&#x9;&#x9;@StartDate = '01/01/2010',&#xA;&#x9;&#x9;@EndDate = '31/12/2030'&#xA;&#xA;SELECT&#x9;'Return Value' = @return_value&#xA;&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DECLARE @return_value int;&#xA;&#xA;EXEC @return_value = [dbo].[GenerateTimeData]&#xA;    @StartDate = '2010-01-01',  -- Fecha estática para probar&#xA;    @EndDate = '2030-12-31';    -- Fecha estática para probar&#xA;&#xA;SELECT 'Return Value' = @return_value;&#xA;&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -3051,12 +3066,12 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
       DTS:From="Package\Carga_Dim_Empleados"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Tarea Ejecutar SQL" />
+      DTS:To="Package\Tarea SQL Dimension Tiempo" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
       DTS:DTSID="{82CBEA66-0643-44B5-A6C2-5784C6451436}"
-      DTS:From="Package\Tarea Ejecutar SQL"
+      DTS:From="Package\Tarea SQL Dimension Tiempo"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\Carga_Hechos_Ventas" />
@@ -3166,8 +3181,8 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
           Id="Package\LIMPIAR DW2"
           TopLeft="98.5,71" />
         <NodeLayout
-          Size="170,42"
-          Id="Package\Tarea Ejecutar SQL"
+          Size="219,42"
+          Id="Package\Tarea SQL Dimension Tiempo"
           TopLeft="411,293" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
@@ -3193,18 +3208,18 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="581,312">
+          TopLeft="630,312">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="122,0"
+              EndConnector="73,0"
               Start="0,0"
-              End="114.5,0">
+              End="65.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="114.5,0" />
+                    End="65.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
