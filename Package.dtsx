@@ -7,12 +7,12 @@
   DTS:CreatorName="VIAPCE03LR0105\Duoc"
   DTS:DTSID="{C2E85ED2-8E45-4DEA-B7CA-61C4E0B4A107}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="86"
-  DTS:VersionGUID="{4F3FC859-1DC4-4D03-AC2D-04770801995E}">
+  DTS:VersionBuild="91"
+  DTS:VersionGUID="{3BA9ED50-C5A2-4E2B-A005-5D34D6C255C0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -37,12 +37,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=.;User ID=dba;Initial Catalog=Albarran;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/06pTGRMIEyBF3hU/n/6CQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAhiT3I2Q3RedHU5b3wCJCsAAAAAASAAACgAAAAEAAAAEmm+OpXkThXEkQY5DnaHGogAAAAbwW3n3UKiwOrmTj4JtQ/81A5FGaQNApXb7MgbMWruFUUAAAAnrwft1m5/wXkJjnptcy+cCjobxI</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=.;User ID=dba;Initial Catalog=Albarran;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -66,12 +61,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=.;User ID=dba;Initial Catalog=Albarran_DW2;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/06pTGRMIEyBF3hU/n/6CQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABkRpWPI00vkEf74R+qPDa0AAAAAASAAACgAAAAEAAAAGSintIoKM916ECX/YZsBXUgAAAALwHuetwv4Dyqy4EubauUWqHNTrCdz+p0nZokR0QO9mMUAAAAouWpogVXOUBpRd6QTeNbb+j2fC4</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=.;User ID=dba;Initial Catalog=Albarran_DW2;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -141,7 +131,7 @@
                 <property
                   dataType="System.String"
                   description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadOptions"></property>
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
@@ -150,8 +140,8 @@
               <connections>
                 <connection
                   refId="Package\Carga_Dim_Cargos\Insertar Cargos.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran_DW2.dba]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran_DW2.dba]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran_DW2]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran_DW2]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -267,8 +257,8 @@
               <connections>
                 <connection
                   refId="Package\Carga_Dim_Cargos\Leer Cargos.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran.dba]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran.dba]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -418,7 +408,7 @@
                 <property
                   dataType="System.String"
                   description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadOptions"></property>
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
@@ -427,8 +417,8 @@
               <connections>
                 <connection
                   refId="Package\Carga_Dim_Categorias\Insertar Categorias.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran_DW2.dba]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran_DW2.dba]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran_DW2]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran_DW2]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -544,8 +534,8 @@
               <connections>
                 <connection
                   refId="Package\Carga_Dim_Categorias\Leer Categorias.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran.dba]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran.dba]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -695,7 +685,7 @@
                 <property
                   dataType="System.String"
                   description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadOptions"></property>
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
@@ -704,8 +694,8 @@
               <connections>
                 <connection
                   refId="Package\Carga_Dim_Clientes\Insertar Clientes.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran_DW2.dba]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran_DW2.dba]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran_DW2]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran_DW2]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -881,8 +871,8 @@
               <connections>
                 <connection
                   refId="Package\Carga_Dim_Clientes\Leer Clientes.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran.dba]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran.dba]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -1103,7 +1093,7 @@
                 <property
                   dataType="System.String"
                   description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">[dbo].[dim_comunas]</property>
+                  name="OpenRowset"></property>
                 <property
                   dataType="System.String"
                   description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -1137,7 +1127,7 @@
                 <property
                   dataType="System.String"
                   description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadOptions"></property>
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
@@ -1146,8 +1136,8 @@
               <connections>
                 <connection
                   refId="Package\Carga_Dim_Comunas\Insertar Comunas.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran_DW2.dba]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran_DW2.dba]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran_DW2]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran_DW2]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -1263,8 +1253,8 @@
               <connections>
                 <connection
                   refId="Package\Carga_Dim_Comunas\Leer Comunas.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran.dba]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran.dba]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -1423,8 +1413,8 @@
               <connections>
                 <connection
                   refId="Package\Carga_Dim_Empleados\Insertar Empleados.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran_DW2.dba]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran_DW2.dba]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran_DW2]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran_DW2]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -1594,8 +1584,8 @@
               <connections>
                 <connection
                   refId="Package\Carga_Dim_Empleados\Leer Empleados.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran.dba]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran.dba]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -1850,8 +1840,8 @@
               <connections>
                 <connection
                   refId="Package\Carga_Dim_Productos\Insertar Productos.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran_DW2.dba]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran_DW2.dba]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran_DW2]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran_DW2]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -1999,8 +1989,8 @@
               <connections>
                 <connection
                   refId="Package\Carga_Dim_Productos\Leer Productos.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran.dba]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran.dba]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -2173,7 +2163,7 @@
                 <property
                   dataType="System.String"
                   description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">[dbo].[dim_sucursales]</property>
+                  name="OpenRowset"></property>
                 <property
                   dataType="System.String"
                   description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -2216,8 +2206,8 @@
               <connections>
                 <connection
                   refId="Package\Carga_Dim_Sucursales\Insertar Sucursales.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran_DW2.dba]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran_DW2.dba]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran_DW2]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran_DW2]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -2345,8 +2335,8 @@ WHERE        dbo.comunas.comuna_id = dbo.sucursales.comuna_id</property>
               <connections>
                 <connection
                   refId="Package\Carga_Dim_Sucursales\Leer Sucursales.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran.dba]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran.dba]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -2524,8 +2514,8 @@ FROM            dbo.ventas_hechos</property>
               <connections>
                 <connection
                   refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran_DW2.dba]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran_DW2.dba]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran_DW2]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran_DW2]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -2741,8 +2731,8 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
               <connections>
                 <connection
                   refId="Package\Carga_Hechos_Ventas\Leer Hechos.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran.dba]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran.dba]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Albarran]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Albarran]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -3029,7 +3019,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{E867C166-3613-4854-8956-6F9B0FCFF7E3}"
+          SQLTask:Connection="{A994B303-7A4B-44F8-AEE2-CA3F72EB82AD}"
           SQLTask:BypassPrepare="False"
           SQLTask:SqlStatementSource="DELETE FROM ventas_hechos;&#xA;DELETE FROM dim_cargos;&#xA;DELETE FROM dim_categorias;&#xA;DELETE FROM dim_clientes;&#xA;DELETE FROM dim_comunas;&#xA;DELETE FROM dim_empleados;&#xA;DELETE FROM dim_productos;&#xA;DELETE FROM dim_sucursales;&#xA;DELETE FROM dim_tiempo;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
@@ -3047,7 +3037,8 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{E867C166-3613-4854-8956-6F9B0FCFF7E3}"
+          SQLTask:Connection="{A994B303-7A4B-44F8-AEE2-CA3F72EB82AD}"
+          SQLTask:BypassPrepare="False"
           SQLTask:SqlStatementSource="DECLARE&#x9;@return_value int&#xA;&#xA;EXEC&#x9;@return_value = [dbo].[GenerateTimeData]&#xA;&#x9;&#x9;@StartDate = '01/01/2010',&#xA;&#x9;&#x9;@EndDate = '31/12/2030'&#xA;&#xA;SELECT&#x9;'Return Value' = @return_value&#xA;&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -3127,12 +3118,12 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
       DTS:To="Package\Carga_Dim_Empleados" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
-<!--If you manually edit this section and make a mistake, you can delete it. -->
-<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
 <Objects
   Version="8">
-  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
@@ -3169,11 +3160,59 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
         <NodeLayout
           Size="184,42"
           Id="Package\Carga_Hechos_Ventas"
-          TopLeft="515,315" />
+          TopLeft="703,289" />
         <NodeLayout
           Size="145,42"
           Id="Package\LIMPIAR DW2"
           TopLeft="98.5,71" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Tarea Ejecutar SQL"
+          TopLeft="411,293" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="266.461538461538,314.73076923077">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="144.538461538462,0"
+              Start="0,0"
+              End="137.038461538462,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="137.038461538462,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="581,312">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="122,0"
+              Start="0,0"
+              End="114.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="114.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="243.5,93.0384615384615">
@@ -3352,78 +3391,6 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="170,42"
-          Id="Package\Tarea Ejecutar SQL"
-          TopLeft="307,344" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="266.461538461538,315.461538461539">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="40.5384615384616,49.538461538461"
-              Start="0,0"
-              End="33.0384615384616,49.538461538461">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="16.2692307692308,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="16.2692307692308,0"
-                    Point2="20.2692307692308,0"
-                    Point3="20.2692307692308,4" />
-                  <mssgle:LineSegment
-                    End="20.2692307692308,45.538461538461" />
-                  <mssgle:CubicBezierSegment
-                    Point1="20.2692307692308,45.538461538461"
-                    Point2="20.2692307692308,49.538461538461"
-                    Point3="24.2692307692308,49.538461538461" />
-                  <mssgle:LineSegment
-                    End="33.0384615384616,49.538461538461" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="477,365">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="38,-29"
-              Start="0,0"
-              End="30.5,-29">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="15,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="15,0"
-                    Point2="19,0"
-                    Point3="19,-4" />
-                  <mssgle:LineSegment
-                    End="19,-25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="19,-25"
-                    Point2="19,-29"
-                    Point3="23,-29" />
-                  <mssgle:LineSegment
-                    End="30.5,-29" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -3431,7 +3398,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
     design-time-name="Package\Carga_Dim_Cargos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="135,42"
           Id="Package\Carga_Dim_Cargos\Leer Cargos"
@@ -3471,9 +3438,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3509,7 +3474,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
     design-time-name="Package\Carga_Dim_Categorias">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="152,42"
           Id="Package\Carga_Dim_Categorias\Leer Categorias"
@@ -3549,9 +3514,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3587,7 +3550,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
     design-time-name="Package\Carga_Dim_Clientes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="139,42"
           Id="Package\Carga_Dim_Clientes\Leer Clientes"
@@ -3627,9 +3590,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3665,7 +3626,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
     design-time-name="Package\Carga_Dim_Comunas">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="146,42"
           Id="Package\Carga_Dim_Comunas\Leer Comunas"
@@ -3705,9 +3666,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3743,7 +3702,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
     design-time-name="Package\Carga_Dim_Empleados">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="154,42"
           Id="Package\Carga_Dim_Empleados\Leer Empleados"
@@ -3783,9 +3742,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3821,7 +3778,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
     design-time-name="Package\Carga_Dim_Productos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="166,42"
           Id="Package\Carga_Dim_Productos\Insertar Productos"
@@ -3861,9 +3818,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3899,7 +3854,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
     design-time-name="Package\Carga_Dim_Sucursales">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="152,42"
           Id="Package\Carga_Dim_Sucursales\Leer Sucursales"
@@ -3939,9 +3894,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
