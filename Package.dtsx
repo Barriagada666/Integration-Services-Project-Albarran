@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="85"
-  DTS:VersionGUID="{5738BE6B-FEBD-42F2-869C-0B575C93D987}">
+  DTS:VersionBuild="86"
+  DTS:VersionGUID="{4F3FC859-1DC4-4D03-AC2D-04770801995E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -41,7 +41,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/06pTGRMIEyBF3hU/n/6CQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAClcKHeYz4mGKmDs350J7mvAAAAAASAAACgAAAAEAAAAPgJzqEgJE+zVielHRTxLvkgAAAAUkDV4KXWGZeNIu/Gm40JkxBuehX2ewBERBhahA6Ob6wUAAAAcaTpPS49rEpLXGXJvOvCdoCy9QY</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/06pTGRMIEyBF3hU/n/6CQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAhiT3I2Q3RedHU5b3wCJCsAAAAAASAAACgAAAAEAAAAEmm+OpXkThXEkQY5DnaHGogAAAAbwW3n3UKiwOrmTj4JtQ/81A5FGaQNApXb7MgbMWruFUUAAAAnrwft1m5/wXkJjnptcy+cCjobxI</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -70,7 +70,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/06pTGRMIEyBF3hU/n/6CQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABp6otDwNwNdX1v+g0drkWWAAAAAASAAACgAAAAEAAAADGxhtKW318uuMAC+opRJiYgAAAAP04nuhTBxPSe1+AFmVTUlEq1vS1yheV5julfesQyVVMUAAAApZz04up4fSUVsR70WlCozsbS8t0</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/06pTGRMIEyBF3hU/n/6CQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABkRpWPI00vkEf74R+qPDa0AAAAAASAAACgAAAAEAAAAGSintIoKM916ECX/YZsBXUgAAAALwHuetwv4Dyqy4EubauUWqHNTrCdz+p0nZokR0QO9mMUAAAAouWpogVXOUBpRd6QTeNbb+j2fC4</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -2713,7 +2713,7 @@ FROM            dbo.ventas_hechos</property>
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        dbo.ventas.venta_id, dbo.detalle_ventas.producto_id, dbo.ventas.vendedor_id, dbo.detalle_ventas.cantidad, dbo.ventas.cliente_id, dbo.detalle_ventas.precio_unitario, dbo.ventas.sucursal_id, dbo.detalle_ventas.descuento, 
                          dbo.ventas.fecha, dbo.ventas.tipo_documento, dbo.ventas.numero_documento,
-(cantidad * precio_unitario) * (1 - (descuento / 100.0)) AS monto_total
+CAST((cantidad * precio_unitario) * (1 - (descuento / 100.0)) AS int) AS monto_total
 FROM            dbo.detalle_ventas, dbo.ventas
 WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
                 <property
@@ -2916,10 +2916,8 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
                       scale="2" />
                     <externalMetadataColumn
                       refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[monto_total]"
-                      dataType="numeric"
-                      name="monto_total"
-                      precision="23"
-                      scale="7" />
+                      dataType="i4"
+                      name="monto_total" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2987,11 +2985,9 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
                       name="numero_documento" />
                     <outputColumn
                       refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[monto_total]"
-                      dataType="numeric"
+                      dataType="i4"
                       lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[monto_total]"
-                      name="monto_total"
-                      precision="23"
-                      scale="7" />
+                      name="monto_total" />
                     <outputColumn
                       refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
