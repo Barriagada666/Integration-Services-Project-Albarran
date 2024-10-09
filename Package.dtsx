@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="83"
-  DTS:VersionGUID="{1D569938-43C4-4840-9112-1919C4BDAA7E}">
+  DTS:VersionBuild="85"
+  DTS:VersionGUID="{5738BE6B-FEBD-42F2-869C-0B575C93D987}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -41,7 +41,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/06pTGRMIEyBF3hU/n/6CQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACBRrrCTRN59UZO668YkXc4AAAAAASAAACgAAAAEAAAAO1ah2RnGfHxdA/KGj+e488gAAAAQW+avsCAyYd8dg2ulOYI3oaUW5bEryAjPbjqD1zG8YwUAAAAcnQGId6nmillM7dgnWRf3mA7iAM</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/06pTGRMIEyBF3hU/n/6CQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAClcKHeYz4mGKmDs350J7mvAAAAAASAAACgAAAAEAAAAPgJzqEgJE+zVielHRTxLvkgAAAAUkDV4KXWGZeNIu/Gm40JkxBuehX2ewBERBhahA6Ob6wUAAAAcaTpPS49rEpLXGXJvOvCdoCy9QY</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -70,7 +70,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/06pTGRMIEyBF3hU/n/6CQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACyM5sUtYsOtTz0BFEJknwuAAAAAASAAACgAAAAEAAAAEVxHGZUbb3kpRkELpTCiWogAAAAE/4yXtg2yRn9vHT6J/xZ8i3S//8suGFfpAvXVQiZEAwUAAAA8k75w6uWs8vfMWCEHc5gnl8DfE0</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/06pTGRMIEyBF3hU/n/6CQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABp6otDwNwNdX1v+g0drkWWAAAAAASAAACgAAAAEAAAADGxhtKW318uuMAC+opRJiYgAAAAP04nuhTBxPSe1+AFmVTUlEq1vS1yheV5julfesQyVVMUAAAApZz04up4fSUVsR70WlCozsbS8t0</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -3038,15 +3038,40 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
           SQLTask:SqlStatementSource="DELETE FROM ventas_hechos;&#xA;DELETE FROM dim_cargos;&#xA;DELETE FROM dim_categorias;&#xA;DELETE FROM dim_clientes;&#xA;DELETE FROM dim_comunas;&#xA;DELETE FROM dim_empleados;&#xA;DELETE FROM dim_productos;&#xA;DELETE FROM dim_sucursales;&#xA;DELETE FROM dim_tiempo;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tarea Ejecutar SQL"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{843C6F3B-3638-42DD-9E60-93E56A835C7A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tarea Ejecutar SQL"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022 CTP2.0; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E867C166-3613-4854-8956-6F9B0FCFF7E3}"
+          SQLTask:SqlStatementSource="DECLARE&#x9;@return_value int&#xA;&#xA;EXEC&#x9;@return_value = [dbo].[GenerateTimeData]&#xA;&#x9;&#x9;@StartDate = '01/01/2010',&#xA;&#x9;&#x9;@EndDate = '31/12/2030'&#xA;&#xA;SELECT&#x9;'Return Value' = @return_value&#xA;&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{4D4462ED-C59F-4B33-9B63-A2CF532B1871}"
+      DTS:DTSID="{5BF5A110-A559-4B8A-A1D1-E79532D2B2E2}"
       DTS:From="Package\Carga_Dim_Empleados"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
+      DTS:To="Package\Tarea Ejecutar SQL" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{82CBEA66-0643-44B5-A6C2-5784C6451436}"
+      DTS:From="Package\Tarea Ejecutar SQL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
       DTS:To="Package\Carga_Hechos_Ventas" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción]"
@@ -3153,40 +3178,6 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
           Size="145,42"
           Id="Package\LIMPIAR DW2"
           TopLeft="98.5,71" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="266.461538461538,315.461538461539">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="248.538461538462,20.538461538461"
-              Start="0,0"
-              End="241.038461538462,20.538461538461">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="120.269230769231,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="120.269230769231,0"
-                    Point2="124.269230769231,0"
-                    Point3="124.269230769231,4" />
-                  <mssgle:LineSegment
-                    End="124.269230769231,16.538461538461" />
-                  <mssgle:CubicBezierSegment
-                    Point1="124.269230769231,16.538461538461"
-                    Point2="124.269230769231,20.538461538461"
-                    Point3="128.269230769231,20.538461538461" />
-                  <mssgle:LineSegment
-                    End="241.038461538462,20.538461538461" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="243.5,93.0384615384615">
@@ -3365,6 +3356,78 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Tarea Ejecutar SQL"
+          TopLeft="307,344" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="266.461538461538,315.461538461539">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="40.5384615384616,49.538461538461"
+              Start="0,0"
+              End="33.0384615384616,49.538461538461">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="16.2692307692308,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.2692307692308,0"
+                    Point2="20.2692307692308,0"
+                    Point3="20.2692307692308,4" />
+                  <mssgle:LineSegment
+                    End="20.2692307692308,45.538461538461" />
+                  <mssgle:CubicBezierSegment
+                    Point1="20.2692307692308,45.538461538461"
+                    Point2="20.2692307692308,49.538461538461"
+                    Point3="24.2692307692308,49.538461538461" />
+                  <mssgle:LineSegment
+                    End="33.0384615384616,49.538461538461" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="477,365">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="38,-29"
+              Start="0,0"
+              End="30.5,-29">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="15,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15,0"
+                    Point2="19,0"
+                    Point3="19,-4" />
+                  <mssgle:LineSegment
+                    End="19,-25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19,-25"
+                    Point2="19,-29"
+                    Point3="23,-29" />
+                  <mssgle:LineSegment
+                    End="30.5,-29" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -3372,7 +3435,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
     design-time-name="Package\Carga_Dim_Cargos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="135,42"
           Id="Package\Carga_Dim_Cargos\Leer Cargos"
@@ -3412,7 +3475,9 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3448,7 +3513,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
     design-time-name="Package\Carga_Dim_Categorias">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="152,42"
           Id="Package\Carga_Dim_Categorias\Leer Categorias"
@@ -3488,7 +3553,9 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3524,7 +3591,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
     design-time-name="Package\Carga_Dim_Clientes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="139,42"
           Id="Package\Carga_Dim_Clientes\Leer Clientes"
@@ -3564,7 +3631,9 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3600,7 +3669,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
     design-time-name="Package\Carga_Dim_Comunas">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="146,42"
           Id="Package\Carga_Dim_Comunas\Leer Comunas"
@@ -3640,7 +3709,9 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3676,7 +3747,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
     design-time-name="Package\Carga_Dim_Empleados">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="154,42"
           Id="Package\Carga_Dim_Empleados\Leer Empleados"
@@ -3716,7 +3787,9 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3752,7 +3825,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
     design-time-name="Package\Carga_Dim_Productos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="166,42"
           Id="Package\Carga_Dim_Productos\Insertar Productos"
@@ -3792,7 +3865,9 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3828,7 +3903,7 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
     design-time-name="Package\Carga_Dim_Sucursales">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="152,42"
           Id="Package\Carga_Dim_Sucursales\Leer Sucursales"
@@ -3868,7 +3943,9 @@ WHERE        dbo.detalle_ventas.venta_id = dbo.ventas.venta_id</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
