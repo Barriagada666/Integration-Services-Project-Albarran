@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="103"
-  DTS:VersionGUID="{829CA5CB-AF0A-4A0E-9161-F08231AECEC1}">
+  DTS:VersionBuild="131"
+  DTS:VersionGUID="{1E34CC39-FBB1-441B-AB0B-E76B15EA0DD8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2479,8 +2479,20 @@ WHERE        dbo.comunas.comuna_id = dbo.sucursales.comuna_id</property>
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        venta_id, cliente_id, producto_id, vendedor_id, sucursal_id, fecha, numero_documento, cantidad, tipo_documento, precio_unitario, descuento
-FROM            dbo.ventas_hechos</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  
+    venta_id, 
+    cliente_id, 
+    producto_id, 
+    vendedor_id, 
+    sucursal_id, 
+    fecha, 
+    numero_documento, 
+    cantidad, 
+    tipo_documento,
+    precio_unitario, 
+    descuento
+FROM 
+    dbo.ventas_hechos</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -2523,10 +2535,16 @@ FROM            dbo.ventas_hechos</property>
                 <input
                   refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB]"
                   errorOrTruncationOperation="Insertar"
-                  errorRowDisposition="IgnoreFailure"
+                  errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="Entrada de destino de OLE DB">
                   <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].Columns[venta_id]"
+                      cachedDataType="i4"
+                      cachedName="venta_id"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[venta_id]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[venta_id]" />
                     <inputColumn
                       refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].Columns[vendedor_id]"
                       cachedDataType="i4"
@@ -2565,12 +2583,6 @@ FROM            dbo.ventas_hechos</property>
                       externalMetadataColumnId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[numero_documento]"
                       lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[numero_documento]" />
                     <inputColumn
-                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].Columns[venta_id]"
-                      cachedDataType="i4"
-                      cachedName="venta_id"
-                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[venta_id]"
-                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[venta_id]" />
-                    <inputColumn
                       refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].Columns[producto_id]"
                       cachedDataType="i4"
                       cachedName="producto_id"
@@ -2583,12 +2595,6 @@ FROM            dbo.ventas_hechos</property>
                       externalMetadataColumnId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[cantidad]"
                       lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[cantidad]" />
                     <inputColumn
-                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].Columns[precio_unitario]"
-                      cachedDataType="i4"
-                      cachedName="precio_unitario"
-                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[precio_unitario]"
-                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[precio_unitario]" />
-                    <inputColumn
                       refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].Columns[descuento]"
                       cachedDataType="numeric"
                       cachedName="descuento"
@@ -2596,6 +2602,13 @@ FROM            dbo.ventas_hechos</property>
                       cachedScale="2"
                       externalMetadataColumnId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[descuento]"
                       lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[descuento]" />
+                    <inputColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].Columns[precio_unitario]"
+                      cachedDataType="numeric"
+                      cachedName="precio_unitario"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[precio_unitario]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[precio_unitario]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2637,16 +2650,16 @@ FROM            dbo.ventas_hechos</property>
                       dataType="i4"
                       name="cantidad" />
                     <externalMetadataColumn
-                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[precio_unitario]"
-                      dataType="numeric"
-                      name="precio_unitario"
-                      precision="10"
-                      scale="2" />
-                    <externalMetadataColumn
                       refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[descuento]"
                       dataType="numeric"
                       name="descuento"
                       precision="5"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[precio_unitario]"
+                      dataType="numeric"
+                      name="precio_unitario"
+                      precision="10"
                       scale="2" />
                   </externalMetadataColumns>
                 </input>
@@ -2701,24 +2714,23 @@ FROM            dbo.ventas_hechos</property>
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
-    dbo.ventas.venta_id, 
-    dbo.detalle_ventas.producto_id, 
-    dbo.ventas.vendedor_id, 
-    dbo.detalle_ventas.cantidad, 
-    dbo.ventas.cliente_id, 
-    dbo.detalle_ventas.precio_unitario, 
-    dbo.ventas.sucursal_id, 
-    dbo.detalle_ventas.descuento, 
-    dbo.ventas.fecha, 
-    dbo.ventas.tipo_documento, 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  
+    dbo.ventas.venta_id,
+    dbo.detalle_ventas.producto_id,
+    dbo.ventas.vendedor_id,
+    dbo.detalle_ventas.cantidad,
+    dbo.ventas.cliente_id,
+    dbo.detalle_ventas.precio_unitario AS precio_unitario,  
+    dbo.ventas.sucursal_id,
+    dbo.detalle_ventas.descuento,
+    dbo.ventas.fecha,
+    dbo.ventas.tipo_documento,
     dbo.ventas.numero_documento,
-    FLOOR((cantidad * precio_unitario) * (1 - (descuento / 100.0))) AS monto_total
-FROM 
-    dbo.detalle_ventas, 
-    dbo.ventas
-WHERE 
-    dbo.detalle_ventas.venta_id = dbo.ventas.venta_id;</property>
+    CAST(dbo.detalle_ventas.cantidad * dbo.detalle_ventas.precio_unitario * (1 - (dbo.detalle_ventas.descuento / 100.00)) AS INT) AS monto_total  -- Casteando monto_total a entero
+FROM
+    dbo.detalle_ventas
+JOIN
+    dbo.ventas ON dbo.detalle_ventas.venta_id = dbo.ventas.venta_id;</property>
                 <property
                   dataType="System.String"
                   description="Variable que contiene el comando SQL para ejecutar."
@@ -2837,15 +2849,6 @@ WHERE
                       name="cantidad"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[precio_unitario]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[precio_unitario]"
-                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[precio_unitario]"
-                      name="precio_unitario"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[descuento]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversión"
@@ -2857,6 +2860,16 @@ WHERE
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[precio_unitario]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[precio_unitario]"
+                      lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[precio_unitario]"
+                      name="precio_unitario"
+                      precision="18"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
                       refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[monto_total]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversión"
@@ -2864,8 +2877,7 @@ WHERE
                       externalMetadataColumnId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[monto_total]"
                       lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].Columns[monto_total]"
                       name="monto_total"
-                      precision="23"
-                      scale="7"
+                      precision="18"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -2908,20 +2920,19 @@ WHERE
                       dataType="i4"
                       name="cantidad" />
                     <externalMetadataColumn
-                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[precio_unitario]"
-                      dataType="i4"
-                      name="precio_unitario" />
-                    <externalMetadataColumn
                       refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[descuento]"
                       dataType="numeric"
                       name="descuento"
                       precision="5"
                       scale="2" />
                     <externalMetadataColumn
+                      refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[precio_unitario]"
+                      dataType="i4"
+                      name="precio_unitario" />
+                    <externalMetadataColumn
                       refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de origen de OLE DB].ExternalColumns[monto_total]"
-                      dataType="numeric"
-                      name="monto_total"
-                      precision="23" />
+                      dataType="i4"
+                      name="monto_total" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2989,10 +3000,9 @@ WHERE
                       name="numero_documento" />
                     <outputColumn
                       refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[monto_total]"
-                      dataType="numeric"
+                      dataType="i4"
                       lineageId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[monto_total]"
-                      name="monto_total"
-                      precision="23" />
+                      name="monto_total" />
                     <outputColumn
                       refId="Package\Carga_Hechos_Ventas\Leer Hechos.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
