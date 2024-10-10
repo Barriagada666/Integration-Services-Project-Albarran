@@ -1,0 +1,3412 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/10/2024 4:57:11 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="KERNELOS-PC"
+  DTS:CreatorName="KERNELOS-PC\Administrator"
+  DTS:DTSID="{4F0FBDF5-C4DF-47AA-B62E-FAE1A0415057}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LocaleID="13322"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{644C780B-01C9-43F7-AB24-E067A3E19D1E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Albarran]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{744EF07D-548B-4DAA-95F7-55E6E808B47E}"
+      DTS:ObjectName="LocalHost.Albarran">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Albarran;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Albarran_DW2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E427D69E-A55F-492C-B449-A064C522D1B7}"
+      DTS:ObjectName="LocalHost.Albarran_DW2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Albarran_DW2;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\INCREMENTAL CARGOS"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{AF18FB75-5950-4972-9C1C-03AF50781D71}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="INCREMENTAL CARGOS"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\INCREMENTAL CARGOS\Combinación de mezcla"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Combinación de mezcla;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Combina dos flujos de datos ordenados en uno solo mediante la combinación FULL, LEFT o INNER. Se recomienda esta transformación cuando se pueden ordenar los flujos de datos en sus orígenes."
+              name="Combinación de mezcla"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de combinación que se debe realizar."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número de columnas de la clave de ordenación."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores NULL se tratan como valores iguales."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indica la cantidad máxima solicitada de búferes por entrada antes del bloqueo."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\INCREMENTAL CARGOS\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla]"
+                  hasSideEffects="true"
+                  name="Entrada izquierda de combinación de mezcla">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INCREMENTAL CARGOS\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[cargo_id]"
+                      cachedDataType="i4"
+                      cachedName="cargo_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\INCREMENTAL CARGOS\Ordenar 1.Outputs[Salida de ordenación].Columns[cargo_id]" />
+                    <inputColumn
+                      refId="Package\INCREMENTAL CARGOS\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="nombre"
+                      lineageId="Package\INCREMENTAL CARGOS\Ordenar 1.Outputs[Salida de ordenación].Columns[nombre]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\INCREMENTAL CARGOS\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla]"
+                  hasSideEffects="true"
+                  name="Entrada derecha de combinación de mezcla">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INCREMENTAL CARGOS\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla].Columns[cargo_id]"
+                      cachedDataType="i4"
+                      cachedName="cargo_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\INCREMENTAL CARGOS\Ordenar.Outputs[Salida de ordenación].Columns[cargo_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL CARGOS\Combinación de mezcla.Outputs[Salida de combinación de mezcla]"
+                  isSorted="true"
+                  name="Salida de combinación de mezcla">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[cargo_id]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL CARGOS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[cargo_id]"
+                      name="cargo_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\INCREMENTAL CARGOS\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[cargo_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[nombre]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\INCREMENTAL CARGOS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[nombre]"
+                      name="nombre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\INCREMENTAL CARGOS\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[nombre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[cargo_id_dim]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL CARGOS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[cargo_id_dim]"
+                      name="cargo_id_dim">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\INCREMENTAL CARGOS\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla].Columns[cargo_id]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INCREMENTAL CARGOS\Destino de OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Destino de OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[dim_cargos]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\INCREMENTAL CARGOS\Destino de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran_DW2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran_DW2]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\INCREMENTAL CARGOS\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INCREMENTAL CARGOS\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[cargo_id]"
+                      cachedDataType="i4"
+                      cachedName="cargo_id"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\INCREMENTAL CARGOS\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[cargo_id]"
+                      lineageId="Package\INCREMENTAL CARGOS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[cargo_id]" />
+                    <inputColumn
+                      refId="Package\INCREMENTAL CARGOS\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="nombre"
+                      externalMetadataColumnId="Package\INCREMENTAL CARGOS\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre]"
+                      lineageId="Package\INCREMENTAL CARGOS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[nombre]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL CARGOS\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[cargo_id]"
+                      dataType="i4"
+                      name="cargo_id" />
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL CARGOS\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre]"
+                      dataType="wstr"
+                      length="255"
+                      name="nombre" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL CARGOS\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\INCREMENTAL CARGOS\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL CARGOS\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL CARGOS\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INCREMENTAL CARGOS\División condicional"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="División condicional;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Enruta filas de datos a diferentes salidas según el contenido de los datos. Se usan condiciones (expresiones de SSIS) para especificar las filas que se van a enrutar. Por ejemplo, se usa para separar los registros que deben limpiarse de los registros listos para ser cargados o para enrutar solamente un subconjunto de registros."
+              name="División condicional"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\INCREMENTAL CARGOS\División condicional.Inputs[Entrada de división condicional]"
+                  description="Entrada en la transformación División condicional"
+                  name="Entrada de división condicional">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INCREMENTAL CARGOS\División condicional.Inputs[Entrada de división condicional].Columns[cargo_id_dim]"
+                      cachedDataType="i4"
+                      cachedName="cargo_id_dim"
+                      lineageId="Package\INCREMENTAL CARGOS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[cargo_id_dim]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL CARGOS\División condicional.Outputs[Nuevo_registro]"
+                  description="Salida 1 de la transformación División condicional"
+                  errorOrTruncationOperation="Cálculo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Nuevo_registro"
+                  synchronousInputId="Package\INCREMENTAL CARGOS\División condicional.Inputs[Entrada de división condicional]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                      name="Expression">[ISNULL](#{Package\INCREMENTAL CARGOS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[cargo_id_dim]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(cargo_id_dim)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\INCREMENTAL CARGOS\División condicional.Outputs[Salida predeterminada de división condicional]"
+                  description="Salida predeterminada de la transformación División condicional"
+                  exclusionGroup="1"
+                  name="Salida predeterminada de división condicional"
+                  synchronousInputId="Package\INCREMENTAL CARGOS\División condicional.Inputs[Entrada de división condicional]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\INCREMENTAL CARGOS\División condicional.Outputs[Salida de error de división condicional]"
+                  description="Salida de error de la transformación División condicional"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de división condicional"
+                  synchronousInputId="Package\INCREMENTAL CARGOS\División condicional.Inputs[Entrada de división condicional]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL CARGOS\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL CARGOS\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INCREMENTAL CARGOS\Ordenar"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Ordenar;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Ordena los datos de entrada de manera ascendente o descendente cuando no es posible ordenarlos en su origen. Por ejemplo, se ordenan los datos de ventas por 'id. de cliente' antes de que se escriban en un archivo plano y se entreguen a otro departamento. Nota: no se recomienda realizar esta transformación para grandes flujos de datos."
+              name="Ordenar"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si la transformación Ordenar quita filas con valores de ordenación duplicados."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número máximo de subprocesos que se deben usar para la ordenación."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\INCREMENTAL CARGOS\Ordenar.Inputs[Entrada de ordenación]"
+                  name="Entrada de ordenación">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INCREMENTAL CARGOS\Ordenar.Inputs[Entrada de ordenación].Columns[cargo_id]"
+                      cachedDataType="i4"
+                      cachedName="cargo_id"
+                      lineageId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de origen de OLE DB].Columns[cargo_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\INCREMENTAL CARGOS\Ordenar.Inputs[Entrada de ordenación].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="nombre"
+                      lineageId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de origen de OLE DB].Columns[nombre]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL CARGOS\Ordenar.Outputs[Salida de ordenación]"
+                  isSorted="true"
+                  name="Salida de ordenación">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Ordenar.Outputs[Salida de ordenación].Columns[cargo_id]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL CARGOS\Ordenar.Outputs[Salida de ordenación].Columns[cargo_id]"
+                      name="cargo_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de origen de OLE DB].Columns[cargo_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Ordenar.Outputs[Salida de ordenación].Columns[nombre]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\INCREMENTAL CARGOS\Ordenar.Outputs[Salida de ordenación].Columns[nombre]"
+                      name="nombre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de origen de OLE DB].Columns[nombre]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INCREMENTAL CARGOS\Ordenar 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Ordenar;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Ordena los datos de entrada de manera ascendente o descendente cuando no es posible ordenarlos en su origen. Por ejemplo, se ordenan los datos de ventas por 'id. de cliente' antes de que se escriban en un archivo plano y se entreguen a otro departamento. Nota: no se recomienda realizar esta transformación para grandes flujos de datos."
+              name="Ordenar 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si la transformación Ordenar quita filas con valores de ordenación duplicados."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número máximo de subprocesos que se deben usar para la ordenación."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\INCREMENTAL CARGOS\Ordenar 1.Inputs[Entrada de ordenación]"
+                  name="Entrada de ordenación">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INCREMENTAL CARGOS\Ordenar 1.Inputs[Entrada de ordenación].Columns[cargo_id]"
+                      cachedDataType="i4"
+                      cachedName="cargo_id"
+                      lineageId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[cargo_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\INCREMENTAL CARGOS\Ordenar 1.Inputs[Entrada de ordenación].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="nombre"
+                      lineageId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[nombre]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL CARGOS\Ordenar 1.Outputs[Salida de ordenación]"
+                  isSorted="true"
+                  name="Salida de ordenación">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Ordenar 1.Outputs[Salida de ordenación].Columns[cargo_id]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL CARGOS\Ordenar 1.Outputs[Salida de ordenación].Columns[cargo_id]"
+                      name="cargo_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[cargo_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Ordenar 1.Outputs[Salida de ordenación].Columns[nombre]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\INCREMENTAL CARGOS\Ordenar 1.Outputs[Salida de ordenación].Columns[nombre]"
+                      name="nombre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[nombre]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INCREMENTAL CARGOS\Origen de OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Origen de OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[cargos]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[cargo_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[cargo_id]"
+                      lineageId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[cargo_id]"
+                      name="cargo_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[nombre]"
+                      length="255"
+                      lineageId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[nombre]"
+                      name="nombre"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[cargo_id]"
+                      dataType="i4"
+                      name="cargo_id" />
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[nombre]"
+                      dataType="wstr"
+                      length="255"
+                      name="nombre" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[cargo_id]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[cargo_id]"
+                      name="cargo_id" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[nombre]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[nombre]"
+                      name="nombre" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Origen de OLE DB 1"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[dim_cargos]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran_DW2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran_DW2]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de origen de OLE DB].Columns[cargo_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de origen de OLE DB].ExternalColumns[cargo_id]"
+                      lineageId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de origen de OLE DB].Columns[cargo_id]"
+                      name="cargo_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de origen de OLE DB].Columns[nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de origen de OLE DB].ExternalColumns[nombre]"
+                      length="255"
+                      lineageId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de origen de OLE DB].Columns[nombre]"
+                      name="nombre"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de origen de OLE DB].ExternalColumns[cargo_id]"
+                      dataType="i4"
+                      name="cargo_id" />
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de origen de OLE DB].ExternalColumns[nombre]"
+                      dataType="wstr"
+                      length="255"
+                      name="nombre" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de error de origen de OLE DB].Columns[cargo_id]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de error de origen de OLE DB].Columns[cargo_id]"
+                      name="cargo_id" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de error de origen de OLE DB].Columns[nombre]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de error de origen de OLE DB].Columns[nombre]"
+                      name="nombre" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\INCREMENTAL CARGOS.Paths[Nuevo_registro]"
+              endId="Package\INCREMENTAL CARGOS\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+              name="Nuevo_registro"
+              startId="Package\INCREMENTAL CARGOS\División condicional.Outputs[Nuevo_registro]" />
+            <path
+              refId="Package\INCREMENTAL CARGOS.Paths[Salida de combinación de mezcla]"
+              endId="Package\INCREMENTAL CARGOS\División condicional.Inputs[Entrada de división condicional]"
+              name="Salida de combinación de mezcla"
+              startId="Package\INCREMENTAL CARGOS\Combinación de mezcla.Outputs[Salida de combinación de mezcla]" />
+            <path
+              refId="Package\INCREMENTAL CARGOS.Paths[Salida de ordenación]"
+              endId="Package\INCREMENTAL CARGOS\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla]"
+              name="Salida de ordenación"
+              startId="Package\INCREMENTAL CARGOS\Ordenar 1.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\INCREMENTAL CARGOS.Paths[Salida de ordenación1]"
+              endId="Package\INCREMENTAL CARGOS\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla]"
+              name="Salida de ordenación"
+              startId="Package\INCREMENTAL CARGOS\Ordenar.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\INCREMENTAL CARGOS.Paths[Salida de origen de OLE DB]"
+              endId="Package\INCREMENTAL CARGOS\Ordenar 1.Inputs[Entrada de ordenación]"
+              name="Salida de origen de OLE DB"
+              startId="Package\INCREMENTAL CARGOS\Origen de OLE DB.Outputs[Salida de origen de OLE DB]" />
+            <path
+              refId="Package\INCREMENTAL CARGOS.Paths[Salida de origen de OLE DB1]"
+              endId="Package\INCREMENTAL CARGOS\Ordenar.Inputs[Entrada de ordenación]"
+              name="Salida de origen de OLE DB"
+              startId="Package\INCREMENTAL CARGOS\Origen de OLE DB 1.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\INCREMENTAL COMUNAS"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{933f04ae-d3e9-447f-bf81-849ba9ac0144}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="INCREMENTAL COMUNAS"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\INCREMENTAL COMUNAS\Combinación de mezcla"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Combinación de mezcla;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Combina dos flujos de datos ordenados en uno solo mediante la combinación FULL, LEFT o INNER. Se recomienda esta transformación cuando se pueden ordenar los flujos de datos en sus orígenes."
+              name="Combinación de mezcla"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de combinación que se debe realizar."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número de columnas de la clave de ordenación."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores NULL se tratan como valores iguales."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indica la cantidad máxima solicitada de búferes por entrada antes del bloqueo."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\INCREMENTAL COMUNAS\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla]"
+                  hasSideEffects="true"
+                  name="Entrada izquierda de combinación de mezcla">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INCREMENTAL COMUNAS\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[comuna_id]"
+                      cachedDataType="i4"
+                      cachedName="comuna_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\INCREMENTAL COMUNAS\Ordenar 1.Outputs[Salida de ordenación].Columns[comuna_id]" />
+                    <inputColumn
+                      refId="Package\INCREMENTAL COMUNAS\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[comuna]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="comuna"
+                      lineageId="Package\INCREMENTAL COMUNAS\Ordenar 1.Outputs[Salida de ordenación].Columns[comuna]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\INCREMENTAL COMUNAS\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla]"
+                  hasSideEffects="true"
+                  name="Entrada derecha de combinación de mezcla">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INCREMENTAL COMUNAS\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla].Columns[comuna_id]"
+                      cachedDataType="i4"
+                      cachedName="comuna_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\INCREMENTAL COMUNAS\Ordenar.Outputs[Salida de ordenación].Columns[comuna_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL COMUNAS\Combinación de mezcla.Outputs[Salida de combinación de mezcla]"
+                  isSorted="true"
+                  name="Salida de combinación de mezcla">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[comuna_id]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL COMUNAS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[comuna_id]"
+                      name="comuna_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\INCREMENTAL COMUNAS\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[comuna_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[comuna]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\INCREMENTAL COMUNAS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[comuna]"
+                      name="comuna">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\INCREMENTAL COMUNAS\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[comuna]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[comuna_id_dim]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL COMUNAS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[comuna_id_dim]"
+                      name="comuna_id_dim">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\INCREMENTAL COMUNAS\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla].Columns[comuna_id]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INCREMENTAL COMUNAS\comunas DW"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="comunas DW"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[dim_comunas]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\INCREMENTAL COMUNAS\comunas DW.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran_DW2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran_DW2]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de origen de OLE DB].Columns[comuna_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de origen de OLE DB].ExternalColumns[comuna_id]"
+                      lineageId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de origen de OLE DB].Columns[comuna_id]"
+                      name="comuna_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de origen de OLE DB].Columns[comuna]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de origen de OLE DB].ExternalColumns[comuna]"
+                      length="255"
+                      lineageId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de origen de OLE DB].Columns[comuna]"
+                      name="comuna"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de origen de OLE DB].ExternalColumns[comuna_id]"
+                      dataType="i4"
+                      name="comuna_id" />
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de origen de OLE DB].ExternalColumns[comuna]"
+                      dataType="wstr"
+                      length="255"
+                      name="comuna" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de error de origen de OLE DB].Columns[comuna_id]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de error de origen de OLE DB].Columns[comuna_id]"
+                      name="comuna_id" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de error de origen de OLE DB].Columns[comuna]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de error de origen de OLE DB].Columns[comuna]"
+                      name="comuna" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INCREMENTAL COMUNAS\comunas relacional"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="comunas relacional"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[comunas]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\INCREMENTAL COMUNAS\comunas relacional.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de origen de OLE DB].Columns[comuna_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[comuna_id]"
+                      lineageId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de origen de OLE DB].Columns[comuna_id]"
+                      name="comuna_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de origen de OLE DB].Columns[comuna]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[comuna]"
+                      length="255"
+                      lineageId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de origen de OLE DB].Columns[comuna]"
+                      name="comuna"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[comuna_id]"
+                      dataType="i4"
+                      name="comuna_id" />
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[comuna]"
+                      dataType="wstr"
+                      length="255"
+                      name="comuna" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de error de origen de OLE DB].Columns[comuna_id]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de error de origen de OLE DB].Columns[comuna_id]"
+                      name="comuna_id" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de error de origen de OLE DB].Columns[comuna]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de error de origen de OLE DB].Columns[comuna]"
+                      name="comuna" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INCREMENTAL COMUNAS\División condicional"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="División condicional;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Enruta filas de datos a diferentes salidas según el contenido de los datos. Se usan condiciones (expresiones de SSIS) para especificar las filas que se van a enrutar. Por ejemplo, se usa para separar los registros que deben limpiarse de los registros listos para ser cargados o para enrutar solamente un subconjunto de registros."
+              name="División condicional"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\INCREMENTAL COMUNAS\División condicional.Inputs[Entrada de división condicional]"
+                  description="Entrada en la transformación División condicional"
+                  name="Entrada de división condicional">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INCREMENTAL COMUNAS\División condicional.Inputs[Entrada de división condicional].Columns[comuna_id_dim]"
+                      cachedDataType="i4"
+                      cachedName="comuna_id_dim"
+                      lineageId="Package\INCREMENTAL COMUNAS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[comuna_id_dim]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL COMUNAS\División condicional.Outputs[nueva comuna]"
+                  description="Salida 1 de la transformación División condicional"
+                  errorOrTruncationOperation="Cálculo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="nueva comuna"
+                  synchronousInputId="Package\INCREMENTAL COMUNAS\División condicional.Inputs[Entrada de división condicional]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                      name="Expression">[ISNULL](#{Package\INCREMENTAL COMUNAS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[comuna_id_dim]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(comuna_id_dim)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\INCREMENTAL COMUNAS\División condicional.Outputs[Salida predeterminada de división condicional]"
+                  description="Salida predeterminada de la transformación División condicional"
+                  exclusionGroup="1"
+                  name="Salida predeterminada de división condicional"
+                  synchronousInputId="Package\INCREMENTAL COMUNAS\División condicional.Inputs[Entrada de división condicional]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\INCREMENTAL COMUNAS\División condicional.Outputs[Salida de error de división condicional]"
+                  description="Salida de error de la transformación División condicional"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de división condicional"
+                  synchronousInputId="Package\INCREMENTAL COMUNAS\División condicional.Inputs[Entrada de división condicional]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL COMUNAS\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL COMUNAS\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INCREMENTAL COMUNAS\Insertar Comuna DW"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Insertar Comuna DW"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[dim_comunas]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\INCREMENTAL COMUNAS\Insertar Comuna DW.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran_DW2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran_DW2]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\INCREMENTAL COMUNAS\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INCREMENTAL COMUNAS\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB].Columns[comuna_id]"
+                      cachedDataType="i4"
+                      cachedName="comuna_id"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\INCREMENTAL COMUNAS\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB].ExternalColumns[comuna_id]"
+                      lineageId="Package\INCREMENTAL COMUNAS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[comuna_id]" />
+                    <inputColumn
+                      refId="Package\INCREMENTAL COMUNAS\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB].Columns[comuna]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="comuna"
+                      externalMetadataColumnId="Package\INCREMENTAL COMUNAS\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB].ExternalColumns[comuna]"
+                      lineageId="Package\INCREMENTAL COMUNAS\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[comuna]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL COMUNAS\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB].ExternalColumns[comuna_id]"
+                      dataType="i4"
+                      name="comuna_id" />
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL COMUNAS\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB].ExternalColumns[comuna]"
+                      dataType="wstr"
+                      length="255"
+                      name="comuna" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL COMUNAS\Insertar Comuna DW.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\INCREMENTAL COMUNAS\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\Insertar Comuna DW.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL COMUNAS\Insertar Comuna DW.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\Insertar Comuna DW.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL COMUNAS\Insertar Comuna DW.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INCREMENTAL COMUNAS\Ordenar"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Ordenar;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Ordena los datos de entrada de manera ascendente o descendente cuando no es posible ordenarlos en su origen. Por ejemplo, se ordenan los datos de ventas por 'id. de cliente' antes de que se escriban en un archivo plano y se entreguen a otro departamento. Nota: no se recomienda realizar esta transformación para grandes flujos de datos."
+              name="Ordenar"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si la transformación Ordenar quita filas con valores de ordenación duplicados."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número máximo de subprocesos que se deben usar para la ordenación."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\INCREMENTAL COMUNAS\Ordenar.Inputs[Entrada de ordenación]"
+                  name="Entrada de ordenación">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INCREMENTAL COMUNAS\Ordenar.Inputs[Entrada de ordenación].Columns[comuna_id]"
+                      cachedDataType="i4"
+                      cachedName="comuna_id"
+                      lineageId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de origen de OLE DB].Columns[comuna_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\INCREMENTAL COMUNAS\Ordenar.Inputs[Entrada de ordenación].Columns[comuna]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="comuna"
+                      lineageId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de origen de OLE DB].Columns[comuna]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL COMUNAS\Ordenar.Outputs[Salida de ordenación]"
+                  isSorted="true"
+                  name="Salida de ordenación">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\Ordenar.Outputs[Salida de ordenación].Columns[comuna_id]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL COMUNAS\Ordenar.Outputs[Salida de ordenación].Columns[comuna_id]"
+                      name="comuna_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de origen de OLE DB].Columns[comuna_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\Ordenar.Outputs[Salida de ordenación].Columns[comuna]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\INCREMENTAL COMUNAS\Ordenar.Outputs[Salida de ordenación].Columns[comuna]"
+                      name="comuna">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de origen de OLE DB].Columns[comuna]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INCREMENTAL COMUNAS\Ordenar 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Ordenar;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Ordena los datos de entrada de manera ascendente o descendente cuando no es posible ordenarlos en su origen. Por ejemplo, se ordenan los datos de ventas por 'id. de cliente' antes de que se escriban en un archivo plano y se entreguen a otro departamento. Nota: no se recomienda realizar esta transformación para grandes flujos de datos."
+              name="Ordenar 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si la transformación Ordenar quita filas con valores de ordenación duplicados."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número máximo de subprocesos que se deben usar para la ordenación."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\INCREMENTAL COMUNAS\Ordenar 1.Inputs[Entrada de ordenación]"
+                  name="Entrada de ordenación">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INCREMENTAL COMUNAS\Ordenar 1.Inputs[Entrada de ordenación].Columns[comuna_id]"
+                      cachedDataType="i4"
+                      cachedName="comuna_id"
+                      lineageId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de origen de OLE DB].Columns[comuna_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\INCREMENTAL COMUNAS\Ordenar 1.Inputs[Entrada de ordenación].Columns[comuna]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="comuna"
+                      lineageId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de origen de OLE DB].Columns[comuna]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL COMUNAS\Ordenar 1.Outputs[Salida de ordenación]"
+                  isSorted="true"
+                  name="Salida de ordenación">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\Ordenar 1.Outputs[Salida de ordenación].Columns[comuna_id]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL COMUNAS\Ordenar 1.Outputs[Salida de ordenación].Columns[comuna_id]"
+                      name="comuna_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de origen de OLE DB].Columns[comuna_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\INCREMENTAL COMUNAS\Ordenar 1.Outputs[Salida de ordenación].Columns[comuna]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\INCREMENTAL COMUNAS\Ordenar 1.Outputs[Salida de ordenación].Columns[comuna]"
+                      name="comuna">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de origen de OLE DB].Columns[comuna]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\INCREMENTAL COMUNAS.Paths[nueva comuna]"
+              endId="Package\INCREMENTAL COMUNAS\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB]"
+              name="nueva comuna"
+              startId="Package\INCREMENTAL COMUNAS\División condicional.Outputs[nueva comuna]" />
+            <path
+              refId="Package\INCREMENTAL COMUNAS.Paths[Salida de combinación de mezcla]"
+              endId="Package\INCREMENTAL COMUNAS\División condicional.Inputs[Entrada de división condicional]"
+              name="Salida de combinación de mezcla"
+              startId="Package\INCREMENTAL COMUNAS\Combinación de mezcla.Outputs[Salida de combinación de mezcla]" />
+            <path
+              refId="Package\INCREMENTAL COMUNAS.Paths[Salida de ordenación]"
+              endId="Package\INCREMENTAL COMUNAS\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla]"
+              name="Salida de ordenación"
+              startId="Package\INCREMENTAL COMUNAS\Ordenar 1.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\INCREMENTAL COMUNAS.Paths[Salida de ordenación1]"
+              endId="Package\INCREMENTAL COMUNAS\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla]"
+              name="Salida de ordenación"
+              startId="Package\INCREMENTAL COMUNAS\Ordenar.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\INCREMENTAL COMUNAS.Paths[Salida de origen de OLE DB]"
+              endId="Package\INCREMENTAL COMUNAS\Ordenar 1.Inputs[Entrada de ordenación]"
+              name="Salida de origen de OLE DB"
+              startId="Package\INCREMENTAL COMUNAS\comunas relacional.Outputs[Salida de origen de OLE DB]" />
+            <path
+              refId="Package\INCREMENTAL COMUNAS.Paths[Salida de origen de OLE DB1]"
+              endId="Package\INCREMENTAL COMUNAS\Ordenar.Inputs[Entrada de ordenación]"
+              name="Salida de origen de OLE DB"
+              startId="Package\INCREMENTAL COMUNAS\comunas DW.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\INCREMENTAL SUCURSAL"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{99af31e9-4c85-4406-9b08-63cc5e77ecdf}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="INCREMENTAL SUCURSAL"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Combinación de mezcla;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Combina dos flujos de datos ordenados en uno solo mediante la combinación FULL, LEFT o INNER. Se recomienda esta transformación cuando se pueden ordenar los flujos de datos en sus orígenes."
+              name="Combinación de mezcla"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de combinación que se debe realizar."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número de columnas de la clave de ordenación."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores NULL se tratan como valores iguales."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indica la cantidad máxima solicitada de búferes por entrada antes del bloqueo."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla]"
+                  hasSideEffects="true"
+                  name="Entrada izquierda de combinación de mezcla">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[sucursal_id]"
+                      cachedDataType="i4"
+                      cachedName="sucursal_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\INCREMENTAL SUCURSAL\Ordenar 1.Outputs[Salida de ordenación].Columns[sucursal_id]" />
+                    <inputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[sucursal]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="sucursal"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\INCREMENTAL SUCURSAL\Ordenar 1.Outputs[Salida de ordenación].Columns[sucursal]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla]"
+                  hasSideEffects="true"
+                  name="Entrada derecha de combinación de mezcla">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla].Columns[sucursal_id]"
+                      cachedDataType="i4"
+                      cachedName="sucursal_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\INCREMENTAL SUCURSAL\Ordenar.Outputs[Salida de ordenación].Columns[sucursal_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Outputs[Salida de combinación de mezcla]"
+                  isSorted="true"
+                  name="Salida de combinación de mezcla">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[sucursal_id]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[sucursal_id]"
+                      name="sucursal_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[sucursal_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[sucursal_id_dim]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[sucursal_id_dim]"
+                      name="sucursal_id_dim">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla].Columns[sucursal_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[sucursal]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[sucursal]"
+                      name="sucursal">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[sucursal]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INCREMENTAL SUCURSAL\comunas DW"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="comunas DW"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[dim_sucursales]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\INCREMENTAL SUCURSAL\comunas DW.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran_DW2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran_DW2]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de origen de OLE DB].Columns[comuna_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de origen de OLE DB].ExternalColumns[comuna_id]"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de origen de OLE DB].Columns[comuna_id]"
+                      name="comuna_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de origen de OLE DB].Columns[sucursal_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de origen de OLE DB].ExternalColumns[sucursal_id]"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de origen de OLE DB].Columns[sucursal_id]"
+                      name="sucursal_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de origen de OLE DB].Columns[sucursal]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de origen de OLE DB].ExternalColumns[sucursal]"
+                      length="255"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de origen de OLE DB].Columns[sucursal]"
+                      name="sucursal"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de origen de OLE DB].ExternalColumns[comuna_id]"
+                      dataType="i4"
+                      name="comuna_id" />
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de origen de OLE DB].ExternalColumns[sucursal_id]"
+                      dataType="i4"
+                      name="sucursal_id" />
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de origen de OLE DB].ExternalColumns[sucursal]"
+                      dataType="wstr"
+                      length="255"
+                      name="sucursal" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de error de origen de OLE DB].Columns[sucursal_id]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de error de origen de OLE DB].Columns[sucursal_id]"
+                      name="sucursal_id" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de error de origen de OLE DB].Columns[sucursal]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de error de origen de OLE DB].Columns[sucursal]"
+                      name="sucursal" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de error de origen de OLE DB].Columns[comuna_id]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de error de origen de OLE DB].Columns[comuna_id]"
+                      name="comuna_id" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INCREMENTAL SUCURSAL\comunas relacional"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="comunas relacional"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[sucursales]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\INCREMENTAL SUCURSAL\comunas relacional.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de origen de OLE DB].Columns[comuna_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[comuna_id]"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de origen de OLE DB].Columns[comuna_id]"
+                      name="comuna_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de origen de OLE DB].Columns[sucursal_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[sucursal_id]"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de origen de OLE DB].Columns[sucursal_id]"
+                      name="sucursal_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de origen de OLE DB].Columns[sucursal]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[sucursal]"
+                      length="255"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de origen de OLE DB].Columns[sucursal]"
+                      name="sucursal"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[comuna_id]"
+                      dataType="i4"
+                      name="comuna_id" />
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[sucursal_id]"
+                      dataType="i4"
+                      name="sucursal_id" />
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de origen de OLE DB].ExternalColumns[sucursal]"
+                      dataType="wstr"
+                      length="255"
+                      name="sucursal" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de error de origen de OLE DB].Columns[sucursal_id]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de error de origen de OLE DB].Columns[sucursal_id]"
+                      name="sucursal_id" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de error de origen de OLE DB].Columns[sucursal]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de error de origen de OLE DB].Columns[sucursal]"
+                      name="sucursal" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de error de origen de OLE DB].Columns[comuna_id]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de error de origen de OLE DB].Columns[comuna_id]"
+                      name="comuna_id" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INCREMENTAL SUCURSAL\División condicional"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="División condicional;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Enruta filas de datos a diferentes salidas según el contenido de los datos. Se usan condiciones (expresiones de SSIS) para especificar las filas que se van a enrutar. Por ejemplo, se usa para separar los registros que deben limpiarse de los registros listos para ser cargados o para enrutar solamente un subconjunto de registros."
+              name="División condicional"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\INCREMENTAL SUCURSAL\División condicional.Inputs[Entrada de división condicional]"
+                  description="Entrada en la transformación División condicional"
+                  name="Entrada de división condicional">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\División condicional.Inputs[Entrada de división condicional].Columns[sucursal_id_dim]"
+                      cachedDataType="i4"
+                      cachedName="sucursal_id_dim"
+                      lineageId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[sucursal_id_dim]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL SUCURSAL\División condicional.Outputs[nueva sucursal]"
+                  description="Salida 1 de la transformación División condicional"
+                  errorOrTruncationOperation="Cálculo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="nueva sucursal"
+                  synchronousInputId="Package\INCREMENTAL SUCURSAL\División condicional.Inputs[Entrada de división condicional]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                      name="Expression">[ISNULL](#{Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[sucursal_id_dim]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(sucursal_id_dim)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\INCREMENTAL SUCURSAL\División condicional.Outputs[Salida predeterminada de división condicional]"
+                  description="Salida predeterminada de la transformación División condicional"
+                  exclusionGroup="1"
+                  name="Salida predeterminada de división condicional"
+                  synchronousInputId="Package\INCREMENTAL SUCURSAL\División condicional.Inputs[Entrada de división condicional]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\INCREMENTAL SUCURSAL\División condicional.Outputs[Salida de error de división condicional]"
+                  description="Salida de error de la transformación División condicional"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de división condicional"
+                  synchronousInputId="Package\INCREMENTAL SUCURSAL\División condicional.Inputs[Entrada de división condicional]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL SUCURSAL\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL SUCURSAL\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Insertar Comuna DW"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[dim_sucursales]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Albarran_DW2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Albarran_DW2]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB].Columns[sucursal_id]"
+                      cachedDataType="i4"
+                      cachedName="sucursal_id"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB].ExternalColumns[sucursal_id]"
+                      lineageId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[sucursal_id]" />
+                    <inputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB].Columns[sucursal]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="sucursal"
+                      externalMetadataColumnId="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB].ExternalColumns[sucursal]"
+                      lineageId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[sucursal]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB].ExternalColumns[comuna_id]"
+                      dataType="i4"
+                      name="comuna_id" />
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB].ExternalColumns[sucursal_id]"
+                      dataType="i4"
+                      name="sucursal_id" />
+                    <externalMetadataColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB].ExternalColumns[sucursal]"
+                      dataType="wstr"
+                      length="255"
+                      name="sucursal" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INCREMENTAL SUCURSAL\Ordenar"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Ordenar;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Ordena los datos de entrada de manera ascendente o descendente cuando no es posible ordenarlos en su origen. Por ejemplo, se ordenan los datos de ventas por 'id. de cliente' antes de que se escriban en un archivo plano y se entreguen a otro departamento. Nota: no se recomienda realizar esta transformación para grandes flujos de datos."
+              name="Ordenar"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si la transformación Ordenar quita filas con valores de ordenación duplicados."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número máximo de subprocesos que se deben usar para la ordenación."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\INCREMENTAL SUCURSAL\Ordenar.Inputs[Entrada de ordenación]"
+                  name="Entrada de ordenación">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Ordenar.Inputs[Entrada de ordenación].Columns[sucursal_id]"
+                      cachedDataType="i4"
+                      cachedName="sucursal_id"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de origen de OLE DB].Columns[sucursal_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL SUCURSAL\Ordenar.Outputs[Salida de ordenación]"
+                  isSorted="true"
+                  name="Salida de ordenación">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Ordenar.Outputs[Salida de ordenación].Columns[sucursal_id]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL SUCURSAL\Ordenar.Outputs[Salida de ordenación].Columns[sucursal_id]"
+                      name="sucursal_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de origen de OLE DB].Columns[sucursal_id]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INCREMENTAL SUCURSAL\Ordenar 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Ordenar;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Ordena los datos de entrada de manera ascendente o descendente cuando no es posible ordenarlos en su origen. Por ejemplo, se ordenan los datos de ventas por 'id. de cliente' antes de que se escriban en un archivo plano y se entreguen a otro departamento. Nota: no se recomienda realizar esta transformación para grandes flujos de datos."
+              name="Ordenar 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si la transformación Ordenar quita filas con valores de ordenación duplicados."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número máximo de subprocesos que se deben usar para la ordenación."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\INCREMENTAL SUCURSAL\Ordenar 1.Inputs[Entrada de ordenación]"
+                  name="Entrada de ordenación">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Ordenar 1.Inputs[Entrada de ordenación].Columns[sucursal_id]"
+                      cachedDataType="i4"
+                      cachedName="sucursal_id"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de origen de OLE DB].Columns[sucursal_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Ordenar 1.Inputs[Entrada de ordenación].Columns[sucursal]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="sucursal"
+                      lineageId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de origen de OLE DB].Columns[sucursal]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INCREMENTAL SUCURSAL\Ordenar 1.Outputs[Salida de ordenación]"
+                  isSorted="true"
+                  name="Salida de ordenación">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Ordenar 1.Outputs[Salida de ordenación].Columns[sucursal_id]"
+                      dataType="i4"
+                      lineageId="Package\INCREMENTAL SUCURSAL\Ordenar 1.Outputs[Salida de ordenación].Columns[sucursal_id]"
+                      name="sucursal_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de origen de OLE DB].Columns[sucursal_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\INCREMENTAL SUCURSAL\Ordenar 1.Outputs[Salida de ordenación].Columns[sucursal]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\INCREMENTAL SUCURSAL\Ordenar 1.Outputs[Salida de ordenación].Columns[sucursal]"
+                      name="sucursal"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de origen de OLE DB].Columns[sucursal]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\INCREMENTAL SUCURSAL.Paths[nueva comuna]"
+              endId="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW.Inputs[Entrada de destino de OLE DB]"
+              name="nueva comuna"
+              startId="Package\INCREMENTAL SUCURSAL\División condicional.Outputs[nueva sucursal]" />
+            <path
+              refId="Package\INCREMENTAL SUCURSAL.Paths[Salida de combinación de mezcla]"
+              endId="Package\INCREMENTAL SUCURSAL\División condicional.Inputs[Entrada de división condicional]"
+              name="Salida de combinación de mezcla"
+              startId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Outputs[Salida de combinación de mezcla]" />
+            <path
+              refId="Package\INCREMENTAL SUCURSAL.Paths[Salida de ordenación]"
+              endId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla]"
+              name="Salida de ordenación"
+              startId="Package\INCREMENTAL SUCURSAL\Ordenar 1.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\INCREMENTAL SUCURSAL.Paths[Salida de ordenación1]"
+              endId="Package\INCREMENTAL SUCURSAL\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla]"
+              name="Salida de ordenación"
+              startId="Package\INCREMENTAL SUCURSAL\Ordenar.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\INCREMENTAL SUCURSAL.Paths[Salida de origen de OLE DB]"
+              endId="Package\INCREMENTAL SUCURSAL\Ordenar 1.Inputs[Entrada de ordenación]"
+              name="Salida de origen de OLE DB"
+              startId="Package\INCREMENTAL SUCURSAL\comunas relacional.Outputs[Salida de origen de OLE DB]" />
+            <path
+              refId="Package\INCREMENTAL SUCURSAL.Paths[Salida de origen de OLE DB1]"
+              endId="Package\INCREMENTAL SUCURSAL\Ordenar.Inputs[Entrada de ordenación]"
+              name="Salida de origen de OLE DB"
+              startId="Package\INCREMENTAL SUCURSAL\comunas DW.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{8F878066-9BA6-4541-9F8F-319733FDCFCA}"
+      DTS:From="Package\INCREMENTAL CARGOS"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\INCREMENTAL COMUNAS" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{5D698B4F-DAF9-41F5-B67D-10E12D2E551F}"
+      DTS:From="Package\INCREMENTAL COMUNAS"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\INCREMENTAL SUCURSAL" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="192,42"
+          Id="Package\INCREMENTAL CARGOS"
+          TopLeft="72,40" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\INCREMENTAL COMUNAS"
+          TopLeft="338,41" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\INCREMENTAL SUCURSAL"
+          TopLeft="610,38" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="264,61.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74,0"
+              Start="0,0"
+              End="66.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="66.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="538,60.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="72,0"
+              Start="0,0"
+              End="64.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="64.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\INCREMENTAL CARGOS">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="117,42"
+          Id="Package\INCREMENTAL CARGOS\Ordenar 1"
+          TopLeft="122,139" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\INCREMENTAL CARGOS\Origen de OLE DB"
+          TopLeft="75,32" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\INCREMENTAL CARGOS\División condicional"
+          TopLeft="652.5,33.75" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\INCREMENTAL CARGOS\Origen de OLE DB 1"
+          TopLeft="382,29" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\INCREMENTAL CARGOS\Combinación de mezcla"
+          TopLeft="196,284.5" />
+        <NodeLayout
+          Size="117,42"
+          Id="Package\INCREMENTAL CARGOS\Ordenar"
+          TopLeft="409,148" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\INCREMENTAL CARGOS\Destino de OLE DB"
+          TopLeft="725,362.5" />
+        <EdgeLayout
+          Id="Package\INCREMENTAL CARGOS.Paths[Salida de origen de OLE DB1]"
+          TopLeft="468,71">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77"
+              Start="0,0"
+              End="0,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL CARGOS.Paths[Salida de origen de OLE DB]"
+          TopLeft="157,74">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23.5,65"
+              Start="0,0"
+              End="23.5,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.5"
+                    Point2="0,32.5"
+                    Point3="4,32.5" />
+                  <mssgle:LineSegment
+                    End="19.5,32.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.5,32.5"
+                    Point2="23.5,32.5"
+                    Point3="23.5,36.5" />
+                  <mssgle:LineSegment
+                    End="23.5,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL CARGOS.Paths[Salida de ordenación1]"
+          TopLeft="467.5,190">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-176.5,94.5"
+              Start="0,0"
+              End="-176.5,87">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.25"
+                    Point2="0,47.25"
+                    Point3="-4,47.25" />
+                  <mssgle:LineSegment
+                    End="-172.5,47.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-172.5,47.25"
+                    Point2="-176.5,47.25"
+                    Point3="-176.5,51.25" />
+                  <mssgle:LineSegment
+                    End="-176.5,87" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL CARGOS.Paths[Salida de ordenación]"
+          TopLeft="180.5,181">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="65.0000000000001,103.5"
+              Start="0,0"
+              End="65.0000000000001,96">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.0449826989619" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,64.0449826989619"
+                    Point2="0,68.0449826989619"
+                    Point3="4,68.0449826989619" />
+                  <mssgle:LineSegment
+                    End="61.0000000000001,68.0449826989619" />
+                  <mssgle:CubicBezierSegment
+                    Point1="61.0000000000001,68.0449826989619"
+                    Point2="65.0000000000001,68.0449826989619"
+                    Point3="65.0000000000001,72.0449826989619" />
+                  <mssgle:LineSegment
+                    End="65.0000000000001,96" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL CARGOS.Paths[Salida de combinación de mezcla]"
+          TopLeft="336.5,284.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="401.5,-208.75"
+              Start="0,0"
+              End="401.5,-201.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-67.5095155709343" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-67.5095155709343"
+                    Point2="0,-71.5095155709343"
+                    Point3="4,-71.5095155709343" />
+                  <mssgle:LineSegment
+                    End="397.5,-71.5095155709343" />
+                  <mssgle:CubicBezierSegment
+                    Point1="397.5,-71.5095155709343"
+                    Point2="401.5,-71.5095155709343"
+                    Point3="401.5,-75.5095155709343" />
+                  <mssgle:LineSegment
+                    End="401.5,-201.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL CARGOS.Paths[Nuevo_registro]"
+          TopLeft="765.166666666667,75.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="43.8333333333334,286.75"
+              Start="0,0"
+              End="43.8333333333334,279.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,112.294901506373" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,112.294901506373"
+                    Point2="0,116.294901506373"
+                    Point3="4,116.294901506373" />
+                  <mssgle:LineSegment
+                    End="39.8333333333334,116.294901506373" />
+                  <mssgle:CubicBezierSegment
+                    Point1="39.8333333333334,116.294901506373"
+                    Point2="43.8333333333334,116.294901506373"
+                    Point3="43.8333333333334,120.294901506373" />
+                  <mssgle:LineSegment
+                    End="43.8333333333334,279.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-12.0203645833333,121.294901506373,67.8740625,11.384765625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\INCREMENTAL CARGOS\Origen de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\INCREMENTAL CARGOS\Origen de OLE DB 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\INCREMENTAL CARGOS\Destino de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\INCREMENTAL COMUNAS">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="169,42"
+          Id="Package\INCREMENTAL COMUNAS\comunas relacional"
+          TopLeft="75,32" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\INCREMENTAL COMUNAS\comunas DW"
+          TopLeft="382,29" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\INCREMENTAL COMUNAS\División condicional"
+          TopLeft="485.5,234.75" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\INCREMENTAL COMUNAS\Ordenar 1"
+          TopLeft="95,143" />
+        <EdgeLayout
+          Id="Package\INCREMENTAL COMUNAS.Paths[Salida de origen de OLE DB]"
+          TopLeft="158.75,74">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69"
+              Start="0,0"
+              End="0,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="117,42"
+          Id="Package\INCREMENTAL COMUNAS\Ordenar"
+          TopLeft="380,161" />
+        <EdgeLayout
+          Id="Package\INCREMENTAL COMUNAS.Paths[Salida de origen de OLE DB1]"
+          TopLeft="452.5,71">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14,90"
+              Start="0,0"
+              End="-14,82.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41"
+                    Point2="0,45"
+                    Point3="-4,45" />
+                  <mssgle:LineSegment
+                    End="-10,45" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10,45"
+                    Point2="-14,45"
+                    Point3="-14,49" />
+                  <mssgle:LineSegment
+                    End="-14,82.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="190,42"
+          Id="Package\INCREMENTAL COMUNAS\Combinación de mezcla"
+          TopLeft="196,251" />
+        <EdgeLayout
+          Id="Package\INCREMENTAL COMUNAS.Paths[Salida de ordenación]"
+          TopLeft="158,185">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="102.666666666667,66"
+              Start="0,0"
+              End="102.666666666667,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.2693110647182" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.2693110647182"
+                    Point2="0,39.2693110647182"
+                    Point3="4,39.2693110647182" />
+                  <mssgle:LineSegment
+                    End="98.6666666666667,39.2693110647182" />
+                  <mssgle:CubicBezierSegment
+                    Point1="98.6666666666667,39.2693110647182"
+                    Point2="102.666666666667,39.2693110647182"
+                    Point3="102.666666666667,43.2693110647182" />
+                  <mssgle:LineSegment
+                    End="102.666666666667,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL COMUNAS.Paths[Salida de ordenación1]"
+          TopLeft="438.5,203">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-117.166666666667,48"
+              Start="0,0"
+              End="-117.166666666667,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5594989561587" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5594989561587"
+                    Point2="0,28.5594989561587"
+                    Point3="-4,28.5594989561587" />
+                  <mssgle:LineSegment
+                    End="-113.166666666667,28.5594989561587" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-113.166666666667,28.5594989561587"
+                    Point2="-117.166666666667,28.5594989561587"
+                    Point3="-117.166666666667,32.5594989561587" />
+                  <mssgle:LineSegment
+                    End="-117.166666666667,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="178,42"
+          Id="Package\INCREMENTAL COMUNAS\Insertar Comuna DW"
+          TopLeft="481,327" />
+        <EdgeLayout
+          Id="Package\INCREMENTAL COMUNAS.Paths[Salida de combinación de mezcla]"
+          TopLeft="386,272">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="99.5,-16.25"
+              Start="0,0"
+              End="92,-16.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="45.75,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="45.75,0"
+                    Point2="49.75,0"
+                    Point3="49.75,-4" />
+                  <mssgle:LineSegment
+                    End="49.75,-12.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="49.75,-12.25"
+                    Point2="49.75,-16.25"
+                    Point3="53.75,-16.25" />
+                  <mssgle:LineSegment
+                    End="92,-16.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL COMUNAS.Paths[nueva comuna]"
+          TopLeft="570.5,276.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.25"
+              Start="0,0"
+              End="0,42.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-32.66998046875,17.49658203125,65.3399609375,7.7568359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\INCREMENTAL COMUNAS\comunas relacional">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\INCREMENTAL COMUNAS\comunas DW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\INCREMENTAL COMUNAS\Insertar Comuna DW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\INCREMENTAL SUCURSAL">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="169,42"
+          Id="Package\INCREMENTAL SUCURSAL\comunas relacional"
+          TopLeft="75,32" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW"
+          TopLeft="481,327" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\INCREMENTAL SUCURSAL\División condicional"
+          TopLeft="485.5,234.75" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\INCREMENTAL SUCURSAL\Ordenar 1"
+          TopLeft="95,143" />
+        <NodeLayout
+          Size="117,42"
+          Id="Package\INCREMENTAL SUCURSAL\Ordenar"
+          TopLeft="380,161" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\INCREMENTAL SUCURSAL\comunas DW"
+          TopLeft="382,29" />
+        <EdgeLayout
+          Id="Package\INCREMENTAL SUCURSAL.Paths[Salida de origen de OLE DB]"
+          TopLeft="158.75,74">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69"
+              Start="0,0"
+              End="0,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL SUCURSAL.Paths[Salida de origen de OLE DB1]"
+          TopLeft="452.5,71">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14,90"
+              Start="0,0"
+              End="-14,82.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41"
+                    Point2="0,45"
+                    Point3="-4,45" />
+                  <mssgle:LineSegment
+                    End="-10,45" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10,45"
+                    Point2="-14,45"
+                    Point3="-14,49" />
+                  <mssgle:LineSegment
+                    End="-14,82.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL SUCURSAL.Paths[nueva comuna]"
+          TopLeft="570.5,276.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.25"
+              Start="0,0"
+              End="0,42.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-33.12875,16.50048828125,66.2575,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="190,42"
+          Id="Package\INCREMENTAL SUCURSAL\Combinación de mezcla"
+          TopLeft="162,239" />
+        <EdgeLayout
+          Id="Package\INCREMENTAL SUCURSAL.Paths[Salida de ordenación]"
+          TopLeft="158,185">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="99,54"
+              Start="0,0"
+              End="99,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23"
+                    Point2="0,27"
+                    Point3="4,27" />
+                  <mssgle:LineSegment
+                    End="95,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="95,27"
+                    Point2="99,27"
+                    Point3="99,31" />
+                  <mssgle:LineSegment
+                    End="99,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL SUCURSAL.Paths[Salida de ordenación1]"
+          TopLeft="438.5,203">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-151.166666666667,36"
+              Start="0,0"
+              End="-151.166666666667,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.419624217119" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.419624217119"
+                    Point2="0,21.419624217119"
+                    Point3="-4,21.419624217119" />
+                  <mssgle:LineSegment
+                    End="-147.166666666667,21.419624217119" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-147.166666666667,21.419624217119"
+                    Point2="-151.166666666667,21.419624217119"
+                    Point3="-151.166666666667,25.419624217119" />
+                  <mssgle:LineSegment
+                    End="-151.166666666667,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL SUCURSAL.Paths[Salida de combinación de mezcla]"
+          TopLeft="352,257.875">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="133.5,0"
+              Start="0,0"
+              End="126,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="126,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\INCREMENTAL SUCURSAL\comunas relacional">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\INCREMENTAL SUCURSAL\Insertar Comuna DW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\INCREMENTAL SUCURSAL\comunas DW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
