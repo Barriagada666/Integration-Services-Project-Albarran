@@ -96,20 +96,29 @@ CREATE TABLE [dbo].[ventas_hechos] (
     [vendedor_id] INT NULL,                    -- Identificador del vendedor
     [sucursal_id] INT NULL,                    -- Identificador de la sucursal
     [fecha] DATE NULL,                         -- Fecha de la venta
-    [tipo_documento] NVARCHAR(255) NOT NULL,  -- Tipo de documento
-    [numero_documento] INT NOT NULL,          -- Número del documento
+    [tipo_documento] NVARCHAR(255) NOT NULL,   -- Tipo de documento
+    [numero_documento] INT NOT NULL,           -- Número del documento
     [cantidad] INT NULL,                       -- Cantidad vendida
-    [precio_unitario] DECIMAL(10, 2) NULL,    -- Precio unitario
+    [precio_unitario] DECIMAL(10, 2) NULL,     -- Precio unitario
     [descuento] DECIMAL(5, 2) NULL,            -- Descuento aplicado
-    [monto_total] AS (([cantidad] * [precio_unitario]) * (1 - [descuento] / 100)),  -- Cálculo del monto total
+    [monto_total] AS (CAST(([cantidad] * [precio_unitario]) * (1 - [descuento] / 100) AS DECIMAL(18, 2))),  -- Cálculo del monto total
     -- Claves foráneas referenciando las tablas correspondientes
     CONSTRAINT FK_ventas_hechos_clientes FOREIGN KEY (cliente_id) REFERENCES [dbo].[dim_clientes] (cliente_id),
     CONSTRAINT FK_ventas_hechos_empleados FOREIGN KEY (vendedor_id) REFERENCES [dbo].[dim_empleados] (empleado_id),
     CONSTRAINT FK_ventas_hechos_tiempo FOREIGN KEY (fecha) REFERENCES [dbo].[dim_tiempo] (fecha),
     CONSTRAINT FK_ventas_hechos_productos FOREIGN KEY (producto_id) REFERENCES [dbo].[dim_productos] (producto_id),
-    CONSTRAINT FK_ventas_hechos_sucursales FOREIGN KEY (sucursal_id) REFERENCES [dbo].[dim_sucursales] (sucursal_id)
-) ON [PRIMARY]
+    CONSTRAINT FK_ventas_hechos_sucursales FOREIGN KEY (sucursal_id) REFERENCES [dbo].[dim_sucursales] (sucursal_id),
+    -- Restricción de unicidad para la clave compuesta
+    CONSTRAINT UC_venta_compuesta UNIQUE (
+        [producto_id], 
+        [cliente_id], 
+        [vendedor_id], 
+        [sucursal_id], 
+        [fecha]
+    )
+) ON [PRIMARY];
 GO
+
 
 -- Configuración de la base de datos
 USE [master]
