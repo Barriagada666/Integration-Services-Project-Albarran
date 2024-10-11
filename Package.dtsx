@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="136"
-  DTS:VersionGUID="{EC30446E-608C-4E6A-97D1-700E2A4FE3F5}">
+  DTS:VersionBuild="137"
+  DTS:VersionGUID="{3804A1C6-050F-4E7B-8A4B-C40F3FB84278}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -3967,13 +3967,13 @@ JOIN
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="154,42"
-          Id="Package\Carga_Hechos_Ventas\Insertar Hechos"
-          TopLeft="360,330" />
-        <NodeLayout
           Size="137,42"
           Id="Package\Carga_Hechos_Ventas\Leer Hechos"
           TopLeft="52,41" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Carga_Hechos_Ventas\Insertar Hechos"
+          TopLeft="360,330" />
         <EdgeLayout
           Id="Package\Carga_Hechos_Ventas.Paths[Salida de origen de OLE DB]"
           TopLeft="120.5,83">
