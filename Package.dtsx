@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="139"
-  DTS:VersionGUID="{5F09761B-DD05-464B-B483-2BF561C1BBA3}">
+  DTS:VersionBuild="147"
+  DTS:VersionGUID="{D57903F3-2C02-4F2F-BC80-1A21B2EA802D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2322,15 +2322,6 @@ WHERE        dbo.comunas.comuna_id = dbo.sucursales.comuna_id</property>
                   name="Salida de origen de OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Carga_Dim_Sucursales\Leer Sucursales.Outputs[Salida de origen de OLE DB].Columns[comuna_id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Carga_Dim_Sucursales\Leer Sucursales.Outputs[Salida de origen de OLE DB].ExternalColumns[comuna_id]"
-                      lineageId="Package\Carga_Dim_Sucursales\Leer Sucursales.Outputs[Salida de origen de OLE DB].Columns[comuna_id]"
-                      name="comuna_id"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Carga_Dim_Sucursales\Leer Sucursales.Outputs[Salida de origen de OLE DB].Columns[sucursal_id]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversión"
@@ -2349,13 +2340,18 @@ WHERE        dbo.comunas.comuna_id = dbo.sucursales.comuna_id</property>
                       lineageId="Package\Carga_Dim_Sucursales\Leer Sucursales.Outputs[Salida de origen de OLE DB].Columns[sucursal]"
                       name="sucursal"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Dim_Sucursales\Leer Sucursales.Outputs[Salida de origen de OLE DB].Columns[comuna_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Dim_Sucursales\Leer Sucursales.Outputs[Salida de origen de OLE DB].ExternalColumns[comuna_id]"
+                      lineageId="Package\Carga_Dim_Sucursales\Leer Sucursales.Outputs[Salida de origen de OLE DB].Columns[comuna_id]"
+                      name="comuna_id"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Carga_Dim_Sucursales\Leer Sucursales.Outputs[Salida de origen de OLE DB].ExternalColumns[comuna_id]"
-                      dataType="i4"
-                      name="comuna_id" />
                     <externalMetadataColumn
                       refId="Package\Carga_Dim_Sucursales\Leer Sucursales.Outputs[Salida de origen de OLE DB].ExternalColumns[sucursal_id]"
                       dataType="i4"
@@ -2365,6 +2361,10 @@ WHERE        dbo.comunas.comuna_id = dbo.sucursales.comuna_id</property>
                       dataType="wstr"
                       length="255"
                       name="sucursal" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dim_Sucursales\Leer Sucursales.Outputs[Salida de origen de OLE DB].ExternalColumns[comuna_id]"
+                      dataType="i4"
+                      name="comuna_id" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2627,12 +2627,16 @@ FROM
                       name="cantidad" />
                     <externalMetadataColumn
                       refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[descuento]"
-                      dataType="i4"
-                      name="descuento" />
+                      dataType="numeric"
+                      name="descuento"
+                      precision="5"
+                      scale="2" />
                     <externalMetadataColumn
                       refId="Package\Carga_Hechos_Ventas\Insertar Hechos.Inputs[Entrada de destino de OLE DB].ExternalColumns[precio_unitario]"
-                      dataType="i4"
-                      name="precio_unitario" />
+                      dataType="numeric"
+                      name="precio_unitario"
+                      precision="10"
+                      scale="2" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3216,14 +3220,14 @@ JOIN
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="34.3846153846154,0"
+              EndConnector="34.384615384615,0"
               Start="0,0"
-              End="26.8846153846154,0">
+              End="26.884615384615,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="26.8846153846154,0" />
+                    End="26.884615384615,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3238,14 +3242,14 @@ JOIN
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="46.2307692307692,0"
+              EndConnector="46.23076923077,0"
               Start="0,0"
-              End="38.7307692307692,0">
+              End="38.73076923077,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="38.7307692307692,0" />
+                    End="38.73076923077,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3395,7 +3399,7 @@ JOIN
     design-time-name="Package\Carga_Dim_Cargos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="135,42"
           Id="Package\Carga_Dim_Cargos\Leer Cargos"
@@ -3435,9 +3439,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3473,7 +3475,7 @@ JOIN
     design-time-name="Package\Carga_Dim_Categorias">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="152,42"
           Id="Package\Carga_Dim_Categorias\Leer Categorias"
@@ -3513,9 +3515,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3551,7 +3551,7 @@ JOIN
     design-time-name="Package\Carga_Dim_Clientes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="139,42"
           Id="Package\Carga_Dim_Clientes\Leer Clientes"
@@ -3591,9 +3591,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3707,7 +3705,7 @@ JOIN
     design-time-name="Package\Carga_Dim_Empleados">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="154,42"
           Id="Package\Carga_Dim_Empleados\Leer Empleados"
@@ -3747,9 +3745,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3785,7 +3781,7 @@ JOIN
     design-time-name="Package\Carga_Dim_Productos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="166,42"
           Id="Package\Carga_Dim_Productos\Insertar Productos"
@@ -3825,9 +3821,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3863,7 +3857,7 @@ JOIN
     design-time-name="Package\Carga_Dim_Sucursales">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="152,42"
           Id="Package\Carga_Dim_Sucursales\Leer Sucursales"
@@ -3903,9 +3897,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

@@ -11,8 +11,8 @@
   DTS:LocaleID="13322"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{0CF00129-1477-411D-AA78-112BD6A85F9A}">
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{A7FFCAEC-B971-47EB-9511-C900C58E893D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -6088,30 +6088,36 @@ JOIN
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].Columns[precio_unitario]"
-                      dataType="i4"
+                      dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].ExternalColumns[precio_unitario]"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].Columns[precio_unitario]"
                       name="precio_unitario"
+                      precision="10"
+                      scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].Columns[descuento]"
-                      dataType="i4"
+                      dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].ExternalColumns[descuento]"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].Columns[descuento]"
                       name="descuento"
+                      precision="5"
+                      scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].Columns[monto_total]"
-                      dataType="i4"
+                      dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].ExternalColumns[monto_total]"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].Columns[monto_total]"
                       name="monto_total"
+                      precision="32"
+                      scale="8"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -6155,16 +6161,22 @@ JOIN
                       name="cantidad" />
                     <externalMetadataColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].ExternalColumns[precio_unitario]"
-                      dataType="i4"
-                      name="precio_unitario" />
+                      dataType="numeric"
+                      name="precio_unitario"
+                      precision="10"
+                      scale="2" />
                     <externalMetadataColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].ExternalColumns[descuento]"
-                      dataType="i4"
-                      name="descuento" />
+                      dataType="numeric"
+                      name="descuento"
+                      precision="5"
+                      scale="2" />
                     <externalMetadataColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].ExternalColumns[monto_total]"
-                      dataType="i4"
-                      name="monto_total" />
+                      dataType="numeric"
+                      name="monto_total"
+                      precision="32"
+                      scale="8" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -6220,19 +6232,25 @@ JOIN
                       name="cantidad" />
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de error de origen de OLE DB].Columns[precio_unitario]"
-                      dataType="i4"
+                      dataType="numeric"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de error de origen de OLE DB].Columns[precio_unitario]"
-                      name="precio_unitario" />
+                      name="precio_unitario"
+                      precision="10"
+                      scale="2" />
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de error de origen de OLE DB].Columns[descuento]"
-                      dataType="i4"
+                      dataType="numeric"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de error de origen de OLE DB].Columns[descuento]"
-                      name="descuento" />
+                      name="descuento"
+                      precision="5"
+                      scale="2" />
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de error de origen de OLE DB].Columns[monto_total]"
-                      dataType="i4"
+                      dataType="numeric"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de error de origen de OLE DB].Columns[monto_total]"
-                      name="monto_total" />
+                      name="monto_total"
+                      precision="32"
+                      scale="8" />
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
@@ -6434,16 +6452,22 @@ JOIN
                       name="cantidad" />
                     <externalMetadataColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Insertar diferencias DW.Inputs[OLE DB Destination Input].ExternalColumns[precio_unitario]"
-                      dataType="i4"
-                      name="precio_unitario" />
+                      dataType="numeric"
+                      name="precio_unitario"
+                      precision="10"
+                      scale="2" />
                     <externalMetadataColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Insertar diferencias DW.Inputs[OLE DB Destination Input].ExternalColumns[descuento]"
-                      dataType="i4"
-                      name="descuento" />
+                      dataType="numeric"
+                      name="descuento"
+                      precision="5"
+                      scale="2" />
                     <externalMetadataColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Insertar diferencias DW.Inputs[OLE DB Destination Input].ExternalColumns[monto_total]"
-                      dataType="i4"
-                      name="monto_total" />
+                      dataType="numeric"
+                      name="monto_total"
+                      precision="32"
+                      scale="8" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -7333,8 +7357,10 @@ JOIN
                     </inputColumn>
                     <inputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW.Inputs[Sort Input].Columns[precio_unitario]"
-                      cachedDataType="i4"
+                      cachedDataType="numeric"
                       cachedName="precio_unitario"
+                      cachedPrecision="10"
+                      cachedScale="2"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].Columns[precio_unitario]">
                       <properties>
                         <property
@@ -7349,8 +7375,10 @@ JOIN
                     </inputColumn>
                     <inputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW.Inputs[Sort Input].Columns[descuento]"
-                      cachedDataType="i4"
+                      cachedDataType="numeric"
                       cachedName="descuento"
+                      cachedPrecision="5"
+                      cachedScale="2"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].Columns[descuento]">
                       <properties>
                         <property
@@ -7365,8 +7393,10 @@ JOIN
                     </inputColumn>
                     <inputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW.Inputs[Sort Input].Columns[monto_total]"
-                      cachedDataType="i4"
+                      cachedDataType="numeric"
                       cachedName="monto_total"
+                      cachedPrecision="32"
+                      cachedScale="8"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].Columns[monto_total]">
                       <properties>
                         <property
@@ -7510,9 +7540,11 @@ JOIN
                     </outputColumn>
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW.Outputs[Sort Output].Columns[precio_unitario]"
-                      dataType="i4"
+                      dataType="numeric"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW.Outputs[Sort Output].Columns[precio_unitario]"
-                      name="precio_unitario">
+                      name="precio_unitario"
+                      precision="10"
+                      scale="2">
                       <properties>
                         <property
                           containsID="true"
@@ -7523,9 +7555,11 @@ JOIN
                     </outputColumn>
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW.Outputs[Sort Output].Columns[descuento]"
-                      dataType="i4"
+                      dataType="numeric"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW.Outputs[Sort Output].Columns[descuento]"
-                      name="descuento">
+                      name="descuento"
+                      precision="5"
+                      scale="2">
                       <properties>
                         <property
                           containsID="true"
@@ -7536,9 +7570,11 @@ JOIN
                     </outputColumn>
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW.Outputs[Sort Output].Columns[monto_total]"
-                      dataType="i4"
+                      dataType="numeric"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW.Outputs[Sort Output].Columns[monto_total]"
-                      name="monto_total">
+                      name="monto_total"
+                      precision="32"
+                      scale="8">
                       <properties>
                         <property
                           containsID="true"
@@ -9847,7 +9883,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9881,7 +9919,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9915,7 +9955,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9949,7 +9991,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9983,7 +10027,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10590,9 +10636,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10614,9 +10658,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10650,9 +10692,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10686,9 +10726,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10710,9 +10748,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11112,9 +11148,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11148,9 +11182,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11172,9 +11204,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11196,9 +11226,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11244,9 +11272,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
