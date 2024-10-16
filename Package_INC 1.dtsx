@@ -11,8 +11,8 @@
   DTS:LocaleID="13322"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{132C721A-1FC7-4441-A078-02E27E53C759}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{94437D58-A86B-4812-B3D6-5F6D1E4D74E6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,7 +25,12 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=.;Initial Catalog=Albarran;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;User ID=dba;Initial Catalog=Albarran;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-Package1-{744EF07D-548B-4DAA-95F7-55E6E808B47E}LocalHost.Albarran;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAt48jT3p1I0Kol8b5bYsFUgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACOHvnD+iLwiIXiQC0KQOb/AAAAAASAAACgAAAAEAAAAP721jUioFsaCwCPJZRl5qogAAAAcf1xCWB+dj59HWkvW/kEHZnYa0wV9JA4k8JqVJ1kNwUUAAAAdpRX0mL1qfUPxJrI7M/jP/ycEII</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -37,7 +42,12 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=.;Initial Catalog=Albarran_DW2;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;User ID=dba;Initial Catalog=Albarran_DW2;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-Package1-{E427D69E-A55F-492C-B449-A064C522D1B7}LocalHost.Albarran_DW2;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAt48jT3p1I0Kol8b5bYsFUgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABicT2v9Qm+HOlLlJf1QW8KAAAAAASAAACgAAAAEAAAAITT9j8SFc325kE6/Q3/0HsgAAAAoz15mWj6LRRdQqBX8xrV0L++qLY0o3XRX2coBq5AzwsUAAAApCiWjYU1ZL/5mr+PwUxfh1QAaFY</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -9601,11 +9611,23 @@ JOIN
         <NodeLayout
           Size="214,42"
           Id="Package\INCREMENTAL CATEGORIAS"
-          TopLeft="29,97" />
+          TopLeft="63,102" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\INCREMENTAL CLIENTE"
+          TopLeft="608,110" />
         <NodeLayout
           Size="200,42"
           Id="Package\INCREMENTAL COMUNAS"
           TopLeft="338,41" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\INCREMENTAL EMPLEADO"
+          TopLeft="63,207" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\INCREMENTAL HECHOS_VENTA"
+          TopLeft="594,210" />
         <NodeLayout
           Size="212,42"
           Id="Package\INCREMENTAL PRODUCTOS"
@@ -9658,44 +9680,20 @@ JOIN
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="193,42"
-          Id="Package\INCREMENTAL CLIENTE"
-          TopLeft="580,111" />
-        <NodeLayout
-          Size="204,42"
-          Id="Package\INCREMENTAL EMPLEADO"
-          TopLeft="66,257" />
-        <NodeLayout
-          Size="230,42"
-          Id="Package\INCREMENTAL HECHOS_VENTA"
-          TopLeft="639,252" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="711,80">
+          TopLeft="707.75,80">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-34.5,31"
+              EndConnector="0,30"
               Start="0,0"
-              End="-34.5,23.5">
+              End="0,22.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,11.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11.5"
-                    Point2="0,15.5"
-                    Point3="-4,15.5" />
-                  <mssgle:LineSegment
-                    End="-30.5,15.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-30.5,15.5"
-                    Point2="-34.5,15.5"
-                    Point3="-34.5,19.5" />
-                  <mssgle:LineSegment
-                    End="-34.5,23.5" />
+                    End="0,22.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9706,30 +9704,18 @@ JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="580,132">
+          TopLeft="608,127.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-42,-8"
+              EndConnector="-70,0"
               Start="0,0"
-              End="-34.5,-8">
+              End="-62.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-17,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-17,0"
-                    Point2="-21,0"
-                    Point3="-21,-4" />
-                  <mssgle:LineSegment
-                    End="-21,-4" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-21,-4"
-                    Point2="-21,-8"
-                    Point3="-25,-8" />
-                  <mssgle:LineSegment
-                    End="-34.5,-8" />
+                    End="-62.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9740,18 +9726,18 @@ JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="326,121">
+          TopLeft="326,123.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-83,0"
+              EndConnector="-49,0"
               Start="0,0"
-              End="-75.5,0">
+              End="-41.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-75.5,0" />
+                    End="-41.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9762,30 +9748,18 @@ JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="136,139">
+          TopLeft="167.5,144">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="32,118"
+              EndConnector="0,63"
               Start="0,0"
-              End="32,110.5">
+              End="0,55.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,55" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,55"
-                    Point2="0,59"
-                    Point3="4,59" />
-                  <mssgle:LineSegment
-                    End="28,59" />
-                  <mssgle:CubicBezierSegment
-                    Point1="28,59"
-                    Point2="32,59"
-                    Point3="32,63" />
-                  <mssgle:LineSegment
-                    End="32,110.5" />
+                    End="0,55.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9796,18 +9770,18 @@ JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="270,275.5">
+          TopLeft="267,229.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="369,0"
+              EndConnector="327,0"
               Start="0,0"
-              End="361.5,0">
+              End="319.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="361.5,0" />
+                    End="319.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9825,33 +9799,33 @@ JOIN
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="126,42"
-          Id="Package\INCREMENTAL CARGOS\Ordenar 1"
-          TopLeft="83,139" />
-        <NodeLayout
-          Size="123,42"
-          Id="Package\INCREMENTAL CARGOS\Cargo DB"
-          TopLeft="75,32" />
+          Size="190,42"
+          Id="Package\INCREMENTAL CARGOS\Combinación de mezcla"
+          TopLeft="158,292.5" />
         <NodeLayout
           Size="171,42"
           Id="Package\INCREMENTAL CARGOS\División condicional"
           TopLeft="192.5,367.75" />
         <NodeLayout
-          Size="127,42"
-          Id="Package\INCREMENTAL CARGOS\Cargo DW"
-          TopLeft="382,29" />
-        <NodeLayout
-          Size="190,42"
-          Id="Package\INCREMENTAL CARGOS\Combinación de mezcla"
-          TopLeft="158,292.5" />
+          Size="168,42"
+          Id="Package\INCREMENTAL CARGOS\Destino de OLE DB"
+          TopLeft="199,484.5" />
         <NodeLayout
           Size="117,42"
           Id="Package\INCREMENTAL CARGOS\Ordenar"
           TopLeft="402,144" />
         <NodeLayout
-          Size="168,42"
-          Id="Package\INCREMENTAL CARGOS\Destino de OLE DB"
-          TopLeft="199,484.5" />
+          Size="126,42"
+          Id="Package\INCREMENTAL CARGOS\Ordenar 1"
+          TopLeft="83,139" />
+        <NodeLayout
+          Size="127,42"
+          Id="Package\INCREMENTAL CARGOS\Cargo DW"
+          TopLeft="382,29" />
+        <NodeLayout
+          Size="123,42"
+          Id="Package\INCREMENTAL CARGOS\Cargo DB"
+          TopLeft="75,32" />
         <EdgeLayout
           Id="Package\INCREMENTAL CARGOS.Paths[Salida de origen de OLE DB1]"
           TopLeft="445.5,71">
@@ -10050,7 +10024,7 @@ JOIN
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\INCREMENTAL CARGOS\Cargo DB">
+    design-time-name="Package\INCREMENTAL CARGOS\Destino de OLE DB">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10076,7 +10050,7 @@ JOIN
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\INCREMENTAL CARGOS\Destino de OLE DB">
+    design-time-name="Package\INCREMENTAL CARGOS\Cargo DB">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10110,17 +10084,17 @@ JOIN
           Id="Package\INCREMENTAL CATEGORIAS\Ordenar DW"
           TopLeft="398,133" />
         <NodeLayout
-          Size="141,42"
-          Id="Package\INCREMENTAL CATEGORIAS\Categoría DB"
-          TopLeft="105,25" />
+          Size="144,42"
+          Id="Package\INCREMENTAL CATEGORIAS\Categoría DW"
+          TopLeft="401,29" />
         <NodeLayout
           Size="178,42"
           Id="Package\INCREMENTAL CATEGORIAS\Insertar Comuna DW"
           TopLeft="218.461538461539,391.692307692308" />
         <NodeLayout
-          Size="144,42"
-          Id="Package\INCREMENTAL CATEGORIAS\Categoría DW"
-          TopLeft="401,29" />
+          Size="141,42"
+          Id="Package\INCREMENTAL CATEGORIAS\Categoría DB"
+          TopLeft="105,25" />
         <EdgeLayout
           Id="Package\INCREMENTAL CATEGORIAS.Paths[Salida de origen de OLE DB1]"
           TopLeft="469.75,71">
@@ -10140,7 +10114,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10162,7 +10138,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10196,7 +10174,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10230,7 +10210,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10252,7 +10234,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10283,7 +10267,7 @@ JOIN
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\INCREMENTAL CATEGORIAS\Categoría DB">
+    design-time-name="Package\INCREMENTAL CATEGORIAS\Categoría DW">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10309,7 +10293,250 @@ JOIN
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\INCREMENTAL CATEGORIAS\Categoría DW">
+    design-time-name="Package\INCREMENTAL CATEGORIAS\Categoría DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\INCREMENTAL CLIENTE">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="130,42"
+          Id="Package\INCREMENTAL CLIENTE\Merge Join"
+          TopLeft="256,253" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\INCREMENTAL CLIENTE\Ordenar DB"
+          TopLeft="123,151" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\INCREMENTAL CLIENTE\Ordenar DW"
+          TopLeft="384,145.692307692308" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\INCREMENTAL CLIENTE\División condicional"
+          TopLeft="239,327" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\INCREMENTAL CLIENTE\Cliente DW"
+          TopLeft="382,29" />
+        <NodeLayout
+          Size="128,42"
+          Id="Package\INCREMENTAL CLIENTE\Cliente DB"
+          TopLeft="124,29" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\INCREMENTAL CLIENTE\Insertar diferencias DW"
+          TopLeft="230,456" />
+        <EdgeLayout
+          Id="Package\INCREMENTAL CLIENTE.Paths[Sort Output1]"
+          TopLeft="452.5,187.692307692308">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-111.166666666667,65.307692307692"
+              Start="0,0"
+              End="-111.166666666667,57.807692307692">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.7082066869299" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.7082066869299"
+                    Point2="0,38.7082066869299"
+                    Point3="-4,38.7082066869299" />
+                  <mssgle:LineSegment
+                    End="-107.166666666667,38.7082066869299" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-107.166666666667,38.7082066869299"
+                    Point2="-111.166666666667,38.7082066869299"
+                    Point3="-111.166666666667,42.7082066869299" />
+                  <mssgle:LineSegment
+                    End="-111.166666666667,57.807692307692" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL CLIENTE.Paths[Sort Output]"
+          TopLeft="190,193">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110.666666666667,60"
+              Start="0,0"
+              End="110.666666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5623100303951"
+                    Point2="0,35.5623100303951"
+                    Point3="4,35.5623100303951" />
+                  <mssgle:LineSegment
+                    End="106.666666666667,35.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="106.666666666667,35.5623100303951"
+                    Point2="110.666666666667,35.5623100303951"
+                    Point3="110.666666666667,39.5623100303951" />
+                  <mssgle:LineSegment
+                    End="110.666666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL CLIENTE.Paths[Salida de origen de OLE DB1]"
+          TopLeft="450,71">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.692307692308"
+              Start="0,0"
+              End="0,67.192307692308">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.192307692308" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL CLIENTE.Paths[Salida de origen de OLE DB]"
+          TopLeft="189,71">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,80"
+              Start="0,0"
+              End="0,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL CLIENTE.Paths[nuevo(s) cliente(s)]"
+          TopLeft="324.75,369">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,87"
+              Start="0,0"
+              End="0,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-41.818359375,33.9453125,83.63671875,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL CLIENTE.Paths[Merge Join Output]"
+          TopLeft="322.75,295">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\INCREMENTAL CLIENTE\Cliente DW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\INCREMENTAL CLIENTE\Cliente DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\INCREMENTAL CLIENTE\Insertar diferencias DW">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10339,9 +10566,9 @@ JOIN
           Id="Package\INCREMENTAL COMUNAS\Ordenar 1"
           TopLeft="80,142" />
         <NodeLayout
-          Size="135,42"
-          Id="Package\INCREMENTAL COMUNAS\Comuna DB"
-          TopLeft="75,32" />
+          Size="138,42"
+          Id="Package\INCREMENTAL COMUNAS\Comuna DW"
+          TopLeft="382,29" />
         <NodeLayout
           Size="178,42"
           Id="Package\INCREMENTAL COMUNAS\Insertar Comuna DW"
@@ -10351,9 +10578,9 @@ JOIN
           Id="Package\INCREMENTAL COMUNAS\Combinación de mezcla"
           TopLeft="196,251" />
         <NodeLayout
-          Size="138,42"
-          Id="Package\INCREMENTAL COMUNAS\Comuna DW"
-          TopLeft="382,29" />
+          Size="135,42"
+          Id="Package\INCREMENTAL COMUNAS\Comuna DB"
+          TopLeft="75,32" />
         <EdgeLayout
           Id="Package\INCREMENTAL COMUNAS.Paths[Salida de origen de OLE DB1]"
           TopLeft="449.25,71">
@@ -10373,7 +10600,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10395,7 +10624,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10429,7 +10660,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10463,7 +10696,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10485,7 +10720,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10516,7 +10753,7 @@ JOIN
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\INCREMENTAL COMUNAS\Comuna DB">
+    design-time-name="Package\INCREMENTAL COMUNAS\Comuna DW">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10542,7 +10779,512 @@ JOIN
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\INCREMENTAL COMUNAS\Comuna DW">
+    design-time-name="Package\INCREMENTAL COMUNAS\Comuna DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\INCREMENTAL EMPLEADO">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="145,42"
+          Id="Package\INCREMENTAL EMPLEADO\Empleado DW"
+          TopLeft="395,47" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\INCREMENTAL EMPLEADO\Merge Join"
+          TopLeft="320,266" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\INCREMENTAL EMPLEADO\Empleado DB"
+          TopLeft="137,47" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\INCREMENTAL EMPLEADO\Ordenar DB"
+          TopLeft="153,144" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\INCREMENTAL EMPLEADO\Ordenar DW"
+          TopLeft="377,156" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\INCREMENTAL EMPLEADO\División condicional"
+          TopLeft="300,366" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\INCREMENTAL EMPLEADO\Insertar diferencias DW"
+          TopLeft="292,468" />
+        <EdgeLayout
+          Id="Package\INCREMENTAL EMPLEADO.Paths[Sort Output1]"
+          TopLeft="445.5,198">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-40.1666666666667,68"
+              Start="0,0"
+              End="-40.1666666666667,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.3039513677812" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.3039513677812"
+                    Point2="0,40.3039513677812"
+                    Point3="-4,40.3039513677812" />
+                  <mssgle:LineSegment
+                    End="-36.1666666666667,40.3039513677812" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-36.1666666666667,40.3039513677812"
+                    Point2="-40.1666666666667,40.3039513677812"
+                    Point3="-40.1666666666667,44.3039513677812" />
+                  <mssgle:LineSegment
+                    End="-40.1666666666667,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL EMPLEADO.Paths[Sort Output]"
+          TopLeft="220,186">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="165,80"
+              Start="0,0"
+              End="165,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36"
+                    Point2="0,40"
+                    Point3="4,40" />
+                  <mssgle:LineSegment
+                    End="161,40" />
+                  <mssgle:CubicBezierSegment
+                    Point1="161,40"
+                    Point2="165,40"
+                    Point3="165,44" />
+                  <mssgle:LineSegment
+                    End="165,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL EMPLEADO.Paths[Salida de origen de OLE DB1]"
+          TopLeft="467.5,89">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-22,67"
+              Start="0,0"
+              End="-22,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.5"
+                    Point2="0,33.5"
+                    Point3="-4,33.5" />
+                  <mssgle:LineSegment
+                    End="-18,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18,33.5"
+                    Point2="-22,33.5"
+                    Point3="-22,37.5" />
+                  <mssgle:LineSegment
+                    End="-22,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL EMPLEADO.Paths[Salida de origen de OLE DB]"
+          TopLeft="208,89">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12,55"
+              Start="0,0"
+              End="12,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5"
+                    Point2="0,27.5"
+                    Point3="4,27.5" />
+                  <mssgle:LineSegment
+                    End="8,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8,27.5"
+                    Point2="12,27.5"
+                    Point3="12,31.5" />
+                  <mssgle:LineSegment
+                    End="12,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL EMPLEADO.Paths[nuevo(s) empleado(s)]"
+          TopLeft="386.25,408">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.978359375,20.4453125,97.95671875,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL EMPLEADO.Paths[Merge Join Output]"
+          TopLeft="385.25,308">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\INCREMENTAL EMPLEADO\Empleado DW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\INCREMENTAL EMPLEADO\Empleado DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\INCREMENTAL EMPLEADO\Insertar diferencias DW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\INCREMENTAL HECHOS_VENTA">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="134,42"
+          Id="Package\INCREMENTAL HECHOS_VENTA\Ordenar DB"
+          TopLeft="158,136" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DB"
+          TopLeft="137,47" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW"
+          TopLeft="405,142" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW"
+          TopLeft="395,47" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\INCREMENTAL HECHOS_VENTA\Insertar diferencias DW"
+          TopLeft="265,452" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\INCREMENTAL HECHOS_VENTA\Merge Join"
+          TopLeft="287,228" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\INCREMENTAL HECHOS_VENTA\División condicional"
+          TopLeft="267,328" />
+        <EdgeLayout
+          Id="Package\INCREMENTAL HECHOS_VENTA.Paths[Sort Output1]"
+          TopLeft="473.5,184">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-101.166666666667,44"
+              Start="0,0"
+              End="-101.166666666667,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.0790273556231" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.0790273556231"
+                    Point2="0,26.0790273556231"
+                    Point3="-4,26.0790273556231" />
+                  <mssgle:LineSegment
+                    End="-97.1666666666667,26.0790273556231" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-97.1666666666667,26.0790273556231"
+                    Point2="-101.166666666667,26.0790273556231"
+                    Point3="-101.166666666667,30.0790273556231" />
+                  <mssgle:LineSegment
+                    End="-101.166666666667,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL HECHOS_VENTA.Paths[Sort Output]"
+          TopLeft="225,178">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="127,50"
+              Start="0,0"
+              End="127,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21"
+                    Point2="0,25"
+                    Point3="4,25" />
+                  <mssgle:LineSegment
+                    End="123,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="123,25"
+                    Point2="127,25"
+                    Point3="127,29" />
+                  <mssgle:LineSegment
+                    End="127,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL HECHOS_VENTA.Paths[Salida de origen de OLE DB1]"
+          TopLeft="475.75,89">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53"
+              Start="0,0"
+              End="0,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL HECHOS_VENTA.Paths[Salida de origen de OLE DB]"
+          TopLeft="221.75,89">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL HECHOS_VENTA.Paths[nueva(s) venta(s)]"
+          TopLeft="356.25,370">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,82"
+              Start="0,0"
+              End="0,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-39.618359375,31.4453125,79.23671875,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL HECHOS_VENTA.Paths[Merge Join Output]"
+          TopLeft="352.25,270">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\INCREMENTAL HECHOS_VENTA\Insertar diferencias DW">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10561,16 +11303,12 @@ JOIN
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="137,42"
-          Id="Package\INCREMENTAL PRODUCTOS\Producto DB"
-          TopLeft="75,32" />
-        <NodeLayout
-          Size="137,42"
           Id="Package\INCREMENTAL PRODUCTOS\Ordenar DW"
           TopLeft="385,142" />
         <NodeLayout
-          Size="190,42"
-          Id="Package\INCREMENTAL PRODUCTOS\Combinación de mezcla"
-          TopLeft="219,229" />
+          Size="155,42"
+          Id="Package\INCREMENTAL PRODUCTOS\Conditional Split"
+          TopLeft="235,321" />
         <NodeLayout
           Size="168,42"
           Id="Package\INCREMENTAL PRODUCTOS\Ordenar Relacional"
@@ -10580,53 +11318,17 @@ JOIN
           Id="Package\INCREMENTAL PRODUCTOS\Insertar Comuna DW"
           TopLeft="228.461538461539,424.692307692308" />
         <NodeLayout
+          Size="137,42"
+          Id="Package\INCREMENTAL PRODUCTOS\Producto DB"
+          TopLeft="75,32" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\INCREMENTAL PRODUCTOS\Combinación de mezcla"
+          TopLeft="219,229" />
+        <NodeLayout
           Size="141,42"
           Id="Package\INCREMENTAL PRODUCTOS\Producto DW"
           TopLeft="382,29" />
-        <EdgeLayout
-          Id="Package\INCREMENTAL PRODUCTOS.Paths[Salida de origen de OLE DB1]"
-          TopLeft="453,71">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,71"
-              Start="0,0"
-              End="0,63.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,63.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\INCREMENTAL PRODUCTOS.Paths[Salida de origen de OLE DB]"
-          TopLeft="143.25,74">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,66"
-              Start="0,0"
-              End="0,58.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,58.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\INCREMENTAL PRODUCTOS.Paths[Salida de ordenación1]"
           TopLeft="453.5,184">
@@ -10658,7 +11360,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10692,13 +11396,11 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="155,42"
-          Id="Package\INCREMENTAL PRODUCTOS\Conditional Split"
-          TopLeft="235,321" />
         <EdgeLayout
           Id="Package\INCREMENTAL PRODUCTOS.Paths[Salida de combinación de mezcla]"
           TopLeft="313.25,271">
@@ -10718,7 +11420,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10745,11 +11449,59 @@ JOIN
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL PRODUCTOS.Paths[Salida de origen de OLE DB1]"
+          TopLeft="453,71">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71"
+              Start="0,0"
+              End="0,63.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INCREMENTAL PRODUCTOS.Paths[Salida de origen de OLE DB]"
+          TopLeft="143.25,74">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66"
+              Start="0,0"
+              End="0,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\INCREMENTAL PRODUCTOS\Producto DB">
+    design-time-name="Package\INCREMENTAL PRODUCTOS\Insertar Comuna DW">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10762,7 +11514,7 @@ JOIN
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\INCREMENTAL PRODUCTOS\Insertar Comuna DW">
+    design-time-name="Package\INCREMENTAL PRODUCTOS\Producto DB">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10839,7 +11591,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10861,7 +11615,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10895,7 +11651,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10929,7 +11687,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10951,7 +11711,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11017,724 +11779,6 @@ JOIN
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\INCREMENTAL CLIENTE">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="128,42"
-          Id="Package\INCREMENTAL CLIENTE\Cliente DB"
-          TopLeft="124,29" />
-        <NodeLayout
-          Size="131,42"
-          Id="Package\INCREMENTAL CLIENTE\Cliente DW"
-          TopLeft="382,29" />
-        <NodeLayout
-          Size="134,42"
-          Id="Package\INCREMENTAL CLIENTE\Ordenar DB"
-          TopLeft="123,151" />
-        <EdgeLayout
-          Id="Package\INCREMENTAL CLIENTE.Paths[Salida de origen de OLE DB]"
-          TopLeft="189,71">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,80"
-              Start="0,0"
-              End="0,72.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,72.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="137,42"
-          Id="Package\INCREMENTAL CLIENTE\Ordenar DW"
-          TopLeft="384,145.692307692308" />
-        <EdgeLayout
-          Id="Package\INCREMENTAL CLIENTE.Paths[Salida de origen de OLE DB1]"
-          TopLeft="450,71">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,74.692307692308"
-              Start="0,0"
-              End="0,67.192307692308">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,67.192307692308" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="130,42"
-          Id="Package\INCREMENTAL CLIENTE\Merge Join"
-          TopLeft="256,253" />
-        <EdgeLayout
-          Id="Package\INCREMENTAL CLIENTE.Paths[Sort Output]"
-          TopLeft="190,193">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="110.666666666667,60"
-              Start="0,0"
-              End="110.666666666667,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5623100303951" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5623100303951"
-                    Point2="0,35.5623100303951"
-                    Point3="4,35.5623100303951" />
-                  <mssgle:LineSegment
-                    End="106.666666666667,35.5623100303951" />
-                  <mssgle:CubicBezierSegment
-                    Point1="106.666666666667,35.5623100303951"
-                    Point2="110.666666666667,35.5623100303951"
-                    Point3="110.666666666667,39.5623100303951" />
-                  <mssgle:LineSegment
-                    End="110.666666666667,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\INCREMENTAL CLIENTE.Paths[Sort Output1]"
-          TopLeft="452.5,187.692307692308">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-111.166666666667,65.307692307692"
-              Start="0,0"
-              End="-111.166666666667,57.807692307692">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.7082066869299" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,34.7082066869299"
-                    Point2="0,38.7082066869299"
-                    Point3="-4,38.7082066869299" />
-                  <mssgle:LineSegment
-                    End="-107.166666666667,38.7082066869299" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-107.166666666667,38.7082066869299"
-                    Point2="-111.166666666667,38.7082066869299"
-                    Point3="-111.166666666667,42.7082066869299" />
-                  <mssgle:LineSegment
-                    End="-111.166666666667,57.807692307692" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="190,42"
-          Id="Package\INCREMENTAL CLIENTE\Insertar diferencias DW"
-          TopLeft="230,456" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\INCREMENTAL CLIENTE\División condicional"
-          TopLeft="239,327" />
-        <EdgeLayout
-          Id="Package\INCREMENTAL CLIENTE.Paths[Merge Join Output]"
-          TopLeft="322.75,295">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,32"
-              Start="0,0"
-              End="0,24.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\INCREMENTAL CLIENTE.Paths[nuevo(s) cliente(s)]"
-          TopLeft="324.75,369">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,87"
-              Start="0,0"
-              End="0,79.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,79.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-41.818359375,33.9453125,83.63671875,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\INCREMENTAL CLIENTE\Cliente DB">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\INCREMENTAL CLIENTE\Cliente DW">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\INCREMENTAL CLIENTE\Insertar diferencias DW">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\INCREMENTAL EMPLEADO">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="190,42"
-          Id="Package\INCREMENTAL EMPLEADO\Insertar diferencias DW"
-          TopLeft="292,468" />
-        <NodeLayout
-          Size="145,42"
-          Id="Package\INCREMENTAL EMPLEADO\Empleado DW"
-          TopLeft="395,47" />
-        <NodeLayout
-          Size="142,42"
-          Id="Package\INCREMENTAL EMPLEADO\Empleado DB"
-          TopLeft="137,47" />
-        <NodeLayout
-          Size="134,42"
-          Id="Package\INCREMENTAL EMPLEADO\Ordenar DB"
-          TopLeft="153,144" />
-        <NodeLayout
-          Size="137,42"
-          Id="Package\INCREMENTAL EMPLEADO\Ordenar DW"
-          TopLeft="377,156" />
-        <EdgeLayout
-          Id="Package\INCREMENTAL EMPLEADO.Paths[Salida de origen de OLE DB]"
-          TopLeft="208,89">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="12,55"
-              Start="0,0"
-              End="12,47.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.5"
-                    Point2="0,27.5"
-                    Point3="4,27.5" />
-                  <mssgle:LineSegment
-                    End="8,27.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="8,27.5"
-                    Point2="12,27.5"
-                    Point3="12,31.5" />
-                  <mssgle:LineSegment
-                    End="12,47.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\INCREMENTAL EMPLEADO.Paths[Salida de origen de OLE DB1]"
-          TopLeft="467.5,89">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-22,67"
-              Start="0,0"
-              End="-22,59.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.5"
-                    Point2="0,33.5"
-                    Point3="-4,33.5" />
-                  <mssgle:LineSegment
-                    End="-18,33.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-18,33.5"
-                    Point2="-22,33.5"
-                    Point3="-22,37.5" />
-                  <mssgle:LineSegment
-                    End="-22,59.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="130,42"
-          Id="Package\INCREMENTAL EMPLEADO\Merge Join"
-          TopLeft="320,266" />
-        <EdgeLayout
-          Id="Package\INCREMENTAL EMPLEADO.Paths[Sort Output]"
-          TopLeft="220,186">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="165,80"
-              Start="0,0"
-              End="165,72.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,36"
-                    Point2="0,40"
-                    Point3="4,40" />
-                  <mssgle:LineSegment
-                    End="161,40" />
-                  <mssgle:CubicBezierSegment
-                    Point1="161,40"
-                    Point2="165,40"
-                    Point3="165,44" />
-                  <mssgle:LineSegment
-                    End="165,72.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\INCREMENTAL EMPLEADO.Paths[Sort Output1]"
-          TopLeft="445.5,198">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-40.1666666666667,68"
-              Start="0,0"
-              End="-40.1666666666667,60.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.3039513677812" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,36.3039513677812"
-                    Point2="0,40.3039513677812"
-                    Point3="-4,40.3039513677812" />
-                  <mssgle:LineSegment
-                    End="-36.1666666666667,40.3039513677812" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-36.1666666666667,40.3039513677812"
-                    Point2="-40.1666666666667,40.3039513677812"
-                    Point3="-40.1666666666667,44.3039513677812" />
-                  <mssgle:LineSegment
-                    End="-40.1666666666667,60.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\INCREMENTAL EMPLEADO\División condicional"
-          TopLeft="300,366" />
-        <EdgeLayout
-          Id="Package\INCREMENTAL EMPLEADO.Paths[Merge Join Output]"
-          TopLeft="385.25,308">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,58"
-              Start="0,0"
-              End="0,50.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\INCREMENTAL EMPLEADO.Paths[nuevo(s) empleado(s)]"
-          TopLeft="386.25,408">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.978359375,20.4453125,97.95671875,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\INCREMENTAL EMPLEADO\Insertar diferencias DW">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\INCREMENTAL EMPLEADO\Empleado DW">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\INCREMENTAL EMPLEADO\Empleado DB">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\INCREMENTAL HECHOS_VENTA">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="190,42"
-          Id="Package\INCREMENTAL HECHOS_VENTA\Insertar diferencias DW"
-          TopLeft="265,452" />
-        <NodeLayout
-          Size="166,42"
-          Id="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW"
-          TopLeft="395,47" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DB"
-          TopLeft="137,47" />
-        <NodeLayout
-          Size="134,42"
-          Id="Package\INCREMENTAL HECHOS_VENTA\Ordenar DB"
-          TopLeft="158,136" />
-        <EdgeLayout
-          Id="Package\INCREMENTAL HECHOS_VENTA.Paths[Salida de origen de OLE DB]"
-          TopLeft="221.75,89">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,47"
-              Start="0,0"
-              End="0,39.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="137,42"
-          Id="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW"
-          TopLeft="405,142" />
-        <EdgeLayout
-          Id="Package\INCREMENTAL HECHOS_VENTA.Paths[Salida de origen de OLE DB1]"
-          TopLeft="475.75,89">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,53"
-              Start="0,0"
-              End="0,45.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="130,42"
-          Id="Package\INCREMENTAL HECHOS_VENTA\Merge Join"
-          TopLeft="287,228" />
-        <EdgeLayout
-          Id="Package\INCREMENTAL HECHOS_VENTA.Paths[Sort Output]"
-          TopLeft="225,178">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="127,50"
-              Start="0,0"
-              End="127,42.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21"
-                    Point2="0,25"
-                    Point3="4,25" />
-                  <mssgle:LineSegment
-                    End="123,25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="123,25"
-                    Point2="127,25"
-                    Point3="127,29" />
-                  <mssgle:LineSegment
-                    End="127,42.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\INCREMENTAL HECHOS_VENTA.Paths[Sort Output1]"
-          TopLeft="473.5,184">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-101.166666666667,44"
-              Start="0,0"
-              End="-101.166666666667,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.0790273556231" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,22.0790273556231"
-                    Point2="0,26.0790273556231"
-                    Point3="-4,26.0790273556231" />
-                  <mssgle:LineSegment
-                    End="-97.1666666666667,26.0790273556231" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-97.1666666666667,26.0790273556231"
-                    Point2="-101.166666666667,26.0790273556231"
-                    Point3="-101.166666666667,30.0790273556231" />
-                  <mssgle:LineSegment
-                    End="-101.166666666667,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\INCREMENTAL HECHOS_VENTA\División condicional"
-          TopLeft="267,328" />
-        <EdgeLayout
-          Id="Package\INCREMENTAL HECHOS_VENTA.Paths[Merge Join Output]"
-          TopLeft="352.25,270">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,58"
-              Start="0,0"
-              End="0,50.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\INCREMENTAL HECHOS_VENTA.Paths[nueva(s) venta(s)]"
-          TopLeft="356.25,370">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,82"
-              Start="0,0"
-              End="0,74.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,74.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-39.618359375,31.4453125,79.23671875,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\INCREMENTAL HECHOS_VENTA\Insertar diferencias DW">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DB">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

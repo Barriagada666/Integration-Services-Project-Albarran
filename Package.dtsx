@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="137"
-  DTS:VersionGUID="{3804A1C6-050F-4E7B-8A4B-C40F3FB84278}">
+  DTS:VersionBuild="138"
+  DTS:VersionGUID="{FCA0E2A3-0986-402E-832C-64F082EFADEC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,19 +25,12 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Albarran;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{F9FBC7F4-19BE-4359-A48F-98536BCFE09F}localhost.Albarran;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LocalHost.Albarran.dba]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{D07D3EF5-7156-4CDC-BEF1-82CB18E09446}"
-      DTS:ObjectName="LocalHost.Albarran.dba">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=.;User ID=dba;Initial Catalog=Albarran;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;User ID=dba;Initial Catalog=Albarran;Provider=MSOLEDBSQL.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package-{F9FBC7F4-19BE-4359-A48F-98536BCFE09F}localhost.Albarran;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAt48jT3p1I0Kol8b5bYsFUgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACjvwSGPOOoErcOl72AcXEUAAAAAASAAACgAAAAEAAAACYii6hkMPDfpHwU7gI3yDEgAAAAJwOJMfm2Xfxaom3MONfV26nIf5oJFD2trAkjuYvu1nwUAAAAm1AcUp7kSZlVq7AltsB2VgOnWK4</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -49,19 +42,12 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Albarran_DW2;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{A994B303-7A4B-44F8-AEE2-CA3F72EB82AD}localhost.Albarran_DW2;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LocalHost.Albarran_DW2.dba]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{E867C166-3613-4854-8956-6F9B0FCFF7E3}"
-      DTS:ObjectName="LocalHost.Albarran_DW2.dba">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=.;User ID=dba;Initial Catalog=Albarran_DW2;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;User ID=dba;Initial Catalog=Albarran_DW2;Provider=MSOLEDBSQL.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package-{A994B303-7A4B-44F8-AEE2-CA3F72EB82AD}localhost.Albarran_DW2;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAt48jT3p1I0Kol8b5bYsFUgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAMFerGT1/aFr5boNs6P/1hAAAAAASAAACgAAAAEAAAAIMrMMGllm5hB0LAzP3lYUQgAAAAvnZ9YADeXmsGFKv+ubxljbMxEipW1bBrMzDsivXzEdkUAAAAKD1VrLR3gsNBcltbYpKvaTZ4dPY</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
