@@ -7,12 +7,12 @@
   DTS:CreatorName="KERNELOS-PC\Administrator"
   DTS:DTSID="{4F0FBDF5-C4DF-47AA-B62E-FAE1A0415057}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LastModifiedProductVersion="16.0.521.0"
   DTS:LocaleID="13322"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="36"
-  DTS:VersionGUID="{A7FFCAEC-B971-47EB-9511-C900C58E893D}">
+  DTS:VersionBuild="50"
+  DTS:VersionGUID="{3A89FE54-B232-4234-B4BE-5517482E4065}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,7 +25,12 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Albarran;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{744EF07D-548B-4DAA-95F7-55E6E808B47E}LocalHost.Albarran;" />
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=Albarran;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-Package1-{744EF07D-548B-4DAA-95F7-55E6E808B47E}LocalHost.Albarran;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAn/6BWZDOJE+wPtZZPORiMwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACO1cjUK/iAbQy39Yg9hhhxAAAAAASAAACgAAAAEAAAABlfYIrMeJfbkQQ54XT+6RAYAAAABX0uB/WgKtkCdybJdZ/YWpTIFsGW6wS9FAAAAA8mRKp7aQUqkFr32pO9ky3WbBJu</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -37,7 +42,12 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Albarran_DW2;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{E427D69E-A55F-492C-B449-A064C522D1B7}LocalHost.Albarran_DW2;" />
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=Albarran_DW2;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-Package1-{E427D69E-A55F-492C-B449-A064C522D1B7}LocalHost.Albarran_DW2;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAn/6BWZDOJE+wPtZZPORiMwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABlQPWNfz0zQlBaUPHOKMfnAAAAAASAAACgAAAAEAAAAO64bL43SRvedOZ33e4RzEgYAAAAGTQkZty4EXQOR3QDjHCp6awQ7uTq9ongFAAAAD8Ct4aiD2tf1K2Lgc2NxalZSy7h</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -1154,7 +1164,7 @@
                   dataType="System.Int32"
                   description="Especifica el tipo de combinación que se debe realizar."
                   name="JoinType"
-                  typeConverter="JoinType">2</property>
+                  typeConverter="JoinType">1</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica el número de columnas de la clave de ordenación."
@@ -6088,36 +6098,30 @@ JOIN
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].Columns[precio_unitario]"
-                      dataType="numeric"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].ExternalColumns[precio_unitario]"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].Columns[precio_unitario]"
                       name="precio_unitario"
-                      precision="10"
-                      scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].Columns[descuento]"
-                      dataType="numeric"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].ExternalColumns[descuento]"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].Columns[descuento]"
                       name="descuento"
-                      precision="5"
-                      scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].Columns[monto_total]"
-                      dataType="numeric"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].ExternalColumns[monto_total]"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].Columns[monto_total]"
                       name="monto_total"
-                      precision="32"
-                      scale="8"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -6161,22 +6165,16 @@ JOIN
                       name="cantidad" />
                     <externalMetadataColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].ExternalColumns[precio_unitario]"
-                      dataType="numeric"
-                      name="precio_unitario"
-                      precision="10"
-                      scale="2" />
+                      dataType="i4"
+                      name="precio_unitario" />
                     <externalMetadataColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].ExternalColumns[descuento]"
-                      dataType="numeric"
-                      name="descuento"
-                      precision="5"
-                      scale="2" />
+                      dataType="i4"
+                      name="descuento" />
                     <externalMetadataColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].ExternalColumns[monto_total]"
-                      dataType="numeric"
-                      name="monto_total"
-                      precision="32"
-                      scale="8" />
+                      dataType="i4"
+                      name="monto_total" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -6232,25 +6230,19 @@ JOIN
                       name="cantidad" />
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de error de origen de OLE DB].Columns[precio_unitario]"
-                      dataType="numeric"
+                      dataType="i4"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de error de origen de OLE DB].Columns[precio_unitario]"
-                      name="precio_unitario"
-                      precision="10"
-                      scale="2" />
+                      name="precio_unitario" />
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de error de origen de OLE DB].Columns[descuento]"
-                      dataType="numeric"
+                      dataType="i4"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de error de origen de OLE DB].Columns[descuento]"
-                      name="descuento"
-                      precision="5"
-                      scale="2" />
+                      name="descuento" />
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de error de origen de OLE DB].Columns[monto_total]"
-                      dataType="numeric"
+                      dataType="i4"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de error de origen de OLE DB].Columns[monto_total]"
-                      name="monto_total"
-                      precision="32"
-                      scale="8" />
+                      name="monto_total" />
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
@@ -6452,22 +6444,16 @@ JOIN
                       name="cantidad" />
                     <externalMetadataColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Insertar diferencias DW.Inputs[OLE DB Destination Input].ExternalColumns[precio_unitario]"
-                      dataType="numeric"
-                      name="precio_unitario"
-                      precision="10"
-                      scale="2" />
+                      dataType="i4"
+                      name="precio_unitario" />
                     <externalMetadataColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Insertar diferencias DW.Inputs[OLE DB Destination Input].ExternalColumns[descuento]"
-                      dataType="numeric"
-                      name="descuento"
-                      precision="5"
-                      scale="2" />
+                      dataType="i4"
+                      name="descuento" />
                     <externalMetadataColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Insertar diferencias DW.Inputs[OLE DB Destination Input].ExternalColumns[monto_total]"
-                      dataType="numeric"
-                      name="monto_total"
-                      precision="32"
-                      scale="8" />
+                      dataType="i4"
+                      name="monto_total" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -7357,10 +7343,8 @@ JOIN
                     </inputColumn>
                     <inputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW.Inputs[Sort Input].Columns[precio_unitario]"
-                      cachedDataType="numeric"
+                      cachedDataType="i4"
                       cachedName="precio_unitario"
-                      cachedPrecision="10"
-                      cachedScale="2"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].Columns[precio_unitario]">
                       <properties>
                         <property
@@ -7375,10 +7359,8 @@ JOIN
                     </inputColumn>
                     <inputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW.Inputs[Sort Input].Columns[descuento]"
-                      cachedDataType="numeric"
+                      cachedDataType="i4"
                       cachedName="descuento"
-                      cachedPrecision="5"
-                      cachedScale="2"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].Columns[descuento]">
                       <properties>
                         <property
@@ -7393,10 +7375,8 @@ JOIN
                     </inputColumn>
                     <inputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW.Inputs[Sort Input].Columns[monto_total]"
-                      cachedDataType="numeric"
+                      cachedDataType="i4"
                       cachedName="monto_total"
-                      cachedPrecision="32"
-                      cachedScale="8"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Hechos_Venta DW.Outputs[Salida de origen de OLE DB].Columns[monto_total]">
                       <properties>
                         <property
@@ -7540,11 +7520,9 @@ JOIN
                     </outputColumn>
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW.Outputs[Sort Output].Columns[precio_unitario]"
-                      dataType="numeric"
+                      dataType="i4"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW.Outputs[Sort Output].Columns[precio_unitario]"
-                      name="precio_unitario"
-                      precision="10"
-                      scale="2">
+                      name="precio_unitario">
                       <properties>
                         <property
                           containsID="true"
@@ -7555,11 +7533,9 @@ JOIN
                     </outputColumn>
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW.Outputs[Sort Output].Columns[descuento]"
-                      dataType="numeric"
+                      dataType="i4"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW.Outputs[Sort Output].Columns[descuento]"
-                      name="descuento"
-                      precision="5"
-                      scale="2">
+                      name="descuento">
                       <properties>
                         <property
                           containsID="true"
@@ -7570,11 +7546,9 @@ JOIN
                     </outputColumn>
                     <outputColumn
                       refId="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW.Outputs[Sort Output].Columns[monto_total]"
-                      dataType="numeric"
+                      dataType="i4"
                       lineageId="Package\INCREMENTAL HECHOS_VENTA\Ordenar DW.Outputs[Sort Output].Columns[monto_total]"
-                      name="monto_total"
-                      precision="32"
-                      scale="8">
+                      name="monto_total">
                       <properties>
                         <property
                           containsID="true"
@@ -7650,7 +7624,7 @@ JOIN
                   dataType="System.Int32"
                   description="Especifica el tipo de combinación que se debe realizar."
                   name="JoinType"
-                  typeConverter="JoinType">2</property>
+                  typeConverter="JoinType">1</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica el número de columnas de la clave de ordenación."
@@ -9559,6 +9533,23 @@ JOIN
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\LLENAR TIEMPO"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{3207DA43-6B17-45AD-80C1-CCCC6412286C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LLENAR TIEMPO"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022 CTP2.0; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E427D69E-A55F-492C-B449-A064C522D1B7}"
+          SQLTask:SqlStatementSource="DECLARE @return_value int;&#xA;DECLARE @CurrentDate DATE;&#xA;DECLARE @LastDate DATE;&#xA;&#xA;SET @CurrentDate = GETDATE();&#xA;&#xA;-- Obtener la fecha siguiente al máximo valor de la columna fecha&#xA;SELECT @LastDate = DATEADD(DAY, 1, MAX(fecha)) &#xA;FROM [Albarran_DW2].[dbo].[dim_tiempo];&#xA;&#xA;-- Ejecutar el procedimiento almacenado en la base de datos Albarran_DW2&#xA;EXEC @return_value = [Albarran].[dbo].[GenerateTimeData]&#xA;    @StartDate = @LastDate,&#xA;    @EndDate = @CurrentDate;&#xA;&#xA;SELECT 'Return Value' = @return_value;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -9617,54 +9608,62 @@ JOIN
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 6"
       DTS:To="Package\INCREMENTAL HECHOS_VENTA" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{19C89C80-CE07-480D-96AE-6454620BDBDC}"
+      DTS:From="Package\LLENAR TIEMPO"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\INCREMENTAL CARGOS" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
-<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
-<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
   Version="8">
-  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="192,42"
           Id="Package\INCREMENTAL CARGOS"
-          TopLeft="72,40" />
+          TopLeft="309,88" />
         <NodeLayout
           Size="214,42"
           Id="Package\INCREMENTAL CATEGORIAS"
-          TopLeft="63,102" />
+          TopLeft="300,150" />
         <NodeLayout
           Size="193,42"
           Id="Package\INCREMENTAL CLIENTE"
-          TopLeft="608,110" />
+          TopLeft="845,158" />
         <NodeLayout
           Size="200,42"
           Id="Package\INCREMENTAL COMUNAS"
-          TopLeft="338,41" />
+          TopLeft="575,89" />
         <NodeLayout
           Size="204,42"
           Id="Package\INCREMENTAL EMPLEADO"
-          TopLeft="63,207" />
+          TopLeft="300,255" />
         <NodeLayout
           Size="230,42"
           Id="Package\INCREMENTAL HECHOS_VENTA"
-          TopLeft="594,210" />
+          TopLeft="831,258" />
         <NodeLayout
           Size="212,42"
           Id="Package\INCREMENTAL PRODUCTOS"
-          TopLeft="326,103" />
+          TopLeft="563,151" />
         <NodeLayout
           Size="202,42"
           Id="Package\INCREMENTAL SUCURSAL"
-          TopLeft="610,38" />
+          TopLeft="847,86" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="264,61.5">
+          TopLeft="501,109.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -9686,7 +9685,7 @@ JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="538,60.5">
+          TopLeft="775,108.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -9708,7 +9707,7 @@ JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="707.75,80">
+          TopLeft="944.75,128">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -9730,7 +9729,7 @@ JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="608,127.5">
+          TopLeft="845,175.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -9752,7 +9751,7 @@ JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="326,123.5">
+          TopLeft="563,171.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -9774,7 +9773,7 @@ JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="167.5,144">
+          TopLeft="404.5,192">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -9796,7 +9795,7 @@ JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="267,229.5">
+          TopLeft="504,277.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -9808,6 +9807,32 @@ JOIN
                   Capacity="5">
                   <mssgle:LineSegment
                     End="319.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="157,42"
+          Id="Package\LLENAR TIEMPO"
+          TopLeft="23,88" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="180,109">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="129,0"
+              Start="0,0"
+              End="121.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="121.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9883,9 +9908,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9919,9 +9942,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9955,9 +9976,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9991,9 +10010,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10027,9 +10044,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10150,9 +10165,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10174,9 +10187,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10210,9 +10221,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10246,9 +10255,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10270,9 +10277,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10405,9 +10410,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10441,9 +10444,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10465,9 +10466,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10489,9 +10488,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10537,9 +10534,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10881,9 +10876,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10917,9 +10910,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10953,9 +10944,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10989,9 +10978,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11037,9 +11024,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11376,9 +11361,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11412,9 +11395,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11436,9 +11417,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11484,9 +11463,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11508,9 +11485,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11607,9 +11582,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11631,9 +11604,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11667,9 +11638,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11703,9 +11672,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11727,9 +11694,7 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
