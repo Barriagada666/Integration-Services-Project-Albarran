@@ -7,12 +7,12 @@
   DTS:CreatorName="KERNELOS-PC\Administrator"
   DTS:DTSID="{4F0FBDF5-C4DF-47AA-B62E-FAE1A0415057}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
   DTS:LocaleID="13322"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="50"
-  DTS:VersionGUID="{3A89FE54-B232-4234-B4BE-5517482E4065}">
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{B9161937-52BD-4BB5-AEA3-4AC5C436ED4D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,12 +25,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=Albarran;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-Package1-{744EF07D-548B-4DAA-95F7-55E6E808B47E}LocalHost.Albarran;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAn/6BWZDOJE+wPtZZPORiMwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACO1cjUK/iAbQy39Yg9hhhxAAAAAASAAACgAAAAEAAAABlfYIrMeJfbkQQ54XT+6RAYAAAABX0uB/WgKtkCdybJdZ/YWpTIFsGW6wS9FAAAAA8mRKp7aQUqkFr32pO9ky3WbBJu</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=PC-BARRIAGADA;Initial Catalog=Albarran;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{744EF07D-548B-4DAA-95F7-55E6E808B47E}LocalHost.Albarran;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -42,12 +37,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=Albarran_DW2;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-Package1-{E427D69E-A55F-492C-B449-A064C522D1B7}LocalHost.Albarran_DW2;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAn/6BWZDOJE+wPtZZPORiMwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABlQPWNfz0zQlBaUPHOKMfnAAAAAASAAACgAAAAEAAAAO64bL43SRvedOZ33e4RzEgYAAAAGTQkZty4EXQOR3QDjHCp6awQ7uTq9ongFAAAAD8Ct4aiD2tf1K2Lgc2NxalZSy7h</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=PC-BARRIAGADA;Initial Catalog=Albarran_DW2;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{E427D69E-A55F-492C-B449-A064C522D1B7}LocalHost.Albarran_DW2;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -9618,12 +9608,12 @@ JOIN
       DTS:To="Package\INCREMENTAL CARGOS" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
-<!--If you manually edit this section and make a mistake, you can delete it. -->
-<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
 <Objects
   Version="8">
-  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
@@ -9661,6 +9651,10 @@ JOIN
           Size="202,42"
           Id="Package\INCREMENTAL SUCURSAL"
           TopLeft="847,86" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\LLENAR TIEMPO"
+          TopLeft="23,88" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="501,109.5">
@@ -9815,10 +9809,6 @@ JOIN
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="157,42"
-          Id="Package\LLENAR TIEMPO"
-          TopLeft="23,88" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
           TopLeft="180,109">
