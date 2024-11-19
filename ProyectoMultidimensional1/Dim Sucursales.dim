@@ -1,14 +1,14 @@
-﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="3d6c9a12-ca43-4fb0-8451-b9c50903aa11" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="29d45cdc-04d3-4579-aafd-ee9e236dbd8d" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
   <ID>Dim Sucursales</ID>
   <Name>Dim Sucursales</Name>
-  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
-  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <CreatedTimestamp>0001-01-01T03:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T03:00:00Z</LastSchemaUpdate>
   <Annotations>
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
       <Value>
         <dds xmlns="">
-          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="4" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-2581" scrolltop="-2742" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="8202" y="12065" backcolor="2434342" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="8" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-2581" scrolltop="-2742" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="12012" y="16616" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
             <font>
               <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
             </font>
@@ -19,7 +19,7 @@
           <layoutmanager>
             <ddsxmlobj />
           </layoutmanager>
-          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="dim_sucursales" left="20" top="4279" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="3000" height="2302" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="dim_sucursales" left="20" top="4279" logicalid="4" controlid="1" masterid="0" hint1="0" hint2="0" width="3000" height="2302" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobjectstreaminitwrapper binary="000e0000b80b0000fe080000" />
             </control>
@@ -30,7 +30,7 @@
             </layoutobject>
             <shape groupshapeid="0" groupnode="0" />
           </ddscontrol>
-          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="dim_comunas" left="20" top="0" logicalid="2" controlid="2" masterid="0" hint1="0" hint2="0" width="3000" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="dim_comunas" left="20" top="0" logicalid="5" controlid="2" masterid="0" hint1="0" hint2="0" width="3000" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobjectstreaminitwrapper binary="000e0000b80b000057070000" />
             </control>
@@ -41,10 +41,10 @@
             </layoutobject>
             <shape groupshapeid="0" groupnode="0" />
           </ddscontrol>
-          <ddscontrol controlprogid="MSDDS.Polyline" left="1121" top="1380" logicalid="3" controlid="3" masterid="0" hint1="0" hint2="0" width="799" height="3199" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="MSDDS.Polyline" left="1121" top="1380" logicalid="6" controlid="3" masterid="0" hint1="0" hint2="0" width="799" height="3199" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobj>
-                <polyline endtypedst="6" endtypesrc="3" usercolor="15856113" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
               </ddsxmlobj>
             </control>
             <layoutobject>
@@ -95,47 +95,43 @@
       <Value>100</Value>
     </Annotation>
   </Annotations>
-  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <LastProcessed>0001-01-01T03:00:00Z</LastProcessed>
   <State>Unprocessed</State>
-  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="a5c11bab-73ac-4478-8d9c-c172152e122f">
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="7c86dd72-bcec-4b66-b73d-cb9d5d6e3712">
     <DataSourceViewID>Albarran DW2</DataSourceViewID>
   </Source>
   <UnknownMember>Visible</UnknownMember>
-  <ErrorConfiguration dwd:design-time-name="f4e62c8d-db58-4829-a189-debed7dbded2">
+  <ErrorConfiguration dwd:design-time-name="60cbfd62-7b53-4316-b292-7f15e8220d33">
     <KeyNotFound>ReportAndStop</KeyNotFound>
     <KeyDuplicate>ReportAndStop</KeyDuplicate>
     <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
   </ErrorConfiguration>
   <CurrentStorageMode>Molap</CurrentStorageMode>
   <Attributes>
-    <Attribute dwd:design-time-name="4882348b-13c3-49d6-af3e-30ee14f2daaf">
+    <Attribute dwd:design-time-name="3fcb4d5d-4b23-46c9-b9eb-acdd83af9a1b">
       <ID>Sucursal Id</ID>
       <Name>Sucursal Id</Name>
       <Usage>Key</Usage>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="09d34b19-3b02-4b54-90fa-e974b6f296e1">
+        <KeyColumn dwd:design-time-name="aaeda0da-4b19-45de-8756-7a1a80bc2044">
           <DataType>Integer</DataType>
           <NullProcessing>UnknownMember</NullProcessing>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="2f873ff9-f1d3-4ab6-acf8-bd356e38edd7">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a786ad2f-33a7-442d-ab3f-27112d5d8cf5">
             <TableID>dbo_dim_sucursales</TableID>
             <ColumnID>sucursal_id</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
       <AttributeRelationships>
-        <AttributeRelationship dwd:design-time-name="693591b3-7ca9-41bd-810f-657e07901910">
+        <AttributeRelationship dwd:design-time-name="c6916a8a-a214-4174-891e-f25dc3e313e0">
           <AttributeID>Comuna Id</AttributeID>
           <Name>Comuna Id</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="8f56a669-53c5-4792-8693-f51fe9817d65">
+        <AttributeRelationship dwd:design-time-name="77605eab-86c7-42f8-80b4-200638d6b259">
           <AttributeID>Sucursal</AttributeID>
           <Name>Sucursal</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="e16cc091-6d47-44d6-8a26-13972e9f8d77">
-          <AttributeID>Comuna Id 1</AttributeID>
-          <Name>Comuna Id 1</Name>
-        </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="044bc24f-b380-4a0b-b81a-89ccde122d91">
+        <AttributeRelationship dwd:design-time-name="deee48fe-f466-4d1c-930b-a0c8569c3c73">
           <AttributeID>Comuna</AttributeID>
           <Name>Comuna</Name>
         </AttributeRelationship>
@@ -144,13 +140,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="285355a5-f349-4b49-b5dd-4689f4d87d2a">
+    <Attribute dwd:design-time-name="af836f61-c433-491e-9fbb-9b1b7fc98d75">
       <ID>Comuna Id</ID>
       <Name>Comuna Id</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="5282ba91-70dc-4df5-8199-086befdf342d">
+        <KeyColumn dwd:design-time-name="ee03f0e3-c521-4454-99a1-7ac2d7d01b4a">
           <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="1dfba779-5a13-4c37-8e9f-e56895660b57">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4ae9af2b-3d34-4fab-94f3-55a9939d0f73">
             <TableID>dbo_dim_comunas</TableID>
             <ColumnID>comuna_id</ColumnID>
           </Source>
@@ -160,14 +156,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="363040c0-96cc-42b3-9e0e-b8bed5ff7f32">
+    <Attribute dwd:design-time-name="9481b5b3-9ced-4868-b1fb-7c49a27df8c7">
       <ID>Sucursal</ID>
       <Name>Sucursal</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="c4468b5b-f1e8-4932-8ae5-1252e1f41833">
+        <KeyColumn dwd:design-time-name="5fa1943d-a218-477a-9d64-beb7137ccf33">
           <DataType>WChar</DataType>
           <DataSize>255</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="054341ea-db57-42d6-8853-fcbd4301b495">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a254ceee-4f80-4283-8473-7f32842969fb">
             <TableID>dbo_dim_sucursales</TableID>
             <ColumnID>sucursal</ColumnID>
           </Source>
@@ -176,29 +172,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="c0c23c72-f84b-4ef6-8b80-a1933e314801">
-      <ID>Comuna Id 1</ID>
-      <Name>Comuna Id 1</Name>
-      <KeyColumns>
-        <KeyColumn dwd:design-time-name="85239c77-0ab7-4d8c-a570-7c7111b181e4">
-          <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="13d03fcd-fa53-44ca-8978-23b419cdf69c">
-            <TableID>dbo_dim_sucursales</TableID>
-            <ColumnID>comuna_id</ColumnID>
-          </Source>
-        </KeyColumn>
-      </KeyColumns>
-      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
-      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
-    </Attribute>
-    <Attribute dwd:design-time-name="8bf52906-7265-42b2-a5e9-20670db07278">
+    <Attribute dwd:design-time-name="c642e886-08e4-4b51-899d-509a3dcd071f">
       <ID>Comuna</ID>
       <Name>Comuna</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="fa0bf2f5-86a8-4e68-bb2b-11f65edf074b">
+        <KeyColumn dwd:design-time-name="9dbbd868-9839-4cef-a106-5478fe91d02f">
           <DataType>WChar</DataType>
           <DataSize>255</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="b4353f7f-3daa-44fb-85ee-ca2ec99b7d08">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1cca26af-93b6-4339-bd5b-4291639047e9">
             <TableID>dbo_dim_comunas</TableID>
             <ColumnID>comuna</ColumnID>
           </Source>
