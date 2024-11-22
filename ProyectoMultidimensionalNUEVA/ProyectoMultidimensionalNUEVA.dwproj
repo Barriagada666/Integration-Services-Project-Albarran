@@ -64,7 +64,7 @@
           <ConfigurationSetting>
             <Id>Albarran DW2</Id>
             <Name>Albarran DW2</Name>
-            <Value xsi:type="xsd:string">Provider=SQLNCLI11.1;Data Source=VIAPCE03LR0112;Integrated Security=SSPI;Initial Catalog=Albarran_DW2</Value>
+            <Value xsi:type="xsd:string">Provider=SQLNCLI11.1;Data Source=localhost;Integrated Security=SSPI;Initial Catalog=Albarran_DW2</Value>
           </ConfigurationSetting>
         </ConnectionMappings>
         <ConnectionSecurityMappings>
